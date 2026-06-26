@@ -42,7 +42,7 @@ export function Footer() {
 
           <div>
             <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold">
-              Menu
+              {t.nav.menu}
             </p>
             <nav className="flex flex-col gap-2 text-sm text-text-muted">
               <a href="#about" className="transition-colors hover:text-gold">

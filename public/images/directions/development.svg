@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+<defs>
+<linearGradient id="dev" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#1a2636"/><stop offset="1" stop-color="#3d5a80"/>
+</linearGradient>
+<linearGradient id="devGold" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#bda57e"/><stop offset="1" stop-color="#d4bc96"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="600" fill="url(#dev)"/>
+<g opacity="0.14" stroke="#fff" stroke-width="2" fill="none">
+<rect x="780" y="140" width="90" height="320"/><rect x="890" y="200" width="90" height="260"/><rect x="1000" y="100" width="90" height="360"/>
+<line x1="780" y1="460" x2="1090" y2="460"/><line x1="780" y1="140" x2="1090" y2="100"/>
+</g>
+<g opacity="0.08" fill="#fff"><path d="M0 600 L400 400 L800 600 Z"/></g>
+<text x="80" y="290" font-family="Arial,sans-serif" font-weight="800" font-size="72" fill="#fff" letter-spacing="-1">DEVELOPMENT</text>
+<rect x="82" y="318" width="120" height="6" fill="url(#devGold)"/>
+<text x="84" y="368" font-family="Arial,sans-serif" font-weight="400" font-size="26" fill="#c5d4e8">BTS � 525;>?<5=B �  5:>=F5?F8O � =25AB8F88</text>
+</svg>

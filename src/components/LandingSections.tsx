@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/Button";
 import { ContactForm } from "@/components/ContactForm";
@@ -88,7 +87,7 @@ export function LandingSections() {
         id="trust"
         label={t.trust.title}
         heading={t.trust.heading}
-        dark
+        description={t.trust.description}
         headerVariant="fadeDown"
       >
         <PartnerMarquee />
@@ -117,12 +116,11 @@ export function LandingSections() {
               className="group card overflow-hidden"
             >
               <div className="relative h-56 overflow-hidden md:h-64">
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={getProjectImage(project.name)}
                   alt={project.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width:768px) 100vw, 50vw"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div
                   className="absolute inset-0"
@@ -206,6 +204,22 @@ export function LandingSections() {
             </motion.article>
           ))}
         </StaggerChildren>
+
+        {/* Krisha.kz / Kolesa.kz — placeholder под будущее медиа */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="mt-10 flex min-h-[180px] flex-col items-center justify-center border border-dashed border-border bg-bg-surface px-8 py-12 text-center"
+        >
+          <p className="font-serif text-xl font-medium text-text-heading md:text-2xl">
+            {t.marketingResults.mediaPlaceholder.heading}
+          </p>
+          <p className="mt-3 text-sm text-text-muted">
+            {t.marketingResults.mediaPlaceholder.note}
+          </p>
+        </motion.div>
       </Section>
 
       <StrategySection />

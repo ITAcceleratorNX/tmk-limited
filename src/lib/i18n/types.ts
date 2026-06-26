@@ -13,23 +13,18 @@ export interface StatItem {
   label: string;
 }
 
-export interface FeatureItem {
-  title: string;
-  description?: string;
+export interface CaseItem {
+  name: string;
+  description: string;
+  result: string;
+  metric?: string;
 }
 
 export interface ProjectItem {
   name: string;
   description: string;
-  highlight?: string;
-  metric?: string;
-}
-
-export interface CaseItem {
-  name: string;
-  description: string;
-  result?: string;
-  metric?: string;
+  highlight: string;
+  metric: string;
 }
 
 export interface PartnerItem {
@@ -42,14 +37,12 @@ export interface StrategyItem {
 }
 
 export interface Translations {
-  meta: {
-    title: string;
-    description: string;
-  };
+  meta: { title: string; description: string };
   nav: {
     about: string;
     directions: string;
     projects: string;
+    extraSpace: string;
     results: string;
     strategy: string;
     contacts: string;
@@ -91,14 +84,11 @@ export interface Translations {
       technology: string;
     };
   };
-  stats: {
-    title: string;
-    heading: string;
-    items: StatItem[];
-  };
+  stats: { title: string; heading: string; items: StatItem[] };
   trust: {
     title: string;
     heading: string;
+    description: string;
     partners: PartnerItem[];
   };
   realEstate: {
@@ -110,34 +100,51 @@ export interface Translations {
   extraSpace: {
     title: string;
     heading: string;
+    description: string;
     stats: StatItem[];
     features: string[];
+    links: {
+      workflow: { appStore: string; googlePlay: string };
+      phystech: string;
+      extraSpace: string;
+    };
   };
   development: {
     title: string;
     heading: string;
+    description: string;
     features: string[];
   };
   technoHorizon: {
     title: string;
     heading: string;
+    description: string;
     badges: string[];
     products: string[];
+    links: {
+      workflow: { appStore: string; googlePlay: string };
+      phystech: string;
+      extraSpace: string;
+    };
   };
   marketingResults: {
     title: string;
     heading: string;
+    description: string;
+    mediaPlaceholder: { heading: string; note: string };
     cases: CaseItem[];
   };
   qaitadan: {
     title: string;
     heading: string;
+    description: string;
     services: string[];
     stats: StatItem[];
   };
   itSolutions: {
     title: string;
     heading: string;
+    description: string;
     services: string[];
   };
   strategy: {
@@ -147,11 +154,7 @@ export interface Translations {
     goalBadge: string;
     items: StrategyItem[];
   };
-  finalCta: {
-    title: string;
-    description: string;
-    cta: string;
-  };
+  finalCta: { title: string; description: string; cta: string };
   contact: {
     title: string;
     description: string;
@@ -160,11 +163,7 @@ export interface Translations {
     phone: string;
     hours: string;
     hoursValue: string;
-    labels: {
-      email: string;
-      phone: string;
-      address: string;
-    };
+    labels: { email: string; phone: string; address: string };
     form: {
       name: string;
       phone: string;
@@ -179,12 +178,15 @@ export interface Translations {
       privacy: string;
       success: string;
       error: string;
-      interests: Record<InterestOption, string>;
+      interests: {
+        investments: string;
+        realEstate: string;
+        marketing: string;
+        technologies: string;
+        partnership: string;
+        other: string;
+      };
     };
   };
-  footer: {
-    copyright: string;
-    privacy: string;
-    backHome: string;
-  };
+  footer: { copyright: string; privacy: string; backHome: string };
 }

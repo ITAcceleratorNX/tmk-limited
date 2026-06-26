@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     "Алматы",
     "МФЦА",
     "холдинг",
+    "Extra Space",
+    "PhysTech LMS",
+    "Qaitadan",
+    "Techno Horizon",
+    "складское хранение Алматы",
   ],
   icons: {
     icon: "/images/favicon.svg",

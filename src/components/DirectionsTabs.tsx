@@ -1,13 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import { StatsGrid } from "@/components/StatsGrid";
 import { useLanguage } from "@/components/LanguageProvider";
 import { StaggerChildren } from "@/components/motion/StaggerChildren";
 import { fadeUp } from "@/lib/motion";
-
-type TabKey =
+type DirectionKey =
   | "extraSpace"
   | "development"
   | "technoHorizon"
@@ -16,134 +14,181 @@ type TabKey =
 
 function FeatureList({ items }: { items: string[] }) {
   return (
-    <StaggerChildren className="grid gap-3 sm:grid-cols-2" fast>
-      {items.map((item, i) => (
-        <motion.li
-          key={item}
-          variants={fadeUp}
-          whileHover={{ x: 6, borderColor: "var(--border-gold)" }}
-          className="card-flat flex list-none items-center gap-3 px-5 py-4 text-sm text-text"
-        >
-          <motion.span
-            className="h-1 w-4 shrink-0 bg-gold"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.05, duration: 0.4 }}
-          />
-          {item}
-        </motion.li>
+    <ul className="grid min-w-0 gap-2 sm:grid-cols-2">
+      {items.map((item) => (
+        <li key={item} className="flex min-w-0 items-start gap-3 text-sm text-text">
+          <span className="mt-2 h-1 w-4 shrink-0 bg-gold" />
+          <span className="min-w-0 break-words">{item}</span>
+        </li>
       ))}
-    </StaggerChildren>
+    </ul>
+  );
+}
+
+function DirectionLinks({
+  links,
+}: {
+  links: { href: string; label: string }[];
+}) {
+  if (links.length === 0) return null;
+
+  return (
+    <div className="mt-8 flex flex-wrap gap-3">
+      {links.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="card-flat flex items-center gap-2 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-text hover:text-gold"
+        >
+          <span className="text-gold">↗</span>
+          {link.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function DirectionCard({
+  directionKey,
+  index,
+}: {
+  directionKey: DirectionKey;
+  index: number;
+}) {
+  const { t } = useLanguage();
+
+  const meta = {
+    extraSpace: {
+      label: t.directions.tabs.extraSpace,
+      heading: t.extraSpace.heading,
+      description: t.extraSpace.description,
+      stats: t.extraSpace.stats,
+      features: t.extraSpace.features,
+      badges: [] as string[],
+      links: [{ href: t.extraSpace.links.extraSpace, label: "extraspace.kz" }],
+    },
+    development: {
+      label: t.directions.tabs.development,
+      heading: t.development.heading,
+      description: t.development.description,
+      stats: [] as typeof t.extraSpace.stats,
+      features: t.development.features,
+      badges: [] as string[],
+      links: [] as { href: string; label: string }[],
+    },
+    technoHorizon: {
+      label: t.directions.tabs.technoHorizon,
+      heading: t.technoHorizon.heading,
+      description: t.technoHorizon.description,
+      stats: [] as typeof t.extraSpace.stats,
+      features: t.technoHorizon.products,
+      badges: t.technoHorizon.badges,
+      links: [
+        ...(t.technoHorizon.links.workflow.appStore
+          ? [{ href: t.technoHorizon.links.workflow.appStore, label: "Workflow — App Store" }]
+          : []),
+        { href: t.technoHorizon.links.extraSpace, label: "Extra Space" },
+        { href: t.technoHorizon.links.phystech, label: "PhysTech LMS" },
+      ],
+    },
+    qaitadan: {
+      label: t.directions.tabs.qaitadan,
+      heading: t.qaitadan.heading,
+      description: t.qaitadan.description,
+      stats: t.qaitadan.stats,
+      features: t.qaitadan.services,
+      badges: [] as string[],
+      links: [] as { href: string; label: string }[],
+    },
+    itSolutions: {
+      label: t.directions.tabs.itSolutions,
+      heading: t.itSolutions.heading,
+      description: t.itSolutions.description,
+      stats: [] as typeof t.extraSpace.stats,
+      features: t.itSolutions.services,
+      badges: [] as string[],
+      links: [] as { href: string; label: string }[],
+    },
+  }[directionKey];
+
+  return (
+    <motion.article
+      id={directionKey}
+      initial={{ opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{
+        delay: index * 0.06,
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{ y: -4 }}
+      className="card scroll-mt-24 overflow-hidden"
+    >
+      <div className="flex min-w-0 flex-col p-6 md:p-10">
+        <div className="mb-6 border-b border-border-gold pb-6">
+          <span className="mb-3 block font-serif text-5xl font-medium leading-none text-gold/20">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <p className="mb-2 break-words text-xs font-semibold uppercase tracking-[0.22em] text-gold">
+            {meta.label}
+          </p>
+          <h3 className="text-balance break-words font-serif text-2xl font-medium leading-tight text-text md:text-3xl">
+            {meta.heading}
+          </h3>
+        </div>
+
+        <p className="mb-6 break-words text-sm leading-relaxed text-text-muted">
+          {meta.description}
+        </p>
+
+        {meta.badges.length > 0 && (
+          <div className="mb-6 flex flex-wrap gap-2">
+            {meta.badges.map((badge) => (
+              <span
+                key={badge}
+                className="border border-border-gold px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {meta.stats.length > 0 && (
+          <StatsGrid items={meta.stats} compact />
+        )}
+
+        {meta.features.length > 0 && (
+          <div className={meta.stats.length > 0 ? "mt-8" : ""}>
+            <FeatureList items={meta.features} />
+          </div>
+        )}
+
+        <DirectionLinks links={meta.links} />
+      </div>
+    </motion.article>
   );
 }
 
 export function DirectionsTabs() {
-  const { t } = useLanguage();
-  const tabs: { key: TabKey; label: string }[] = [
-    { key: "extraSpace", label: t.directions.tabs.extraSpace },
-    { key: "development", label: t.directions.tabs.development },
-    { key: "technoHorizon", label: t.directions.tabs.technoHorizon },
-    { key: "qaitadan", label: t.directions.tabs.qaitadan },
-    { key: "itSolutions", label: t.directions.tabs.itSolutions },
+  const directions: DirectionKey[] = [
+    "extraSpace",
+    "development",
+    "technoHorizon",
+    "qaitadan",
+    "itSolutions",
   ];
 
-  const [active, setActive] = useState<TabKey>("extraSpace");
-  const [direction, setDirection] = useState(1);
-
-  function switchTab(key: TabKey) {
-    const currentIndex = tabs.findIndex((t) => t.key === active);
-    const newIndex = tabs.findIndex((t) => t.key === key);
-    setDirection(newIndex > currentIndex ? 1 : -1);
-    setActive(key);
-  }
-
   return (
-    <div className="card-flat p-6 md:p-10">
-      <div className="mb-8 flex gap-2 overflow-x-auto pb-1">
-        {tabs.map((tab) => (
-          <motion.button
-            key={tab.key}
-            onClick={() => switchTab(tab.key)}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className={`tab-pill shrink-0 ${active === tab.key ? "tab-pill-active" : ""}`}
-          >
-            {tab.label}
-          </motion.button>
-        ))}
-      </div>
-
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.div
-          key={active}
-          custom={direction}
-          variants={{
-            hidden: (d: number) => ({
-              opacity: 0,
-              x: d * 40,
-              filter: "blur(6px)",
-            }),
-            visible: {
-              opacity: 1,
-              x: 0,
-              filter: "blur(0px)",
-              transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-            },
-            exit: (d: number) => ({
-              opacity: 0,
-              x: d * -40,
-              filter: "blur(6px)",
-              transition: { duration: 0.28 },
-            }),
-          }}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          {active === "extraSpace" && (
-            <>
-              <StatsGrid items={t.extraSpace.stats} columns={4} />
-              <div className="mt-8">
-                <FeatureList items={t.extraSpace.features} />
-              </div>
-            </>
-          )}
-          {active === "development" && (
-            <FeatureList items={t.development.features} />
-          )}
-          {active === "technoHorizon" && (
-            <>
-              <div className="mb-6 flex flex-wrap gap-2">
-                {t.technoHorizon.badges.map((badge, i) => (
-                  <motion.span
-                    key={badge}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ scale: 1.04 }}
-                    className="border border-border-gold px-4 py-2 text-xs font-semibold uppercase tracking-wider text-gold"
-                  >
-                    {badge}
-                  </motion.span>
-                ))}
-              </div>
-              <FeatureList items={t.technoHorizon.products} />
-            </>
-          )}
-          {active === "qaitadan" && (
-            <>
-              <StatsGrid items={t.qaitadan.stats} columns={4} />
-              <div className="mt-8">
-                <FeatureList items={t.qaitadan.services} />
-              </div>
-            </>
-          )}
-          {active === "itSolutions" && (
-            <FeatureList items={t.itSolutions.services} />
-          )}
+    <StaggerChildren className="space-y-8" fast>
+      {directions.map((key, index) => (
+        <motion.div key={key} variants={fadeUp}>
+          <DirectionCard directionKey={key} index={index} />
         </motion.div>
-      </AnimatePresence>
-    </div>
+      ))}
+    </StaggerChildren>
   );
 }

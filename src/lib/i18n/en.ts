@@ -4,12 +4,13 @@ export const en: Translations = {
   meta: {
     title: "TMK Holding — Investments, Real Estate, Marketing, Technology",
     description:
-      "TMK Holding is a growth ecosystem for your business. Investments, commercial real estate, marketing, and digital technology since 2017.",
+      "TMK Holding — a full-cycle investment holding. Investments, commercial real estate, marketing and digital technology since 2017. AIFC resident.",
   },
   nav: {
     about: "About",
     directions: "Directions",
     projects: "Projects",
+    extraSpace: "Extra Space",
     results: "Results",
     strategy: "Strategy",
     contacts: "Contacts",
@@ -24,15 +25,15 @@ export const en: Translations = {
     taglineAccent: "Marketing. Technology.",
     subtitle: "A growth ecosystem for your business",
     stats: [
-      { value: "$5M+", label: "investments" },
+      { value: "$5M+", label: "annual turnover" },
       { value: "400,000 m²", label: "real estate" },
-      { value: "10+ years", label: "experience" },
+      { value: "10+ years", label: "on the market" },
     ],
     trustStrip: [
       "Since 2017",
       "AIFC Participant",
       "5 countries",
-      "200+ partners",
+      "200+ clients",
     ],
     cta: "Discuss Project",
   },
@@ -59,7 +60,7 @@ export const en: Translations = {
       "International expertise",
       "AIFC participant",
       "Proprietary ecosystem",
-      "Team and expertise across multiple directions",
+      "Expert team across every direction",
     ],
     ecosystem: {
       investments: "Investments",
@@ -72,10 +73,10 @@ export const en: Translations = {
     title: "TMK in Numbers",
     heading: "Scale and trust",
     items: [
-      { value: "$5M+", label: "investments" },
+      { value: "$5M+", label: "annual turnover" },
       { value: "400,000 m²", label: "real estate" },
       { value: "10+ years", label: "experience" },
-      { value: "5 countries", label: "geography" },
+      { value: "5 countries", label: "presence" },
       { value: "10+ properties", label: "in portfolio" },
       { value: "200+ clients", label: "and partners" },
     ],
@@ -83,42 +84,53 @@ export const en: Translations = {
   trust: {
     title: "Trusted By",
     heading: "Clients and partners",
+    description: "Leading international and Kazakhstani companies from 8 industries.",
     partners: [
+      { name: "Chevron" },
       { name: "Coca-Cola" },
+      { name: "Beeline" },
+      { name: "Airbus" },
+      { name: "Chanel" },
       { name: "Kcell" },
-      { name: "BAAS Group" },
-      { name: "101 TAXI" },
-      { name: "Aston Clinic" },
-      { name: "Alisher Isaev" },
+      { name: "Wildberries" },
+      { name: "Ozon" },
+      { name: "QazPost" },
+      { name: "Altyn Bank" },
+      { name: "Bank RBK" },
+      { name: "Dostyk Plaza" },
+      { name: "Samsung" },
+      { name: "Esentai Mall" },
+      { name: "Shymbulak" },
+      { name: "Toyota" },
     ],
   },
   realEstate: {
     title: "Real Estate",
     heading: "Proven real estate results",
     description:
-      "Confirmed experience in managing and developing commercial properties with measurable efficiency growth.",
+      "Real rental rate growth after transferring properties to TMK management.",
     projects: [
       {
         name: "Koktem Grand",
-        description: "Management and development of a commercial property",
-        highlight: "Rate growth",
+        description: "1,250 m² commercial property. Before: ₸8,000/m² — After: ₸21,000/m²",
+        highlight: "+162%",
         metric: "Commercial RE",
       },
       {
         name: "Venus",
-        description: "Optimization and profitability improvement",
-        highlight: "Proven results",
+        description: "750 m², Elebekov 10/1. Before: ₸8,500/m² — After: ₸30,000/m²",
+        highlight: "+253%",
         metric: "Asset management",
       },
       {
         name: "Teniz Towers",
-        description: "Class A commercial real estate",
-        highlight: "Coca-Cola",
+        description: "915 m². BTS turnkey project for Coca-Cola. After: ₸21,000/m²",
+        highlight: "BTS",
         metric: "Class A",
       },
       {
         name: "BTS Projects",
-        description: "Turnkey projects for corporate clients",
+        description: "Turnkey projects for corporate clients. Ready office without construction management.",
         highlight: "Build-to-Suit",
         metric: "Custom solutions",
       },
@@ -127,22 +139,32 @@ export const en: Translations = {
   extraSpace: {
     title: "Extra Space",
     heading: "Warehouse infrastructure",
+    description: "Modern warehouse infrastructure operator. Smart storage technology for private clients and businesses.",
     stats: [
-      { value: "24/7", label: "access" },
-      { value: "2", label: "locations" },
-      { value: "2,500+ m²", label: "area" },
-      { value: "200+ clients", label: "trust us" },
+      { value: "24/7", label: "property access" },
+      { value: "2", label: "Almaty locations" },
+      { value: "2,500+ m²", label: "warehouse area" },
+      { value: "200+", label: "satisfied clients" },
     ],
     features: [
       "Individual storage",
       "Cloud storage",
       "Fulfillment",
-      "Smart storage",
+      "Smart Storage",
     ],
+    links: {
+      workflow: {
+        appStore: "https://apps.apple.com/us/app/workflow/id6759451937",
+        googlePlay: "",
+      },
+      phystech: "https://www.phystechalmaty.school/",
+      extraSpace: "https://extraspace.kz/",
+    },
   },
   development: {
     title: "Development",
     heading: "Commercial real estate development",
+    description: "From concept to finished property. Full-cycle commercial real estate development.",
     features: [
       "BTS projects",
       "Commercial real estate development",
@@ -153,6 +175,7 @@ export const en: Translations = {
   technoHorizon: {
     title: "Techno Horizon",
     heading: "Technology direction",
+    description: "AIFC and Astana Hub resident. Digital platforms, mobile applications and web services — from idea to product.",
     badges: ["AIFC Resident", "Astana Hub Resident"],
     products: [
       "Digital platforms",
@@ -160,36 +183,49 @@ export const en: Translations = {
       "Web services",
       "Workflow",
       "Extra Space Platform",
-      "Tamos LMS",
+      "PhysTech LMS",
       "Kcell Service",
     ],
+    links: {
+      workflow: {
+        appStore: "https://apps.apple.com/us/app/workflow/id6759451937",
+        googlePlay: "",
+      },
+      phystech: "https://www.phystechalmaty.school/",
+      extraSpace: "https://extraspace.kz/",
+    },
   },
   marketingResults: {
     title: "Results",
     heading: "Marketing and client outcomes",
+    description: "Real figures from client reports — revenue, sales and business scale growth.",
+    mediaPlaceholder: {
+      heading: "Krisha.kz & Kolesa.kz",
+      note: "Media materials coming soon",
+    },
     cases: [
       {
         name: "BAAS Group",
-        description: "Comprehensive digital promotion",
-        result: "Brand awareness and lead generation growth",
+        description: "Construction company · Performance",
+        result: "$4,000,000 in ad sales · ROI 11,076% · 12,460 leads",
         metric: "Digital",
       },
       {
         name: "Alisher Isaev",
-        description: "Personal brand and media strategy",
-        result: "Strengthened digital presence",
+        description: "Personal brand · Full Marketing",
+        result: "$100,000 in educational product sales · 100+ content pieces",
         metric: "Personal brand",
       },
       {
         name: "101 TAXI",
-        description: "Performance marketing and scaling",
-        result: "Order and reach growth",
+        description: "Taxi fleet · Performance",
+        result: "3× company growth · 32,036 leads · cost per lead $1.6",
         metric: "Performance",
       },
       {
         name: "Aston Clinic",
-        description: "Medical marketing and content",
-        result: "Increased patient flow",
+        description: "Healthcare · Full Marketing",
+        result: "+$50,000 revenue in January 2026 · Performance + content + bloggers",
         metric: "Healthcare",
       },
     ],
@@ -197,24 +233,26 @@ export const en: Translations = {
   qaitadan: {
     title: "Qaitadan",
     heading: "Full-cycle marketing agency",
+    description: "Partner marketing team. We focus on business metrics, not vanity numbers.",
     services: [
       "Strategy",
-      "Performance marketing",
+      "Performance Marketing",
       "Production",
       "Content",
       "Branding",
       "Analytics",
     ],
     stats: [
-      { value: "$4M+", label: "media budget" },
-      { value: "200M+", label: "reach" },
-      { value: "$60M+", label: "client revenue" },
       { value: "500+", label: "projects" },
+      { value: "$4M+", label: "media budget" },
+      { value: "200M+", label: "views" },
+      { value: "$60M+", label: "for clients" },
     ],
   },
   itSolutions: {
     title: "IT Solutions",
     heading: "Technology services and products",
+    description: "Technologies that make business manageable, transparent and efficient.",
     services: [
       "CRM",
       "Workflow",
@@ -223,38 +261,38 @@ export const en: Translations = {
       "Analytics",
       "AI tools",
       "Business automation",
-      "Platforms",
-      "Mobile applications",
-      "Landing pages",
-      "MVP websites",
+      "Turnkey platform",
+      "Mobile application",
+      "Landing page",
+      "MVP website",
     ],
   },
   strategy: {
     title: "Strategy",
     heading: "Development strategy",
     description:
-      "We scale core business lines and systematically evolve toward an investment holding model focused on sustainable asset growth.",
-    goalBadge: "Strategic goal",
+      "TMK Holding will focus on growing its core directions and transforming into an investment company.",
+    goalBadge: "New vector",
     items: [
       {
-        title: "Warehouse infrastructure development",
+        title: "Scaling warehouse infrastructure",
         description:
           "Expanding the Extra Space network and investing in modern logistics infrastructure.",
       },
       {
-        title: "Commercial real estate",
+        title: "Commercial real estate portfolio growth",
         description:
           "Management and development of Class A properties, growing asset value and yield.",
       },
       {
-        title: "Digital products and AI",
+        title: "Digital products and AI development",
         description:
           "Proprietary IT solutions and artificial intelligence technologies for business.",
       },
       {
         title: "Client business automation",
         description:
-          "Platforms, CRM, and process digitalization for the holding's partners and clients.",
+          "Platforms, CRM and process digitalization for the holding's partners and clients.",
       },
       {
         title: "New investment projects",
@@ -264,7 +302,7 @@ export const en: Translations = {
       {
         title: "Transformation into an investment company",
         description:
-          "Moving from operational management to a portfolio growth model and long-term value creation.",
+          "Attracting capital, building an asset portfolio and creating a sustainable growth platform in Central Asia.",
       },
     ],
   },
@@ -312,7 +350,7 @@ export const en: Translations = {
     },
   },
   footer: {
-    copyright: "Copyright © 2025 TMK Holding",
+    copyright: "Copyright © 2026 TMK Holding",
     privacy: "Privacy Policy",
     backHome: "Back to home",
   },

@@ -21,10 +21,11 @@ export function JsonLd() {
     },
     description:
       locale === "ru"
-        ? "TMK Holding — экосистема роста для вашего бизнеса. Инвестиции, недвижимость, маркетинг, технологии."
-        : "TMK Holding — a growth ecosystem for your business. Investments, real estate, marketing, technology.",
+        ? "TMK Holding — инвестиционный холдинг полного цикла. Инвестиции, коммерческая недвижимость (Extra Space), маркетинг (Qaitadan), цифровые технологии (Techno Horizon). Резидент МФЦА, работаем с 2017 года."
+        : "TMK Holding — a full-cycle investment holding. Investments, commercial real estate (Extra Space), marketing (Qaitadan), digital technology (Techno Horizon). AIFC resident, operating since 2017.",
     foundingDate: "2017",
     areaServed: ["KZ", "International"],
+    sameAs: ["https://extraspace.kz/"],
   };
 
   return (

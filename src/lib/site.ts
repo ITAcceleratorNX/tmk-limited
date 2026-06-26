@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "TMK Holding",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://tmk-limited.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://tmk-limited.vercel.app",
   email: "tokpanov.k@tmk-limited.com",
   phone: "+77017771881",
   phoneDisplay: "+7 (701) 777-18-81",
@@ -11,11 +11,11 @@ export const siteConfig = {
 };
 
 export const projectImages: Record<string, string> = {
-  "Koktem Grand": "/images/projects/koktem.jpg",
-  Venus: "/images/projects/venus.jpg",
-  "Teniz Towers": "/images/projects/teniz.jpg",
-  "BTS-проекты": "/images/projects/bts.jpg",
-  "BTS Projects": "/images/projects/bts.jpg",
+  "Koktem Grand":   "/images/projects/koktem.jpg",
+  "Venus":          "/images/projects/venus.jpg",
+  "Teniz Towers":   "/images/projects/teniz.jpg",
+  "BTS-проекты":    "/images/projects/bts.jpg",
+  "BTS Projects":   "/images/projects/bts.jpg",
 };
 
 export function getProjectImage(name: string): string {
@@ -23,13 +23,25 @@ export function getProjectImage(name: string): string {
 }
 
 export const partnerLogos: Record<string, string> = {
-  "Coca-Cola": "/images/partners/coca-cola.svg",
-  Kcell: "/images/partners/kcell.svg",
-  "BAAS Group": "/images/partners/baas.svg",
-  "101 TAXI": "/images/partners/101taxi.svg",
-  "Aston Clinic": "/images/partners/aston.svg",
-  "Алишер Исаев": "/images/partners/alisher.svg",
-  "Alisher Isaev": "/images/partners/alisher.svg",
+  // Row 1
+  "Chevron":       "/images/partners/chevron.png",
+  "Coca-Cola":     "/images/partners/coca-cola.png",
+  "Beeline":       "/images/partners/beeline.png",
+  "Airbus":        "/images/partners/airbus.png",
+  "Chanel":        "/images/partners/chanel.png",
+  "Kcell":         "/images/partners/kcell.png",
+  // Row 2
+  "Wildberries":   "/images/partners/wildberries.png",
+  "Ozon":          "/images/partners/ozon.png",
+  "QazPost":       "/images/partners/qazpost.png",
+  "Altyn Bank":    "/images/partners/altyn-bank.svg",
+  "Bank RBK":      "/images/partners/bank-rbk.png",
+  // Row 3
+  "Dostyk Plaza":  "/images/partners/dostyk-plaza.svg",
+  "Samsung":       "/images/partners/samsung.png",
+  "Esentai Mall":  "/images/partners/esentai-mall.svg",
+  "Shymbulak":     "/images/partners/shymbulak.svg",
+  "Toyota":        "/images/partners/toyota.png",
 };
 
 export function getPartnerLogo(name: string): string | undefined {

@@ -4,12 +4,13 @@ export const ru: Translations = {
   meta: {
     title: "TMK Holding — инвестиции, недвижимость, маркетинг, технологии",
     description:
-      "TMK Holding — экосистема роста для вашего бизнеса. Инвестиции, коммерческая недвижимость, маркетинг и цифровые технологии с 2017 года.",
+      "TMK Holding — инвестиционный холдинг полного цикла. Инвестиции, коммерческая недвижимость, маркетинг и цифровые технологии с 2017 года. Резидент МФЦА.",
   },
   nav: {
     about: "О компании",
     directions: "Направления",
     projects: "Проекты",
+    extraSpace: "Extra Space",
     results: "Результаты",
     strategy: "Стратегия",
     contacts: "Контакты",
@@ -24,15 +25,15 @@ export const ru: Translations = {
     taglineAccent: "Маркетинг. Технологии.",
     subtitle: "Экосистема роста для вашего бизнеса",
     stats: [
-      { value: "$5 млн+", label: "инвестиций" },
+      { value: "$5 млн+", label: "годовой оборот" },
       { value: "400 000 м²", label: "недвижимости" },
-      { value: "10+ лет", label: "опыта" },
+      { value: "10+ лет", label: "на рынке" },
     ],
     trustStrip: [
       "С 2017 года",
       "Участник МФЦА",
       "5 стран",
-      "200+ партнёров",
+      "200+ клиентов",
     ],
     cta: "Обсудить проект",
   },
@@ -59,7 +60,7 @@ export const ru: Translations = {
       "Международная экспертиза",
       "Участник МФЦА",
       "Собственная экосистема",
-      "Команда и экспертиза в нескольких направлениях",
+      "Команда профессионалов в каждом направлении",
     ],
     ecosystem: {
       investments: "Инвестиции",
@@ -72,10 +73,10 @@ export const ru: Translations = {
     title: "TMK в цифрах",
     heading: "Масштаб и доверие",
     items: [
-      { value: "$5 млн+", label: "инвестиций" },
+      { value: "$5 млн+", label: "годовой оборот" },
       { value: "400 000 м²", label: "недвижимости" },
       { value: "10+ лет", label: "опыта" },
-      { value: "5 стран", label: "география" },
+      { value: "5 стран", label: "присутствия" },
       { value: "10+ объектов", label: "в портфеле" },
       { value: "200+ клиентов", label: "и партнёров" },
     ],
@@ -83,42 +84,53 @@ export const ru: Translations = {
   trust: {
     title: "Нам доверяют",
     heading: "Клиенты и партнёры",
+    description: "Ведущие международные и казахстанские компании из 8 отраслей.",
     partners: [
+      { name: "Chevron" },
       { name: "Coca-Cola" },
+      { name: "Beeline" },
+      { name: "Airbus" },
+      { name: "Chanel" },
       { name: "Kcell" },
-      { name: "BAAS Group" },
-      { name: "101 TAXI" },
-      { name: "Aston Clinic" },
-      { name: "Алишер Исаев" },
+      { name: "Wildberries" },
+      { name: "Ozon" },
+      { name: "QazPost" },
+      { name: "Altyn Bank" },
+      { name: "Bank RBK" },
+      { name: "Dostyk Plaza" },
+      { name: "Samsung" },
+      { name: "Esentai Mall" },
+      { name: "Shymbulak" },
+      { name: "Toyota" },
     ],
   },
   realEstate: {
     title: "Недвижимость",
     heading: "Доказанные результаты в недвижимости",
     description:
-      "Подтверждённый опыт управления и развития коммерческих объектов с измеримым ростом эффективности.",
+      "Реальный рост арендных ставок после передачи объекта в управление TMK.",
     projects: [
       {
         name: "Koktem Grand",
-        description: "Управление и развитие коммерческого объекта",
-        highlight: "Рост ставок",
+        description: "1 250 м² коммерческой недвижимости. До: 8 000 ₸/м² — После: 21 000 ₸/м²",
+        highlight: "+162%",
         metric: "Коммерческая недвижимость",
       },
       {
         name: "Venus",
-        description: "Оптимизация и повышение доходности объекта",
-        highlight: "Подтверждённые результаты",
+        description: "750 м², Елебекова 10/1. До: 8 500 ₸/м² — После: 30 000 ₸/м²",
+        highlight: "+253%",
         metric: "Управление активом",
       },
       {
         name: "Teniz Towers",
-        description: "Коммерческая недвижимость класса А",
-        highlight: "Coca-Cola",
+        description: "915 м². BTS-проект под ключ для Coca-Cola. После: 21 000 ₸/м²",
+        highlight: "BTS",
         metric: "Class A",
       },
       {
         name: "BTS-проекты",
-        description: "Проекты под ключ для корпоративных клиентов",
+        description: "Проекты под ключ для корпоративных клиентов. Готовый офис без управления стройкой.",
         highlight: "Build-to-Suit",
         metric: "Индивидуальные решения",
       },
@@ -127,22 +139,32 @@ export const ru: Translations = {
   extraSpace: {
     title: "Extra Space",
     heading: "Складская инфраструктура",
+    description: "Современный оператор складской инфраструктуры. Smart-технологии хранения для частных клиентов и бизнеса.",
     stats: [
-      { value: "24/7", label: "доступ" },
-      { value: "2", label: "локации" },
-      { value: "2500+ м²", label: "площадь" },
-      { value: "200+ клиентов", label: "доверяют нам" },
+      { value: "24/7", label: "доступ к объектам" },
+      { value: "2", label: "локации в Алматы" },
+      { value: "2500+ м²", label: "складских площадей" },
+      { value: "200+", label: "довольных клиентов" },
     ],
     features: [
       "Индивидуальное хранение",
       "Облачное хранение",
       "Фулфилмент",
-      "Smart storage",
+      "Smart Storage",
     ],
+    links: {
+      workflow: {
+        appStore: "https://apps.apple.com/us/app/workflow/id6759451937",
+        googlePlay: "",
+      },
+      phystech: "https://www.phystechalmaty.school/",
+      extraSpace: "https://extraspace.kz/",
+    },
   },
   development: {
     title: "Development",
     heading: "Девелопмент коммерческой недвижимости",
+    description: "От концепции до готового объекта. Полный цикл девелопмента коммерческой недвижимости.",
     features: [
       "BTS-проекты",
       "Девелопмент коммерческой недвижимости",
@@ -153,6 +175,7 @@ export const ru: Translations = {
   technoHorizon: {
     title: "Techno Horizon",
     heading: "Технологическое направление",
+    description: "Резидент МФЦА и Astana Hub. Digital-платформы, мобильные приложения и веб-сервисы — от идеи до продукта.",
     badges: ["Резидент МФЦА", "Резидент Astana Hub"],
     products: [
       "Digital-платформы",
@@ -160,36 +183,49 @@ export const ru: Translations = {
       "Веб-сервисы",
       "Workflow",
       "Extra Space Platform",
-      "Tamos LMS",
+      "PhysTech LMS",
       "Kcell Service",
     ],
+    links: {
+      workflow: {
+        appStore: "https://apps.apple.com/us/app/workflow/id6759451937",
+        googlePlay: "",
+      },
+      phystech: "https://www.phystechalmaty.school/",
+      extraSpace: "https://extraspace.kz/",
+    },
   },
   marketingResults: {
     title: "Результаты",
     heading: "Маркетинг и результаты клиентов",
+    description: "Реальные цифры из отчётов клиентов — рост выручки, продаж и масштаба бизнеса.",
+    mediaPlaceholder: {
+      heading: "Krisha.kz & Kolesa.kz",
+      note: "Медиаматериалы появятся в ближайшее время",
+    },
     cases: [
       {
         name: "BAAS Group",
-        description: "Комплексное digital-продвижение",
-        result: "Рост узнаваемости и лидогенерации",
+        description: "Строительная компания · Performance",
+        result: "$4 000 000 продаж с рекламы · ROI 11 076% · 12 460 лидов",
         metric: "Digital",
       },
       {
         name: "Алишер Исаев",
-        description: "Персональный бренд и медиастратегия",
-        result: "Усиление присутствия в digital",
+        description: "Личный бренд · Full Marketing",
+        result: "$100 000 продаж образовательных продуктов · 100+ единиц контента",
         metric: "Personal brand",
       },
       {
         name: "101 TAXI",
-        description: "Performance-маркетинг и масштабирование",
-        result: "Рост заказов и охватов",
+        description: "Таксопарк · Performance",
+        result: "Рост компании в 3 раза · 32 036 заявок · стоимость заявки $1.6",
         metric: "Performance",
       },
       {
         name: "Aston Clinic",
-        description: "Медицинский маркетинг и контент",
-        result: "Увеличение потока пациентов",
+        description: "Медицина · Full Marketing",
+        result: "+$50 000 выручки за январь 2026 · Performance + контент + блогеры",
         metric: "Healthcare",
       },
     ],
@@ -197,24 +233,26 @@ export const ru: Translations = {
   qaitadan: {
     title: "Qaitadan",
     heading: "Маркетинговое агентство полного цикла",
+    description: "Команда партнёрского маркетинга. Ориентируемся на метрики бизнеса, а не на поверхностные показатели.",
     services: [
       "Стратегия",
-      "Performance marketing",
+      "Performance Marketing",
       "Production",
       "Контент",
       "Брендинг",
       "Аналитика",
     ],
     stats: [
-      { value: "$4 млн+", label: "медиабюджет" },
-      { value: "200 млн+", label: "охват" },
-      { value: "$60 млн+", label: "выручка клиентов" },
       { value: "500+", label: "проектов" },
+      { value: "$4 млн+", label: "медиабюджет" },
+      { value: "200 млн+", label: "просмотров" },
+      { value: "$60 млн+", label: "для клиентов" },
     ],
   },
   itSolutions: {
     title: "IT-решения",
     heading: "Технологические услуги и продукты",
+    description: "Технологии, которые делают бизнес управляемым, прозрачным и эффективным.",
     services: [
       "CRM",
       "Workflow",
@@ -223,31 +261,31 @@ export const ru: Translations = {
       "Аналитика",
       "AI-инструменты",
       "Автоматизация бизнеса",
-      "Платформы",
-      "Мобильные приложения",
-      "Лендинги",
-      "MVP-сайты",
+      "Платформа под ключ",
+      "Мобильное приложение",
+      "Лендинг",
+      "MVP-сайт",
     ],
   },
   strategy: {
     title: "Стратегия",
     heading: "Стратегия развития",
     description:
-      "Масштабируем ключевые направления бизнеса и последовательно переходим к модели инвестиционного холдинга с фокусом на устойчивый рост активов.",
-    goalBadge: "Стратегическая цель",
+      "TMK Holding сосредоточится на росте ключевых направлений и трансформации в инвестиционную компанию.",
+    goalBadge: "Новый вектор",
     items: [
       {
-        title: "Развитие складской инфраструктуры",
+        title: "Масштабирование складской инфраструктуры",
         description:
           "Расширение сети Extra Space и инвестиции в современную логистическую инфраструктуру.",
       },
       {
-        title: "Коммерческая недвижимость",
+        title: "Рост портфеля коммерческой недвижимости",
         description:
           "Управление и девелопмент объектов класса A, рост стоимости и доходности активов.",
       },
       {
-        title: "Цифровые продукты и AI",
+        title: "Развитие цифровых продуктов и AI-решений",
         description:
           "Собственные IT-решения и технологии искусственного интеллекта для бизнеса.",
       },
@@ -257,14 +295,14 @@ export const ru: Translations = {
           "Платформы, CRM и цифровизация процессов для партнёров и клиентов холдинга.",
       },
       {
-        title: "Новые инвестиционные проекты",
+        title: "Реализация новых инвестиционных проектов",
         description:
           "Поиск, оценка и реализация проектов с прогнозируемой доходностью.",
       },
       {
         title: "Трансформация в инвестиционную компанию",
         description:
-          "Переход от операционного управления к портфельной модели роста и созданию долгосрочной стоимости.",
+          "Привлечение капитала, формирование портфеля активов и создание устойчивой платформы роста в Центральной Азии.",
       },
     ],
   },
@@ -312,7 +350,7 @@ export const ru: Translations = {
     },
   },
   footer: {
-    copyright: "Copyright © 2025 TMK Holding",
+    copyright: "Copyright © 2026 TMK Holding",
     privacy: "Политика конфиденциальности",
     backHome: "На главную",
   },

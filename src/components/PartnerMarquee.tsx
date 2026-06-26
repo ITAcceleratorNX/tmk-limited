@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { StaggerChildren } from "@/components/motion/StaggerChildren";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -13,34 +12,49 @@ function PartnerCard({ name }: { name: string }) {
   return (
     <motion.div
       variants={fadeUp}
-      whileHover={{ y: -2, borderColor: "var(--border-gold)" }}
+      whileHover={{ y: -2, boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
       transition={{ type: "spring", stiffness: 400, damping: 24 }}
-      className="partner-card flex h-full min-h-[5.5rem] flex-col items-center justify-center gap-3 border border-border bg-bg-surface px-4 py-5 sm:min-h-[6rem] sm:px-5"
+      className="partner-card flex h-[4.5rem] items-center justify-center rounded-lg border border-white/10 bg-black px-4 py-3 sm:h-24"
     >
       {logo ? (
-        <Image
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img
           src={logo}
           alt={name}
-          width={140}
-          height={32}
-          className="partner-logo h-6 w-auto max-w-[7.5rem] sm:h-7 sm:max-w-[8.5rem]"
+          className="partner-logo max-h-10 w-auto max-w-full object-contain sm:max-h-12"
         />
-      ) : null}
-      <span className="text-center text-[0.6875rem] font-semibold uppercase leading-tight tracking-[0.12em] text-text-heading sm:text-xs">
-        {name}
-      </span>
+      ) : (
+        <span className="text-center text-xs font-medium text-white/50">{name}</span>
+      )}
     </motion.div>
   );
 }
 
 export function PartnerMarquee() {
   const { t } = useLanguage();
+  const partners = t.trust.partners;
+
+  const row1 = partners.slice(0, 6);
+  const row2 = partners.slice(6, 11);
+  const row3 = partners.slice(11, 16);
 
   return (
-    <StaggerChildren className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
-      {t.trust.partners.map((partner) => (
-        <PartnerCard key={partner.name} name={partner.name} />
-      ))}
+    <StaggerChildren className="space-y-3 sm:space-y-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
+        {row1.map((p) => (
+          <PartnerCard key={p.name} name={p.name} />
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 lg:px-[8.333%]">
+        {row2.map((p) => (
+          <PartnerCard key={p.name} name={p.name} />
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 lg:px-[8.333%]">
+        {row3.map((p) => (
+          <PartnerCard key={p.name} name={p.name} />
+        ))}
+      </div>
     </StaggerChildren>
   );
 }
