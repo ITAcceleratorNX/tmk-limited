@@ -14,17 +14,17 @@ function PartnerCard({ name }: { name: string }) {
       variants={fadeUp}
       whileHover={{ y: -2, boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}
       transition={{ type: "spring", stiffness: 400, damping: 24 }}
-      className="partner-card flex h-[4.5rem] items-center justify-center rounded-lg border border-white/10 bg-black px-4 py-3 sm:h-24"
+      className="flex h-[4.5rem] items-center justify-center rounded-lg border border-black/[0.06] bg-white px-4 py-3 sm:h-24"
     >
       {logo ? (
         /* eslint-disable-next-line @next/next/no-img-element */
         <img
           src={logo}
           alt={name}
-          className="partner-logo max-h-10 w-auto max-w-full object-contain sm:max-h-12"
+          className="max-h-10 w-auto max-w-full object-contain sm:max-h-12"
         />
       ) : (
-        <span className="text-center text-xs font-medium text-white/50">{name}</span>
+        <span className="text-center text-xs font-medium text-black/50">{name}</span>
       )}
     </motion.div>
   );
