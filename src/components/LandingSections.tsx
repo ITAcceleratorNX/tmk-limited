@@ -160,9 +160,7 @@ export function LandingSections() {
         dark
         headerVariant="slideInRight"
       >
-        <AnimateIn variant="blurIn" delay={0.1}>
-          <DirectionsTabs />
-        </AnimateIn>
+        <DirectionsTabs />
       </Section>
 
       <Section

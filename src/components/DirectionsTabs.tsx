@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { StatsGrid } from "@/components/StatsGrid";
 import { useLanguage } from "@/components/LanguageProvider";
-import { StaggerChildren } from "@/components/motion/StaggerChildren";
-import { fadeUp } from "@/lib/motion";
 type DirectionKey =
   | "extraSpace"
   | "development"
@@ -118,7 +116,7 @@ function DirectionCard({
       id={directionKey}
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.08 }}
       transition={{
         delay: index * 0.06,
         duration: 0.7,
@@ -183,12 +181,10 @@ export function DirectionsTabs() {
   ];
 
   return (
-    <StaggerChildren className="min-w-0 space-y-8" fast>
+    <div className="min-w-0 space-y-8">
       {directions.map((key, index) => (
-        <motion.div key={key} variants={fadeUp}>
-          <DirectionCard directionKey={key} index={index} />
-        </motion.div>
+        <DirectionCard key={key} directionKey={key} index={index} />
       ))}
-    </StaggerChildren>
+    </div>
   );
 }
