@@ -40,20 +40,27 @@ export function PartnerMarquee() {
 
   return (
     <StaggerChildren className="space-y-3 sm:space-y-4">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
-        {row1.map((p) => (
+      <div className="grid grid-cols-2 gap-3 sm:hidden">
+        {partners.map((p) => (
           <PartnerCard key={p.name} name={p.name} />
         ))}
       </div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 lg:px-[8.333%]">
-        {row2.map((p) => (
-          <PartnerCard key={p.name} name={p.name} />
-        ))}
-      </div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 lg:px-[8.333%]">
-        {row3.map((p) => (
-          <PartnerCard key={p.name} name={p.name} />
-        ))}
+      <div className="hidden space-y-3 sm:block sm:space-y-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
+          {row1.map((p) => (
+            <PartnerCard key={p.name} name={p.name} />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 lg:px-[8.333%]">
+          {row2.map((p) => (
+            <PartnerCard key={p.name} name={p.name} />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5 lg:px-[8.333%]">
+          {row3.map((p) => (
+            <PartnerCard key={p.name} name={p.name} />
+          ))}
+        </div>
       </div>
     </StaggerChildren>
   );

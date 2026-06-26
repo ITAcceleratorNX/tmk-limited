@@ -183,7 +183,7 @@ export function DirectionsTabs() {
   ];
 
   return (
-    <StaggerChildren className="space-y-8" fast>
+    <StaggerChildren className="min-w-0 space-y-8" fast>
       {directions.map((key, index) => (
         <motion.div key={key} variants={fadeUp}>
           <DirectionCard directionKey={key} index={index} />

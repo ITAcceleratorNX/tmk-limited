@@ -145,10 +145,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background: var(--bg);
+  overflow-x: clip;
   color: var(--text);
   font-family: var(--font-manrope), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

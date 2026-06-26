@@ -204,56 +204,61 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      <motion.aside
-        initial={false}
-        animate={{ x: open ? 0 : "100%" }}
-        transition={{ type: "spring", stiffness: 320, damping: 32 }}
-        className="fixed right-0 top-0 z-40 flex h-full w-[min(100%,300px)] flex-col bg-bg-surface lg:hidden"
-        style={{ borderLeft: "1px solid var(--border)" }}
-      >
-        <div className="flex flex-1 flex-col px-6 pb-8 pt-24">
-          <nav className="flex flex-col">
-            {navItems.map((item) => (
-              <a
-                key={item.key}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-border py-4 text-base font-medium text-text-heading"
-              >
-                {t.nav[item.key]}
-              </a>
-            ))}
-          </nav>
+      <AnimatePresence>
+        {open && (
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 320, damping: 32 }}
+            className="fixed right-0 top-0 z-40 flex h-full w-[min(100%,300px)] flex-col bg-bg-surface lg:hidden"
+            style={{ borderLeft: "1px solid var(--border)" }}
+          >
+            <div className="flex flex-1 flex-col px-6 pb-8 pt-24">
+              <nav className="flex flex-col">
+                {navItems.map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-border py-4 text-base font-medium text-text-heading"
+                  >
+                    {t.nav[item.key]}
+                  </a>
+                ))}
+              </nav>
 
-          {mounted && (
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              className="mt-6 flex items-center gap-2 border border-border px-4 py-3 text-sm font-medium text-text-heading"
-            >
-              {isDark ? <SunIcon /> : <MoonIcon />}
-              {isDark ? "Light mode" : "Dark mode"}
-            </button>
-          )}
+              {mounted && (
+                <button
+                  onClick={() => setTheme(isDark ? "light" : "dark")}
+                  className="mt-6 flex items-center gap-2 border border-border px-4 py-3 text-sm font-medium text-text-heading"
+                >
+                  {isDark ? <SunIcon /> : <MoonIcon />}
+                  {isDark ? "Light mode" : "Dark mode"}
+                </button>
+              )}
 
-          <div className="mt-4 flex border border-border">
-            {(["ru", "en"] as Locale[]).map((lang) => (
-              <button
-                key={lang}
-                onClick={() => setLocale(lang)}
-                className={`flex-1 py-2.5 text-xs font-semibold uppercase ${
-                  locale === lang ? "bg-gold text-navy-deep" : "text-text-muted"
-                }`}
-              >
-                {lang}
-              </button>
-            ))}
-          </div>
+              <div className="mt-4 flex border border-border">
+                {(["ru", "en"] as Locale[]).map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => setLocale(lang)}
+                    className={`flex-1 py-2.5 text-xs font-semibold uppercase ${
+                      locale === lang ? "bg-gold text-navy-deep" : "text-text-muted"
+                    }`}
+                  >
+                    {lang}
+                  </button>
+                ))}
+              </div>
 
-          <Button href="#contacts" className="mt-6 w-full" onClick={() => setOpen(false)}>
-            {t.nav.cta}
-          </Button>
-        </div>
-      </motion.aside>
+              <Button href="#contacts" className="mt-6 w-full" onClick={() => setOpen(false)}>
+                {t.nav.cta}
+              </Button>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -52,7 +52,7 @@ export function AboutVisual() {
   ];
 
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-sm">
+    <div className="relative mx-auto aspect-square w-full max-w-sm px-4 sm:px-0">
       <motion.div
         className="absolute inset-8 border border-border"
         animate={{ rotate: [0, 90, 0] }}
@@ -71,7 +71,7 @@ export function AboutVisual() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.12 }}
-          className={`absolute ${p.pos} border border-border bg-bg-surface px-3 py-2 text-[0.6875rem] font-semibold uppercase tracking-wider text-text-muted`}
+          className={`absolute ${p.pos} max-w-[46%] text-center border border-border bg-bg-surface px-2 py-1.5 text-[0.625rem] font-semibold uppercase tracking-wider text-text-muted sm:max-w-none sm:px-3 sm:py-2 sm:text-[0.6875rem]`}
         >
           {p.label}
         </motion.div>
