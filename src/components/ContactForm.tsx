@@ -26,9 +26,12 @@ export function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === "loading") return;
+
+    const form = e.currentTarget;
     setStatus("loading");
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
     payload.locale = locale;
 
@@ -40,8 +43,8 @@ export function ContactForm() {
       });
 
       if (!response.ok) throw new Error("Request failed");
+      form.reset();
       setStatus("success");
-      e.currentTarget.reset();
     } catch {
       setStatus("error");
     }
