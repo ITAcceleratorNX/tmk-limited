@@ -137,24 +137,6 @@ export const ru: Translations = {
         panelVariant: "gold",
       },
       {
-        id: "logistics",
-        title: "Логистика",
-        bullets: [
-          "Комплексные логистические решения",
-          "Управление цепочками поставок и маршрутизация грузов",
-          "Гарантия прозрачности и оптимизации на каждом этапе перевозки",
-        ],
-        brands: [
-          {
-            name: "Streamline Logistics",
-            href: "https://tmk-limited.com/streamline-logistics/ru",
-          },
-        ],
-        image: tmkImages.directions.logistics,
-        panelSide: "right",
-        panelVariant: "navy",
-      },
-      {
         id: "horeca",
         title: "HoReCa",
         bullets: [

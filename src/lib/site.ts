@@ -32,7 +32,6 @@ export const tmkImages = {
     construction: "/images/tmk/directions/construction.jpg",
     telecom: "/images/tmk/directions/telecom.jpg",
     marketing: "/images/tmk/directions/marketing.jpg",
-    logistics: "/images/tmk/directions/logistics.png",
     horeca: "/images/tmk/directions/horeca.jpg",
   },
   projects: {

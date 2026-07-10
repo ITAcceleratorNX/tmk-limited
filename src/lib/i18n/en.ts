@@ -137,24 +137,6 @@ export const en: Translations = {
         panelVariant: "gold",
       },
       {
-        id: "logistics",
-        title: "Logistics",
-        bullets: [
-          "Comprehensive logistics solutions",
-          "Supply chain management and freight routing",
-          "Transparency and optimization guaranteed at every stage of transport",
-        ],
-        brands: [
-          {
-            name: "Streamline Logistics",
-            href: "https://tmk-limited.com/streamline-logistics/en",
-          },
-        ],
-        image: tmkImages.directions.logistics,
-        panelSide: "right",
-        panelVariant: "navy",
-      },
-      {
         id: "horeca",
         title: "HoReCa",
         bullets: [
