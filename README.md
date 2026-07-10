@@ -1,6 +1,6 @@
-# TMK Holding Landing Page
+# TMK Limited
 
-Production-ready одностраничный лендинг TMK Holding.
+Production-ready сайт TMK Limited на Next.js.
 
 ## Быстрый старт
 
@@ -30,6 +30,9 @@ npm run dev
 | URL | Описание |
 |-----|----------|
 | `/` | Главный лендинг RU/EN |
+| `/projects` | Список проектов |
+| `/projects/kazagris` | KazAgris Ventures |
+| `/projects/horeca` | Table 61 Catering |
 | `/policy` | Политика конфиденциальности |
 
 ## SEO
@@ -41,13 +44,12 @@ npm run dev
 
 ## Медиа
 
-Локальные файлы в `public/images/`:
-- `hero/main.jpg`
-- `projects/*.jpg`
-- `partners/*.svg`
-
-Замените на реальные фото объектов TMK Holding перед финальным запуском.
+Локальные файлы в `public/images/tmk/`:
+- `hero/slides/` — слайды главного экрана
+- `directions/` — фото направлений
+- `projects/` — фото проектов
+- `partners/` — логотипы партнёров
 
 ## Стек
 
-Next.js 16 · TypeScript · Tailwind CSS 4 · Framer Motion · next-themes · Nodemailer
+Next.js 16 · TypeScript · Tailwind CSS 4 · Framer Motion · Nodemailer

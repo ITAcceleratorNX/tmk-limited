@@ -17,13 +17,12 @@ export function JsonLd() {
       "@type": "PostalAddress",
       addressLocality: "Almaty",
       addressCountry: "KZ",
-      streetAddress: locale === "ru" ? "ул. Елебекова 10/1" : "10/1 Elebekov St.",
+      streetAddress: siteConfig.address[locale],
     },
     description:
       locale === "ru"
-        ? "TMK Holding — экосистема роста для вашего бизнеса. Инвестиции, недвижимость, маркетинг, технологии."
-        : "TMK Holding — a growth ecosystem for your business. Investments, real estate, marketing, technology.",
-    foundingDate: "2017",
+        ? "TMK Limited объединяет ключевые отрасли — от недвижимости до агротехнологий."
+        : "TMK Limited unites key industries — from real estate to agrotech.",
     areaServed: ["KZ", "International"],
   };
 

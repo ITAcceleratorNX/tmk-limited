@@ -1,319 +1,293 @@
 import type { Translations } from "./types";
+import { tmkImages } from "../site";
 
 export const ru: Translations = {
   meta: {
-    title: "TMK Holding — инвестиции, недвижимость, маркетинг, технологии",
+    title: "TMK Limited — создаём ценность в ключевых отраслях",
     description:
-      "TMK Holding — экосистема роста для вашего бизнеса. Инвестиции, коммерческая недвижимость, маркетинг и цифровые технологии с 2017 года.",
+      "TMK Limited объединяет ключевые отрасли — от недвижимости до агротехнологий — создавая интегрированные бизнес-решения.",
   },
   nav: {
-    about: "О компании",
-    directions: "Направления",
+    home: "Главная",
+    about: "О нас",
     projects: "Проекты",
-    results: "Результаты",
-    strategy: "Стратегия",
+    services: "Услуги",
+    partners: "Партнеры",
     contacts: "Контакты",
-    cta: "Обсудить проект",
+    contactUs: "Связаться",
     menu: "Меню",
     close: "Закрыть",
-    theme: "Тема",
   },
   hero: {
-    brand: "TMK Holding",
-    tagline: "Инвестиции. Недвижимость.",
-    taglineAccent: "Маркетинг. Технологии.",
-    subtitle: "Экосистема роста для вашего бизнеса",
-    stats: [
-      { value: "$5 млн+", label: "инвестиций" },
-      { value: "400 000 м²", label: "недвижимости" },
-      { value: "10+ лет", label: "опыта" },
-    ],
-    trustStrip: [
-      "С 2017 года",
-      "Участник МФЦА",
-      "5 стран",
-      "200+ партнёров",
-    ],
-    cta: "Обсудить проект",
-  },
-  directions: {
-    title: "Направления",
-    heading: "Экосистема TMK Holding",
-    description:
-      "Пять направлений — единая инфраструктура для роста, инвестиций и цифровой трансформации бизнеса.",
-    tabs: {
-      extraSpace: "Extra Space",
-      development: "Development",
-      technoHorizon: "Techno Horizon",
-      qaitadan: "Qaitadan",
-      itSolutions: "IT-решения",
-    },
+    title: "Создаём ценность в ключевых отраслях: от недвижимости до IT",
+    subtitle:
+      "TMK Limited объединяет ключевые отрасли — от недвижимости до агротехнологий — создавая интегрированные бизнес-решения.",
+    cta: "Оставить заявку",
   },
   about: {
-    title: "О компании",
-    heading: "Холдинг полного цикла",
+    label: "Немного о нас",
+    heading: "TMK Limited — это диверсифицированный холдинг",
     description:
-      "TMK Holding объединяет инвестиции, коммерческую недвижимость, маркетинг и технологии в единую экосистему для устойчивого роста бизнеса.",
-    points: [
-      "Работа с 2017 года",
-      "Международная экспертиза",
-      "Участник МФЦА",
-      "Собственная экосистема",
-      "Команда и экспертиза в нескольких направлениях",
+      "Ведущий деятельность в различных отраслях экономики. Одним из ключевых направлений является коммерческая недвижимость, в рамках которого мы занимаемся арендой и управлением офисными и складскими площадями, обеспечивая клиентов высококачественными инфраструктурными решениями. Помимо недвижимости, TMK Limited активно развивает:",
+    missionLabel: "Наша миссия",
+    missionText:
+      "Мы создаем интегрированные решения, направленные на экономический рост, технологическое развитие и внедрение инноваций, реализуя стратегические проекты в соответствии с международными бизнес-стандартами.",
+    missionTags: [
+      "Строительство",
+      "Бурение",
+      "Сельское хозяйство",
+      "HoReCa",
+      "IT-разработка",
+      "Инвестиционный фонд",
+      "Телекоммуникации",
+      "Цифровой маркетинг и продакшн",
     ],
-    ecosystem: {
-      investments: "Инвестиции",
-      realEstate: "Недвижимость",
-      marketing: "Маркетинг",
-      technology: "Технологии",
-    },
+    readMore: "Читать больше",
   },
-  stats: {
-    title: "TMK в цифрах",
-    heading: "Масштаб и доверие",
-    items: [
-      { value: "$5 млн+", label: "инвестиций" },
-      { value: "400 000 м²", label: "недвижимости" },
-      { value: "10+ лет", label: "опыта" },
-      { value: "5 стран", label: "география" },
-      { value: "10+ объектов", label: "в портфеле" },
-      { value: "200+ клиентов", label: "и партнёров" },
-    ],
-  },
-  trust: {
-    title: "Нам доверяют",
-    heading: "Клиенты и партнёры",
-    partners: [
-      { name: "Coca-Cola" },
-      { name: "Kcell" },
-      { name: "BAAS Group" },
-      { name: "101 TAXI" },
-      { name: "Aston Clinic" },
-      { name: "Алишер Исаев" },
-    ],
-  },
-  realEstate: {
-    title: "Недвижимость",
-    heading: "Доказанные результаты в недвижимости",
-    description:
-      "Подтверждённый опыт управления и развития коммерческих объектов с измеримым ростом эффективности.",
-    projects: [
-      {
-        name: "Koktem Grand",
-        description: "Управление и развитие коммерческого объекта",
-        highlight: "Рост ставок",
-        metric: "Коммерческая недвижимость",
-      },
-      {
-        name: "Venus",
-        description: "Оптимизация и повышение доходности объекта",
-        highlight: "Подтверждённые результаты",
-        metric: "Управление активом",
-      },
-      {
-        name: "Teniz Towers",
-        description: "Коммерческая недвижимость класса А",
-        highlight: "Coca-Cola",
-        metric: "Class A",
-      },
-      {
-        name: "BTS-проекты",
-        description: "Проекты под ключ для корпоративных клиентов",
-        highlight: "Build-to-Suit",
-        metric: "Индивидуальные решения",
-      },
-    ],
-  },
-  extraSpace: {
-    title: "Extra Space",
-    heading: "Складская инфраструктура",
-    stats: [
-      { value: "24/7", label: "доступ" },
-      { value: "2", label: "локации" },
-      { value: "2500+ м²", label: "площадь" },
-      { value: "200+ клиентов", label: "доверяют нам" },
-    ],
-    features: [
-      "Индивидуальное хранение",
-      "Облачное хранение",
-      "Фулфилмент",
-      "Smart storage",
-    ],
-  },
-  development: {
-    title: "Development",
-    heading: "Девелопмент коммерческой недвижимости",
-    features: [
-      "BTS-проекты",
-      "Девелопмент коммерческой недвижимости",
-      "Реконцепция объектов",
-      "Инвестиции в недвижимость",
-    ],
-  },
-  technoHorizon: {
-    title: "Techno Horizon",
-    heading: "Технологическое направление",
-    badges: ["Резидент МФЦА", "Резидент Astana Hub"],
-    products: [
-      "Digital-платформы",
-      "Мобильные приложения",
-      "Веб-сервисы",
-      "Workflow",
-      "Extra Space Platform",
-      "Tamos LMS",
-      "Kcell Service",
-    ],
-  },
-  marketingResults: {
-    title: "Результаты",
-    heading: "Маркетинг и результаты клиентов",
-    cases: [
-      {
-        name: "BAAS Group",
-        description: "Комплексное digital-продвижение",
-        result: "Рост узнаваемости и лидогенерации",
-        metric: "Digital",
-      },
-      {
-        name: "Алишер Исаев",
-        description: "Персональный бренд и медиастратегия",
-        result: "Усиление присутствия в digital",
-        metric: "Personal brand",
-      },
-      {
-        name: "101 TAXI",
-        description: "Performance-маркетинг и масштабирование",
-        result: "Рост заказов и охватов",
-        metric: "Performance",
-      },
-      {
-        name: "Aston Clinic",
-        description: "Медицинский маркетинг и контент",
-        result: "Увеличение потока пациентов",
-        metric: "Healthcare",
-      },
-    ],
-  },
-  qaitadan: {
-    title: "Qaitadan",
-    heading: "Маркетинговое агентство полного цикла",
-    services: [
-      "Стратегия",
-      "Performance marketing",
-      "Production",
-      "Контент",
-      "Брендинг",
-      "Аналитика",
-    ],
-    stats: [
-      { value: "$4 млн+", label: "медиабюджет" },
-      { value: "200 млн+", label: "охват" },
-      { value: "$60 млн+", label: "выручка клиентов" },
-      { value: "500+", label: "проектов" },
-    ],
-  },
-  itSolutions: {
-    title: "IT-решения",
-    heading: "Технологические услуги и продукты",
-    services: [
-      "CRM",
-      "Workflow",
-      "LMS",
-      "Интеграции",
-      "Аналитика",
-      "AI-инструменты",
-      "Автоматизация бизнеса",
-      "Платформы",
-      "Мобильные приложения",
-      "Лендинги",
-      "MVP-сайты",
-    ],
-  },
-  strategy: {
-    title: "Стратегия",
-    heading: "Стратегия развития",
-    description:
-      "Масштабируем ключевые направления бизнеса и последовательно переходим к модели инвестиционного холдинга с фокусом на устойчивый рост активов.",
-    goalBadge: "Стратегическая цель",
+  directions: {
+    label: "Наши услуги",
+    heading: "Наши ключевые направления деятельности:",
     items: [
       {
-        title: "Развитие складской инфраструктуры",
-        description:
-          "Расширение сети Extra Space и инвестиции в современную логистическую инфраструктуру.",
-      },
-      {
+        id: "real-estate",
         title: "Коммерческая недвижимость",
-        description:
-          "Управление и девелопмент объектов класса A, рост стоимости и доходности активов.",
+        bullets: [
+          "Аренда и управление современными офисными пространствами с полной инфраструктурой и сервисной поддержкой",
+          "Разработка и оптимизация объектов недвижимости для повышения их эффективности и прибыльности",
+          "Складские решения для логистики, e-commerce и промышленности",
+        ],
+        brands: [
+          { name: "Valar Group", href: "https://tmk-limited.com/valar-group/ru" },
+          { name: "Workflow", href: "https://tmk-limited.com/workflow/ru" },
+        ],
+        image: tmkImages.directions.realEstate,
+        panelSide: "left",
+        panelVariant: "white",
       },
       {
-        title: "Цифровые продукты и AI",
-        description:
-          "Собственные IT-решения и технологии искусственного интеллекта для бизнеса.",
+        id: "agriculture",
+        title: "Сельское хозяйство",
+        bullets: [
+          "Инвестирование в современные агротехнологии для повышения урожайности и устойчивого производства",
+          "Развитие инновационных агробизнес-решений, способствующих продовольственной безопасности и экспорту",
+        ],
+        brands: [
+          {
+            name: "KazAgris Ventures",
+            href: "https://tmk-limited.com/kazagris-ventures/ru",
+          },
+        ],
+        image: tmkImages.directions.agriculture,
+        panelSide: "right",
+        panelVariant: "gold",
       },
       {
-        title: "Автоматизация бизнеса клиентов",
-        description:
-          "Платформы, CRM и цифровизация процессов для партнёров и клиентов холдинга.",
+        id: "construction",
+        title: "Строительство и бурение",
+        bullets: [
+          "Реализация высококачественных проектов с применением передовых инженерных решений",
+          "Внедрение устойчивых и экономически эффективных стратегий развития",
+        ],
+        brands: [
+          { name: "Kazakhstan Grand Constructions LLP" },
+          { name: "Kaz innotech" },
+          { name: "Tm-3Ki", href: "https://tmk-limited.com/tm-3ki-drilling-llp/ru" },
+        ],
+        image: tmkImages.directions.construction,
+        panelSide: "left",
+        panelVariant: "navy",
       },
       {
-        title: "Новые инвестиционные проекты",
-        description:
-          "Поиск, оценка и реализация проектов с прогнозируемой доходностью.",
+        id: "telecom",
+        title: "Телекоммуникации и IT",
+        bullets: [
+          "Развитие цифровой инфраструктуры для улучшения связи и цифровой трансформации бизнеса",
+          "Интеграция умных технологий для повышения продуктивности и операционной эффективности",
+        ],
+        brands: [
+          {
+            name: "QazConnect Telecom",
+            href: "https://tmk-limited.com/qazconnect-telecom/ru",
+          },
+          {
+            name: "TMK TechnoHorizon LLP",
+            href: "https://tmk-limited.com/tmk-technohorizon-llp/ru",
+          },
+        ],
+        image: tmkImages.directions.telecom,
+        panelSide: "right",
+        panelVariant: "white",
       },
       {
-        title: "Трансформация в инвестиционную компанию",
-        description:
-          "Переход от операционного управления к портфельной модели роста и созданию долгосрочной стоимости.",
+        id: "marketing",
+        title: "Цифровой маркетинг и производство контента",
+        bullets: [
+          "Полноцикловое digital-агентство с профессиональной продакшн-студией",
+          "Ведение соцсетей, создание коммерческого контента и рекламных кампаний",
+          "Производство фильмов, рекламных роликов и корпоративного видео",
+        ],
+        brands: [
+          {
+            name: "Qaitadan Creative Partners",
+            href: "https://tmk-limited.com/qaitadan-creative-partners/ru",
+          },
+        ],
+        image: tmkImages.directions.marketing,
+        panelSide: "left",
+        panelVariant: "gold",
+      },
+      {
+        id: "logistics",
+        title: "Логистика",
+        bullets: [
+          "Комплексные логистические решения",
+          "Управление цепочками поставок и маршрутизация грузов",
+          "Гарантия прозрачности и оптимизации на каждом этапе перевозки",
+        ],
+        brands: [
+          {
+            name: "Streamline Logistics",
+            href: "https://tmk-limited.com/streamline-logistics/ru",
+          },
+        ],
+        image: tmkImages.directions.logistics,
+        panelSide: "right",
+        panelVariant: "navy",
+      },
+      {
+        id: "horeca",
+        title: "HoReCa",
+        bullets: [
+          "Сеть кофеен в бизнес-центрах и профессиональный кейтеринг для деловых встреч, съёмок и частных событий",
+          "Гастрономический проект, специализирующийся на корпоративном питании и обслуживании мероприятий",
+          "Стабильное качество продукции, выверенная логистика и высокий уровень сервиса",
+        ],
+        brands: [
+          { name: "Table 61", href: "https://tmk-limited.com/table61/ru" },
+        ],
+        image: tmkImages.directions.horeca,
+        panelSide: "left",
+        panelVariant: "white",
       },
     ],
   },
-  finalCta: {
-    title: "Готовы к росту?",
-    description:
-      "Создаём инфраструктуру для роста бизнеса и готовы обсудить ваш проект.",
-    cta: "Обсудить проект",
+  partners: {
+    label: "Партнеры",
+    heading: "Наши партнеры",
+    hint: "Наведите, чтобы остановить",
+    items: [
+      { name: "Yandex", logo: "/images/tmk/partners/yandex.png" },
+      { name: "Bosch", logo: "/images/tmk/partners/bosch.svg" },
+      { name: "Chevron", logo: "/images/tmk/partners/chevron.svg" },
+      { name: "PUBG Mobile", logo: "/images/tmk/partners/pubg.png" },
+      { name: "Highland Gold", logo: "/images/tmk/partners/highland-gold.png" },
+      { name: "Bonduelle", logo: "/images/tmk/partners/bonduelle.png" },
+      { name: "Magnum Cash&Carry", logo: "/images/tmk/partners/magnum.png" },
+      { name: "Coca-Cola", logo: "/images/tmk/partners/coca-cola.png" },
+      { name: "Kcell", logo: "/images/tmk/partners/kcell.png" },
+    ],
+  },
+  completedProjects: {
+    label: "Завершённые проекты",
+    heading: "Завершённые проекты",
+    viewMore: "Подробнее",
+    items: [
+      {
+        id: "horeca",
+        slug: "horeca",
+        title: "Table 61 Catering",
+        excerpt:
+          "Гастрономический проект: сеть кофеен в бизнес-центрах и кейтеринг для корпоративных мероприятий.",
+        image: tmkImages.projects.horeca,
+      },
+      {
+        id: "kazagris",
+        slug: "kazagris",
+        title: "KazAgris Ventures",
+        excerpt:
+          "Современная ферма мясного скота и производство премиального мяса с замкнутым циклом от пастбищ до dry-aged стейков.",
+        image: tmkImages.projects.kazagris,
+      },
+    ],
   },
   contact: {
-    title: "Контакты",
-    description: "Заполните форму — мы свяжемся с вами для уточнения деталей.",
-    address: "Казахстан, г. Алматы, ул. Елебекова 10/1",
-    email: "tokpanov.k@tmk-limited.com",
-    phone: "+7 (701) 777-18-81",
-    hours: "Рабочие часы",
-    hoursValue: "Пн–Пт, 9:00 – 18:00",
-    labels: {
-      email: "Email",
-      phone: "Телефон",
-      address: "Адрес",
-    },
+    title: "Оставьте заявку",
+    description:
+      "Заполните свои данные и мы свяжемся с Вами для уточнения всех деталей.",
+    addressLabel: "Адрес",
+    addressLine1: "Казахстан, г. Алматы,",
+    addressLine2: "ул. Елебекова 10/1",
+    hoursTime: "9:00 – 18:00",
+    hoursDays: "Будние (Пн–Пт)",
+    footerContact: "Свяжитесь с нами",
     form: {
-      name: "Имя",
+      name: "Ваше имя",
       phone: "Телефон",
-      email: "Email",
-      company: "Компания",
-      interest: "Направление интереса",
-      interestPlaceholder: "Выберите направление",
-      comment: "Комментарий",
-      submit: "Отправить заявку",
+      email: "Введите E-mail",
+      message: "Опишите свой запрос",
+      submit: "Отправить",
       privacyPrefix: "Я согласен с условиями",
-      privacyLink: "Политики конфиденциальности",
-      privacy: "Я согласен с условиями Политики конфиденциальности",
-      success: "Заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.",
-      error: "Не удалось отправить заявку. Попробуйте позже или напишите нам на email.",
-      interests: {
-        investments: "Инвестиции",
-        realEstate: "Недвижимость",
-        marketing: "Маркетинг",
-        technologies: "Технологии",
-        partnership: "Партнерство",
-        other: "Другое",
-      },
+      privacyLink: "Политики Конфиденциальности",
+      success: "Заявка отправлена. Мы свяжемся с вами в ближайшее время.",
+      error: "Не удалось отправить заявку. Попробуйте позже.",
     },
   },
   footer: {
-    copyright: "Copyright © 2025 TMK Holding",
-    privacy: "Политика конфиденциальности",
+    copyright: "Copyright © 2024",
+    privacy: "Privacy Policy",
     backHome: "На главную",
+    hoursLabel: "Рабочие часы",
+  },
+  projectPages: {
+    kazagris: {
+      heroTitle: "KazAgris Ventures",
+      label: "Немного о нас",
+      heading: "KazAgris Ventures",
+      description: [
+        "Это современная ферма, специализирующаяся на разведении крупного рогатого скота мясных пород и производстве премиального мяса.",
+        "Мы создаём замкнутый цикл: от экологически чистых пастбищ до готовых dry-aged стейков ресторанного уровня.",
+      ],
+      missionLabel: "Наша миссия",
+      mission:
+        "Вернуть вкус настоящего мяса на казахстанский рынок и показать, что локальный продукт может соответствовать мировым стандартам.",
+      stats: [
+        { value: "3000", label: "Общее поголовье скота" },
+        { value: "20 000", label: "Гектаров пастбищных угодий" },
+        { value: "150 000", label: "Килограммов Black Angus ежегодно" },
+      ],
+      servicesLabel: "Наши услуги",
+      servicesHeading: "Что мы предлагаем:",
+      services: [
+        "Натуральное мясо без гормонов и антибиотиков",
+        "Стейки выдержки dry-aged 21–45 дней",
+        "Контроль качества на каждом этапе — от поля до упаковки",
+        "Продукция для HoReCa и гурманов",
+      ],
+    },
+    horeca: {
+      heroTitle: "Table 61 Catering",
+      label: "Немного о нас",
+      heading: "Table 61 Catering",
+      description: [
+        "Гастрономический проект, объединяющий сеть кофеен в бизнес-центрах и услуги кейтеринга для мероприятий.",
+        "Первая точка была открыта в офисе компании Яндекс. Table 61 — это про продуманный подход, внимание к деталям и профессионализм в сфере гастрономии.",
+      ],
+      missionLabel: "Наша миссия",
+      mission:
+        "Кофейни + кейтеринг для офисов, мероприятий и бизнесов с гибкими решениями и премиальным качеством.",
+      stats: [
+        { value: "10+", label: "Планируемых объектов к 2025" },
+        { value: "1", label: "Кофейня в офисе Яндекс" },
+        { value: "24/7", label: "Гибкий кейтеринг для событий" },
+      ],
+      servicesLabel: "Наши услуги",
+      servicesHeading: "Наши услуги",
+      services: [
+        "Кофе, свежая выпечка, лёгкие завтраки и обеды в бизнес-центрах",
+        "Кейтеринг для корпоративных мероприятий и съёмочных площадок",
+        "Индивидуальные заказы и брендинг упаковки под мероприятие",
+        "Доставка по городу по предварительной договорённости",
+      ],
+    },
   },
 };

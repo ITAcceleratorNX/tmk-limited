@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "TMK Holding";
+export const alt = "TMK Limited";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -16,7 +16,7 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #0a0e14 0%, #1a2636 100%)",
+          background: "linear-gradient(135deg, #1b2330 0%, #2a3548 100%)",
         }}
       >
         <div
@@ -36,13 +36,13 @@ export default function OgImage() {
             marginBottom: 24,
           }}
         >
-          TMK Holding
+          TMK Limited
         </div>
         <div style={{ fontSize: 32, color: "#bda57e", marginBottom: 16 }}>
-          Investments · Real Estate · Marketing · Technology
+          Real Estate · Agriculture · HoReCa · IT
         </div>
         <div style={{ fontSize: 24, color: "rgba(255,255,255,0.6)" }}>
-          A growth ecosystem for your business since 2017
+          Creating value across key industries
         </div>
       </div>
     ),

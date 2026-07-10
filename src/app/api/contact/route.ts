@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { getTranslations, type Locale } from "@/lib/i18n";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
 const RECIPIENT = "tokpanov.k@tmk-limited.com";
@@ -9,10 +8,9 @@ interface ContactPayload {
   name?: string;
   phone?: string;
   email?: string;
-  company?: string;
-  interest?: string;
-  comment?: string;
+  message?: string;
   locale?: string;
+  privacy?: string;
   _website?: string;
 }
 
@@ -29,10 +27,7 @@ export async function POST(request: Request) {
   try {
     const ip = getClientIp(request);
     if (!rateLimit(ip)) {
-      return NextResponse.json(
-        { error: "Too many requests" },
-        { status: 429 },
-      );
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
     }
 
     const body = (await request.json()) as ContactPayload;
@@ -41,9 +36,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
-    const { name, phone, email, company, interest, comment, locale } = body;
+    const { name, phone, email, message, locale } = body;
 
-    if (!name?.trim() || !phone?.trim() || !email?.trim() || !interest?.trim()) {
+    if (!name?.trim() || !phone?.trim() || !email?.trim() || !message?.trim()) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -55,23 +50,16 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid phone" }, { status: 400 });
     }
 
-    const lang: Locale = locale === "en" ? "en" : "ru";
-    const t = getTranslations(lang);
-    const interestLabel =
-      t.contact.form.interests[
-        interest as keyof typeof t.contact.form.interests
-      ] ?? interest;
+    const lang = locale === "en" ? "en" : "ru";
 
     const text = [
-      "Новая заявка с сайта TMK Holding",
+      "Новая заявка с сайта TMK Limited",
       "",
       `Язык: ${lang.toUpperCase()}`,
       `Имя: ${name.trim()}`,
       `Телефон: ${phone.trim()}`,
       `Email: ${email.trim()}`,
-      `Компания: ${company?.trim() || "—"}`,
-      `Направление: ${interestLabel}`,
-      `Комментарий: ${comment?.trim() || "—"}`,
+      `Запрос: ${message.trim()}`,
       "",
       `IP: ${ip}`,
     ].join("\n");
@@ -99,7 +87,7 @@ export async function POST(request: Request) {
       from: process.env.SMTP_FROM || user,
       to: RECIPIENT,
       replyTo: email.trim(),
-      subject: `TMK Holding — заявка от ${name.trim()}`,
+      subject: `TMK Limited — заявка от ${name.trim()}`,
       text,
     });
 

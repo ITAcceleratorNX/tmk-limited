@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Политика конфиденциальности — TMK Holding",
-  description: "Политика конфиденциальности TMK Holding",
+  title: "Политика конфиденциальности — TMK Limited",
+  description: "Политика конфиденциальности TMK Limited",
   robots: { index: true, follow: true },
 };
 

@@ -1,44 +1,51 @@
 export type Locale = "ru" | "en";
 
-export type InterestOption =
-  | "investments"
-  | "realEstate"
-  | "marketing"
-  | "technologies"
-  | "partnership"
-  | "other";
-
 export interface StatItem {
   value: string;
   label: string;
 }
 
-export interface FeatureItem {
+export interface DirectionBrand {
+  name: string;
+  href?: string;
+}
+
+export interface DirectionItem {
+  id: string;
   title: string;
-  description?: string;
+  bullets: string[];
+  brands: DirectionBrand[];
+  image: string;
+  /** Which side the text panel sits on at desktop width (matches original layout, not strictly alternating) */
+  panelSide: "left" | "right";
+  /** Panel fill on desktop — measured from tmk-limited.com T396 blocks */
+  panelVariant: "white" | "gold" | "navy";
 }
 
-export interface ProjectItem {
+export interface PartnerLogo {
   name: string;
-  description: string;
-  highlight?: string;
-  metric?: string;
+  logo: string;
 }
 
-export interface CaseItem {
-  name: string;
-  description: string;
-  result?: string;
-  metric?: string;
-}
-
-export interface PartnerItem {
-  name: string;
-}
-
-export interface StrategyItem {
+export interface CompletedProjectItem {
+  id: string;
+  slug: string;
   title: string;
-  description: string;
+  excerpt: string;
+  image: string;
+}
+
+export interface ProjectPageContent {
+  heroTitle: string;
+  label: string;
+  heading: string;
+  description: string[];
+  missionLabel: string;
+  mission: string;
+  stats: StatItem[];
+  servicesLabel: string;
+  servicesHeading: string;
+  services: string[];
 }
 
 export interface Translations {
@@ -47,144 +54,76 @@ export interface Translations {
     description: string;
   };
   nav: {
+    home: string;
     about: string;
-    directions: string;
     projects: string;
-    results: string;
-    strategy: string;
+    services: string;
+    partners: string;
     contacts: string;
-    cta: string;
+    contactUs: string;
     menu: string;
     close: string;
-    theme: string;
   };
   hero: {
-    brand: string;
-    tagline: string;
-    taglineAccent: string;
-    subtitle: string;
-    stats: StatItem[];
-    trustStrip: string[];
-    cta: string;
-  };
-  directions: {
     title: string;
-    heading: string;
-    description: string;
-    tabs: {
-      extraSpace: string;
-      development: string;
-      technoHorizon: string;
-      qaitadan: string;
-      itSolutions: string;
-    };
+    subtitle: string;
+    cta: string;
   };
   about: {
-    title: string;
+    label: string;
     heading: string;
     description: string;
-    points: string[];
-    ecosystem: {
-      investments: string;
-      realEstate: string;
-      marketing: string;
-      technology: string;
-    };
+    missionLabel: string;
+    missionText: string;
+    missionTags: string[];
+    readMore: string;
   };
-  stats: {
-    title: string;
+  directions: {
+    label: string;
     heading: string;
-    items: StatItem[];
+    items: DirectionItem[];
   };
-  trust: {
-    title: string;
+  partners: {
+    label: string;
     heading: string;
-    partners: PartnerItem[];
+    hint: string;
+    items: PartnerLogo[];
   };
-  realEstate: {
-    title: string;
+  completedProjects: {
+    label: string;
     heading: string;
-    description: string;
-    projects: ProjectItem[];
-  };
-  extraSpace: {
-    title: string;
-    heading: string;
-    stats: StatItem[];
-    features: string[];
-  };
-  development: {
-    title: string;
-    heading: string;
-    features: string[];
-  };
-  technoHorizon: {
-    title: string;
-    heading: string;
-    badges: string[];
-    products: string[];
-  };
-  marketingResults: {
-    title: string;
-    heading: string;
-    cases: CaseItem[];
-  };
-  qaitadan: {
-    title: string;
-    heading: string;
-    services: string[];
-    stats: StatItem[];
-  };
-  itSolutions: {
-    title: string;
-    heading: string;
-    services: string[];
-  };
-  strategy: {
-    title: string;
-    heading: string;
-    description: string;
-    goalBadge: string;
-    items: StrategyItem[];
-  };
-  finalCta: {
-    title: string;
-    description: string;
-    cta: string;
+    viewMore: string;
+    items: CompletedProjectItem[];
   };
   contact: {
     title: string;
     description: string;
-    address: string;
-    email: string;
-    phone: string;
-    hours: string;
-    hoursValue: string;
-    labels: {
-      email: string;
-      phone: string;
-      address: string;
-    };
+    addressLabel: string;
+    addressLine1: string;
+    addressLine2: string;
+    hoursTime: string;
+    hoursDays: string;
+    footerContact: string;
     form: {
       name: string;
       phone: string;
       email: string;
-      company: string;
-      interest: string;
-      interestPlaceholder: string;
-      comment: string;
+      message: string;
       submit: string;
       privacyPrefix: string;
       privacyLink: string;
-      privacy: string;
       success: string;
       error: string;
-      interests: Record<InterestOption, string>;
     };
   };
   footer: {
     copyright: string;
     privacy: string;
     backHome: string;
+    hoursLabel: string;
+  };
+  projectPages: {
+    kazagris: ProjectPageContent;
+    horeca: ProjectPageContent;
   };
 }

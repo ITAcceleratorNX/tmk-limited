@@ -15,8 +15,8 @@ export function PolicyPage() {
         style={{ background: "var(--header-bg)" }}
       >
         <div className="mx-auto flex max-w-3xl items-center justify-between">
-          <Link href="/" className="font-serif text-xl font-medium text-text-heading">
-            TMK Holding
+          <Link href="/" className="text-xl font-semibold text-text-heading">
+            TMK Limited
           </Link>
           <Link
             href="/"
@@ -29,7 +29,7 @@ export function PolicyPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">
         <div className="gold-line mb-8" />
-        <h1 className="font-serif text-4xl font-medium text-text-heading md:text-5xl">
+        <h1 className="text-4xl font-semibold text-text-heading md:text-5xl">
           {content.title}
         </h1>
         <p className="mt-4 text-sm text-text-muted">{content.updated}</p>

@@ -1,82 +1,35 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
-
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-manrope",
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "TMK Holding — инвестиции, недвижимость, маркетинг, технологии",
-    template: "%s — TMK Holding",
+    default: "TMK Limited — создаём ценность в ключевых отраслях",
+    template: "%s — TMK Limited",
   },
   description:
-    "TMK Holding — экосистема роста для вашего бизнеса. Инвестиции, коммерческая недвижимость, маркетинг и цифровые технологии с 2017 года.",
-  keywords: [
-    "TMK Holding",
-    "TMK Limited",
-    "инвестиции",
-    "недвижимость",
-    "маркетинг",
-    "технологии",
-    "Алматы",
-    "МФЦА",
-    "холдинг",
-  ],
+    "TMK Limited объединяет ключевые отрасли — от недвижимости до агротехнологий — создавая интегрированные бизнес-решения.",
   icons: {
-    icon: "/images/favicon.svg",
-    apple: "/images/favicon.svg",
+    icon: "/images/tmk/logo/logo.svg",
+    apple: "/images/tmk/logo/logo.svg",
   },
   openGraph: {
-    title: "TMK Holding — экосистема роста для вашего бизнеса",
-    description:
-      "Инвестиции. Недвижимость. Маркетинг. Технологии. TMK Holding с 2017 года.",
+    title: "TMK Limited",
+    description: "Создаём ценность в ключевых отраслях: от недвижимости до IT",
     locale: "ru_KZ",
-    alternateLocale: ["en_US"],
     type: "website",
-    siteName: "TMK Holding",
+    siteName: "TMK Limited",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "TMK Holding",
-    description:
-      "Экосистема роста для вашего бизнеса. Инвестиции, недвижимость, маркетинг, технологии.",
-  },
-  alternates: {
-    canonical: siteConfig.url,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="ru"
-      className={`${manrope.variable} ${cormorant.variable} h-full`}
-      suppressHydrationWarning
-    >
-      <body className="min-h-full antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+    <html lang="ru" className="h-full">
+      <body className="min-h-full antialiased">{children}</body>
     </html>
   );
 }

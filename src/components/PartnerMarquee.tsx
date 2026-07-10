@@ -1,46 +1,62 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { StaggerChildren } from "@/components/motion/StaggerChildren";
+import { TildaItem, TildaStagger } from "@/components/motion/TildaIn";
 import { useLanguage } from "@/components/LanguageProvider";
-import { getPartnerLogo } from "@/lib/site";
-import { fadeUp } from "@/lib/motion";
 
-function PartnerCard({ name }: { name: string }) {
-  const logo = getPartnerLogo(name);
-
+function PartnerCard({ name, logo }: { name: string; logo: string }) {
   return (
-    <motion.div
-      variants={fadeUp}
-      whileHover={{ y: -2, borderColor: "var(--border-gold)" }}
-      transition={{ type: "spring", stiffness: 400, damping: 24 }}
-      className="partner-card flex h-full min-h-[5.5rem] flex-col items-center justify-center gap-3 border border-border bg-bg-surface px-4 py-5 sm:min-h-[6rem] sm:px-5"
-    >
-      {logo ? (
-        <Image
-          src={logo}
-          alt={name}
-          width={140}
-          height={32}
-          className="partner-logo h-6 w-auto max-w-[7.5rem] sm:h-7 sm:max-w-[8.5rem]"
-        />
-      ) : null}
-      <span className="text-center text-[0.6875rem] font-semibold uppercase leading-tight tracking-[0.12em] text-text-heading sm:text-xs">
-        {name}
-      </span>
-    </motion.div>
+    <div className="partner-card flex h-[5.5rem] w-44 shrink-0 items-center justify-center px-6 md:h-24 md:w-52">
+      <Image
+        src={logo}
+        alt={name}
+        width={130}
+        height={44}
+        className="partner-logo h-8 w-auto max-w-[7.5rem] md:h-10"
+        draggable={false}
+      />
+    </div>
   );
 }
 
 export function PartnerMarquee() {
   const { t } = useLanguage();
+  const loopItems = [...t.partners.items, ...t.partners.items];
 
   return (
-    <StaggerChildren className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
-      {t.trust.partners.map((partner) => (
-        <PartnerCard key={partner.name} name={partner.name} />
-      ))}
-    </StaggerChildren>
+    <section id="partners" className="section-pad scroll-mt-24 overflow-hidden bg-bg-cream">
+      <div className="tilda-container">
+        <TildaStagger className="mb-10 md:mb-12">
+          <TildaItem style="fadeindown" speed="text">
+            <p className="section-label">{t.partners.label}</p>
+          </TildaItem>
+          <TildaItem style="fadeindown" speed="title">
+            <h2 className="section-title">{t.partners.heading}</h2>
+          </TildaItem>
+          <TildaItem style="fadeindown" speed="text">
+            <p className="mt-2 text-sm font-light text-text-muted">{t.partners.hint}</p>
+          </TildaItem>
+        </TildaStagger>
+      </div>
+
+      <div className="relative mt-2 overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 md:w-20"
+          style={{ background: "linear-gradient(90deg, var(--bg-cream) 15%, transparent 100%)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 md:w-20"
+          style={{ background: "linear-gradient(270deg, var(--bg-cream) 15%, transparent 100%)" }}
+        />
+
+        <div className="partners-marquee-viewport">
+          <div className="partners-marquee-track" aria-label={t.partners.heading}>
+            {loopItems.map((partner, index) => (
+              <PartnerCard key={`${partner.name}-${index}`} name={partner.name} logo={partner.logo} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
