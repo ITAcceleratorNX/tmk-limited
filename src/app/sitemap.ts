@@ -1,7 +1,11 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
+import { projectPaths } from "@/lib/project-paths";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const pagePaths = ["/about/ru", "/contacts/ru", "/projects/ru"] as const;
+  const withKk = (path: string) => path.replace(/\/ru$/, "/kk");
+
   return [
     {
       url: siteConfig.url,
@@ -10,23 +14,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/projects`,
+      url: `${siteConfig.url}/kk`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 1,
     },
-    {
-      url: `${siteConfig.url}/projects/kazagris`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteConfig.url}/projects/horeca`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    ...pagePaths.flatMap((path) => [
+      {
+        url: `${siteConfig.url}${path}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+      },
+      {
+        url: `${siteConfig.url}${withKk(path)}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+      },
+    ]),
+    ...Object.values(projectPaths).flatMap((path) => [
+      {
+        url: `${siteConfig.url}${path}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      },
+      {
+        url: `${siteConfig.url}${withKk(path)}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      },
+    ]),
     {
       url: `${siteConfig.url}/policy`,
       lastModified: new Date(),

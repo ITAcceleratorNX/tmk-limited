@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PhoneInput } from "@/components/PhoneInput";
 
-export function ContactForm() {
+export function ContactForm({ includeCompany = false, popup = false }: { includeCompany?: boolean; popup?: boolean }) {
   const { locale, t } = useLanguage();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -51,45 +51,55 @@ export function ContactForm() {
           </button>
         </motion.div>
       ) : (
-        <motion.form key="form" onSubmit={handleSubmit} className="space-y-4">
+        <motion.form key="form" onSubmit={handleSubmit} className={popup ? "space-y-[25px]" : "space-y-4"}>
           <input type="text" name="_website" className="hidden" tabIndex={-1} autoComplete="off" />
 
-          <div>
+          <div className="relative">
             <input
               name="name"
               required
-              placeholder={`${t.contact.form.name} *`}
-              className="form-input"
+              placeholder={t.contact.form.name}
+              className={`form-input ${popup ? "!h-[50px] !py-0 !text-[14px]" : ""}`}
             />
+            {!popup && <span aria-hidden className="pointer-events-none absolute right-1 top-4 text-xs text-gold">*</span>}
           </div>
 
-          <PhoneInput id="phone" name="phone" required placeholder={`${t.contact.form.phone} *`} />
+          {includeCompany && <input name="company" placeholder="Название компании" className={`form-input ${popup ? "!h-[50px] !py-0 !text-[14px]" : ""}`} />}
 
-          <div>
+          <PhoneInput id="phone" name="phone" required placeholder="(000) 000-00-00" compact={popup} />
+
+          <div className="relative">
             <input
               name="email"
               type="email"
               required
-              placeholder={`${t.contact.form.email} *`}
-              className="form-input"
+              placeholder={t.contact.form.email}
+              className={`form-input ${popup ? "!h-[50px] !py-0 !text-[14px]" : ""}`}
             />
+            {!popup && <span aria-hidden className="pointer-events-none absolute right-1 top-4 text-xs text-gold">*</span>}
           </div>
 
-          <div>
-            <textarea
-              name="message"
+          <div className="relative">
+            {popup ? (
+              <input name="message" required placeholder={t.contact.form.message} className="form-input !h-[50px] !py-0 !text-[14px]" />
+            ) : (
+              <textarea name="message" required rows={4} placeholder={t.contact.form.message} className="form-input resize-none" />
+            )}
+            {!popup && <span aria-hidden className="pointer-events-none absolute right-1 top-4 text-xs text-gold">*</span>}
+          </div>
+
+          <label className={`flex items-start gap-3 text-text-muted ${popup ? "text-[12px] leading-[16px]" : "text-sm leading-relaxed"}`}>
+            <input
+              type="checkbox"
+              name="privacy"
+              value="yes"
               required
-              rows={4}
-              placeholder={`${t.contact.form.message} *`}
-              className="form-input resize-none"
+              defaultChecked
+              className={popup ? "mt-0 h-[19px] w-[19px] shrink-0 accent-black" : "mt-1"}
             />
-          </div>
-
-          <label className="flex items-start gap-3 text-sm leading-relaxed text-text-muted">
-            <input type="checkbox" name="privacy" value="yes" required className="mt-1" />
             <span>
               {t.contact.form.privacyPrefix}{" "}
-              <Link href="/policy" className="text-gold hover:underline">
+              <Link href="/policy" className="text-navy underline hover:text-gold">
                 {t.contact.form.privacyLink}
               </Link>
             </span>
@@ -102,7 +112,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="btn-primary w-full disabled:opacity-60"
+            className={`btn-primary !bg-navy w-full disabled:opacity-60 ${popup ? "!h-[50px] !text-[14px] !font-semibold" : "!h-[60px]"}`}
           >
             {status === "loading" ? "..." : t.contact.form.submit}
           </button>

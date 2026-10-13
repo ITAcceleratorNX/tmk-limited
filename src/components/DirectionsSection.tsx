@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { TildaIn, TildaItem, TildaStagger } from "@/components/motion/TildaIn";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { DirectionItem } from "@/lib/i18n/types";
@@ -19,15 +20,17 @@ function BrandLink({
   dark: boolean;
 }) {
   const className = dark
-    ? "inline-flex items-center gap-2 border border-white/35 px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-80"
-    : "inline-flex items-center gap-2 text-sm font-semibold text-navy transition-opacity hover:opacity-70";
+    ? "inline-flex items-center gap-2 border border-white/40 px-4 py-3 text-sm font-normal text-white transition-opacity hover:opacity-80"
+    : "inline-flex items-center gap-3 border border-[#ded9ce] bg-[#f4f1eb] px-4 py-3 text-sm font-normal text-navy transition-opacity hover:opacity-70";
 
   if (brand.href) {
+    const onThisSite = new URL(brand.href, "https://tmk-limited.com").hostname === "tmk-limited.com";
+    const href = onThisSite ? new URL(brand.href, "https://tmk-limited.com").pathname : brand.href;
     return (
-      <a href={brand.href} target="_blank" rel="noopener noreferrer" className={className}>
+      <Link href={href} target={onThisSite ? undefined : "_blank"} rel={onThisSite ? undefined : "noopener noreferrer"} className={className}>
         {brand.name}
-        {dark ? <span aria-hidden>↗</span> : null}
-      </a>
+        <span aria-hidden className={dark ? "text-white/70" : "text-gold"}>↗</span>
+      </Link>
     );
   }
 
@@ -35,8 +38,8 @@ function BrandLink({
     <span
       className={
         dark
-          ? "inline-flex border border-white/35 px-4 py-2.5 text-sm font-semibold text-white"
-          : "inline-flex text-sm font-semibold text-navy-muted"
+          ? "inline-flex border border-white/35 px-4 py-3 text-sm font-normal text-white"
+          : "inline-flex border border-[#ded9ce] bg-[#f4f1eb] px-4 py-3 text-sm font-normal text-navy-muted"
       }
     >
       {brand.name}
@@ -85,7 +88,7 @@ function DirectionCard({
           }`}
         >
           <h3
-            className={`text-[2.125rem] font-semibold leading-[1.2] ${
+            className={`text-[2.125rem] font-medium leading-[1.2] ${
               dark ? "text-white" : "text-navy"
             }`}
           >
@@ -101,7 +104,7 @@ function DirectionCard({
               >
                 <span
                   className={`mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full ${
-                    dark ? "bg-white" : "bg-gold"
+                    dark ? "bg-white" : "bg-navy"
                   }`}
                 />
                 <span>{bullet}</span>
@@ -181,14 +184,14 @@ export function DirectionsSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="uslugi" className="scroll-mt-24 bg-bg-muted">
-      <div className="tilda-container pt-16 md:pt-20">
-        <TildaStagger className="mb-10 max-w-3xl md:mb-12">
+    <section id="uslugi" className="scroll-mt-[84px] bg-bg">
+      <div className="tilda-container pt-14 pb-2 md:pt-16 lg:pt-[72px]">
+        <TildaStagger className="mb-10 max-w-3xl lg:mb-8">
           <TildaItem style="fadeindown" speed="text">
-            <p className="section-label">{t.directions.label}</p>
+            <p className="section-label !mb-0">{t.directions.label}</p>
           </TildaItem>
           <TildaItem style="fadeindown" speed="title">
-            <h2 className="section-title text-[2rem] md:text-[2.5rem]">{t.directions.heading}</h2>
+            <h2 className="section-title mt-6 max-w-[650px] lg:mt-7">{t.directions.heading}</h2>
           </TildaItem>
         </TildaStagger>
       </div>

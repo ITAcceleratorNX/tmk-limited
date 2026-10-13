@@ -9,7 +9,7 @@ function KazagrisContent() {
   const { t } = useLanguage();
   return (
     <ContactPopupProvider>
-      <ProjectPageView content={t.projectPages.kazagris} image={tmkImages.projects.kazagris} />
+      <ProjectPageView content={t.projectPages.kazagris} image={tmkImages.projects.kazagris} heroImage={tmkImages.directions.agriculture} />
     </ContactPopupProvider>
   );
 }

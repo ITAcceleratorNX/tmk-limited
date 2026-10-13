@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TildaIn } from "@/components/motion/TildaIn";
 import { useLanguage } from "@/components/LanguageProvider";
+import { localizedHref } from "@/lib/i18n";
 import { siteConfig, tmkImages } from "@/lib/site";
 
 const socialLinks = [
@@ -52,37 +53,41 @@ function SocialIcon({ type }: { type: (typeof socialLinks)[number]["icon"] }) {
 }
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
 
   const menuLinks = [
-    { href: "#top", label: t.nav.home },
-    { href: "#about", label: t.nav.about },
-    { href: "/projects", label: t.nav.projects },
-    { href: "#uslugi", label: t.nav.services },
-    { href: "#partners", label: t.nav.partners },
-    { href: "#contacts", label: t.nav.contacts },
+    { href: localizedHref("/#top", locale), label: t.nav.home },
+    { href: localizedHref("/about/ru", locale), label: t.nav.about },
+    { href: localizedHref("/projects/ru", locale), label: t.nav.projects },
+    { href: localizedHref("/#uslugi", locale), label: t.nav.services },
+    { href: localizedHref("/#partners", locale), label: t.nav.partners },
+    { href: localizedHref("/contacts/ru", locale), label: t.nav.contacts },
   ];
 
   return (
-    <footer className="bg-bg-footer py-14 text-white md:py-16">
-      <div className="tilda-container">
-        <div className="grid gap-10 md:grid-cols-4 lg:!grid-cols-[28.8%_26.2%_30.2%_14.8%] lg:gap-0">
-          <TildaIn style="zoomin" className="flex flex-col justify-between">
+    <footer className="bg-[#12171f] pt-[75px] text-white">
+      <div className="tilda-container pb-[75px]">
+        <div className="grid gap-10 md:grid-cols-4 lg:!grid-cols-[28.8%_26.2%_30.2%_14.8%] lg:min-h-[330px] lg:gap-0">
+          <TildaIn style="zoomin" className="flex flex-col justify-between gap-12">
             <Image
               src={tmkImages.footerLogo}
               alt={siteConfig.name}
-              width={110}
-              height={53}
-              className="h-auto w-[110px]"
+              width={130}
+              height={63}
+              className="h-auto w-[130px]"
             />
+            <div className="space-y-2 text-[11px] uppercase text-white/50">
+              <p>{t.footer.copyright}</p>
+              <Link href="/policy" className="hover:text-gold">{t.footer.privacy}</Link>
+            </div>
           </TildaIn>
 
           <TildaIn style="zoomin" speed="text" delay={0.05}>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+              <p className="text-xs font-normal uppercase tracking-wider text-gold">
                 {t.nav.menu}
               </p>
-              <nav className="mt-4 flex flex-col gap-2 text-sm font-light text-white/70">
+              <nav className="mt-8 flex flex-col gap-3 text-[21px] font-normal text-white/85">
                 {menuLinks.map((link) => (
                   <a key={link.href} href={link.href} className="hover:text-gold">
                     {link.label}
@@ -94,21 +99,21 @@ export function Footer() {
 
           <TildaIn style="zoomin" speed="text" delay={0.1}>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+              <p className="text-xs font-normal uppercase tracking-wider text-gold">
                 {t.contact.footerContact}
               </p>
-              <div className="mt-4 space-y-2 text-sm font-light text-white/70">
+              <div className="mt-8 space-y-2 text-[20px] font-normal text-white/85">
                 <a href={`tel:${siteConfig.phone}`} className="block hover:text-gold">
                   {siteConfig.phoneDisplay}
                 </a>
-                <a href={`mailto:${siteConfig.email}`} className="block hover:text-gold">
+                <a href={`mailto:${siteConfig.email}`} className="block text-sm text-white/55 hover:text-gold">
                   {siteConfig.email}
                 </a>
               </div>
-              <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-gold">
+              <p className="mt-20 text-xs font-normal uppercase tracking-wider text-gold">
                 {t.contact.addressLabel}
               </p>
-              <div className="mt-4 space-y-1 text-sm font-light text-white/70">
+              <div className="mt-8 space-y-1 text-[18px] font-normal text-white/80">
                 <p>{t.contact.addressLine1}</p>
                 <p>{t.contact.addressLine2}</p>
               </div>
@@ -117,15 +122,15 @@ export function Footer() {
 
           <TildaIn style="zoomin" speed="text" delay={0.15}>
             <div className="flex flex-col">
-              <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+              <p className="text-xs font-normal uppercase tracking-wider text-gold">
                 {t.footer.hoursLabel}
               </p>
-              <div className="mt-4 space-y-1 text-sm font-light text-white/70">
+              <div className="mt-8 space-y-1 text-[20px] font-normal text-white/80">
                 <p>{t.contact.hoursTime}</p>
                 <p>{t.contact.hoursDays}</p>
               </div>
 
-              <div className="mt-auto flex gap-[24px] pt-8">
+              <div className="mt-auto flex gap-3 pt-8">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
@@ -133,7 +138,7 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label={social.name}
-                    className="flex h-10 w-10 items-center justify-center bg-white/10 text-white transition-colors hover:bg-gold/80"
+                    className="flex h-12 w-12 items-center justify-center bg-white/10 text-white transition-colors hover:bg-gold/80"
                   >
                     <SocialIcon type={social.icon} />
                   </a>
@@ -143,14 +148,9 @@ export function Footer() {
           </TildaIn>
         </div>
 
-        <TildaIn style="zoomin" speed="text" delay={0.2}>
-          <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 text-sm font-light text-white/50 md:flex-row md:items-center md:justify-between">
-            <p>{t.footer.copyright}</p>
-            <Link href="/policy" className="hover:text-gold">
-              {t.footer.privacy}
-            </Link>
-          </div>
-        </TildaIn>
+      </div>
+      <div className="flex h-[70px] items-center justify-center bg-black text-xs text-white/55">
+        <a href="https://tilda.cc/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3">Made on <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 font-bold">T</span> Tilda</a>
       </div>
     </footer>
   );

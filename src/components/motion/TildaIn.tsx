@@ -134,39 +134,6 @@ export function TildaStagger({
   );
 }
 
-/** Easing used by Tilda's scroll-based-scrolling engine (tilda-animation-sbs-1.0.min.js) */
-const sbsEase = [0.3, 0, 0.6, 1] as const;
-
-/**
- * Replicates the sbs "intoview" reveal used for the decorative shape behind the
- * About photo on the original site: the shape starts aligned exactly behind the
- * photo (fully hidden), then — once scrolled into view — slides down by ~its own
- * height into its final accent position. Timings taken from the live
- * data-animate-sbs-opts payload: 0.3s hold, then a 0.5s move.
- */
-export function TildaParallaxShape({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  const { ref, margin } = useTildaMargin();
-  const inView = useInView(ref, { once: true, margin });
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ y: "-100%" }}
-      animate={inView ? { y: "0%" } : { y: "-100%" }}
-      transition={{ duration: 0.5, delay: 0.3, ease: sbsEase }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 export function TildaItem({
   children,
   className,

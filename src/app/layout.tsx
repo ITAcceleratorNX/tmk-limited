@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
+import { Noto_Sans } from "next/font/google";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
+
+/** Full Kazakh Cyrillic (ә, ғ, қ, ң, ө, ұ, ү, һ, і) — Gilroy misses these glyphs */
+const notoSans = Noto_Sans({
+  subsets: ["cyrillic", "cyrillic-ext", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-noto-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -28,7 +37,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className="h-full">
+    <html lang="ru" className={`h-full ${notoSans.variable}`}>
       <body className="min-h-full antialiased">{children}</body>
     </html>
   );

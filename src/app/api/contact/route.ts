@@ -2,13 +2,16 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
-const RECIPIENT = "tokpanov.k@tmk-limited.com";
+/** Only server-side — never exposed to the client. */
+const RECIPIENT =
+  process.env.CONTACT_TO?.trim() || "tokpanov.k@tmk-limited.com";
 
 interface ContactPayload {
   name?: string;
   phone?: string;
   email?: string;
   message?: string;
+  company?: string;
   locale?: string;
   privacy?: string;
   _website?: string;
@@ -23,46 +26,66 @@ function isValidPhone(phone: string) {
   return digits.length >= 11;
 }
 
+/** Same opaque responses for all clients — delivery details stay server-only. */
+function ok() {
+  return NextResponse.json({ ok: true });
+}
+
+function fail(status: number) {
+  return NextResponse.json({ error: "Request failed" }, { status });
+}
+
+function formatLead(body: Required<Pick<ContactPayload, "name" | "phone" | "email" | "message">> & {
+  company?: string;
+  locale: string;
+  ip: string;
+}) {
+  return [
+    "Новая заявка с сайта TMK Limited",
+    "",
+    `Язык: ${body.locale.toUpperCase()}`,
+    `Имя: ${body.name}`,
+    body.company ? `Компания: ${body.company}` : null,
+    `Телефон: ${body.phone}`,
+    `Email: ${body.email}`,
+    `Запрос: ${body.message}`,
+    "",
+    `IP: ${body.ip}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
 export async function POST(request: Request) {
   try {
     const ip = getClientIp(request);
     if (!rateLimit(ip)) {
-      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+      return fail(429);
     }
 
     const body = (await request.json()) as ContactPayload;
 
+    // Honeypot: pretend success so bots learn nothing
     if (body._website) {
-      return NextResponse.json({ ok: true });
+      return ok();
     }
 
-    const { name, phone, email, message, locale } = body;
+    const name = body.name?.trim() ?? "";
+    const phone = body.phone?.trim() ?? "";
+    const email = body.email?.trim() ?? "";
+    const message = body.message?.trim() ?? "";
+    const company = body.company?.trim() || undefined;
 
-    if (!name?.trim() || !phone?.trim() || !email?.trim() || !message?.trim()) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    if (!name || !phone || !email || !message) {
+      return fail(400);
     }
 
-    if (!isValidEmail(email)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    if (!isValidEmail(email) || !isValidPhone(phone)) {
+      return fail(400);
     }
 
-    if (!isValidPhone(phone)) {
-      return NextResponse.json({ error: "Invalid phone" }, { status: 400 });
-    }
-
-    const lang = locale === "en" ? "en" : "ru";
-
-    const text = [
-      "Новая заявка с сайта TMK Limited",
-      "",
-      `Язык: ${lang.toUpperCase()}`,
-      `Имя: ${name.trim()}`,
-      `Телефон: ${phone.trim()}`,
-      `Email: ${email.trim()}`,
-      `Запрос: ${message.trim()}`,
-      "",
-      `IP: ${ip}`,
-    ].join("\n");
+    const locale = body.locale === "en" || body.locale === "kk" ? body.locale : "ru";
+    const text = formatLead({ name, phone, email, message, company, locale, ip });
 
     const host = process.env.SMTP_HOST;
     const port = Number(process.env.SMTP_PORT || 587);
@@ -70,10 +93,13 @@ export async function POST(request: Request) {
     const pass = process.env.SMTP_PASS;
 
     if (!host || !user || !pass) {
+      // Dev only: we see the lead in the server console; client still gets { ok: true }
       if (process.env.NODE_ENV === "development") {
         console.log("[contact-form]", text);
+        return ok();
       }
-      return NextResponse.json({ ok: true, mode: "log" });
+      console.error("[contact-form] SMTP is not configured");
+      return fail(500);
     }
 
     const transporter = nodemailer.createTransport({
@@ -86,14 +112,15 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || user,
       to: RECIPIENT,
-      replyTo: email.trim(),
-      subject: `TMK Limited — заявка от ${name.trim()}`,
+      // No BCC / no copy to the visitor — only the recipient above is notified
+      replyTo: email,
+      subject: `TMK Limited — заявка от ${name}`,
       text,
     });
 
-    return NextResponse.json({ ok: true });
+    return ok();
   } catch (error) {
     console.error("[contact-form]", error);
-    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+    return fail(500);
   }
 }

@@ -1,6 +1,6 @@
 # TMK Limited
 
-Production-ready сайт TMK Limited на Next.js.
+Сайт TMK Limited на Next.js (клон tmk-limited.com).
 
 ## Быстрый старт
 
@@ -10,45 +10,42 @@ cp .env.example .env.local
 npm run dev
 ```
 
+Языки: **RU** (`/`, `/ru`), **EN** (`/en`), **KK** (`/kk`). Суффиксы работают и для `/about`, `/projects`, `/contacts` и публичных URL проектов.
+
 ## Production checklist
 
 1. Скопируйте `.env.example` → `.env.local`
-2. Укажите `NEXT_PUBLIC_SITE_URL` — ваш домен
+2. Укажите `NEXT_PUBLIC_SITE_URL`
 3. Настройте SMTP для формы заявки
-4. (Опционально) `NEXT_PUBLIC_GA_ID` для Google Analytics
+4. (Опционально) `NEXT_PUBLIC_GA_ID`
 5. `npm run build && npm start`
 
 ## Форма заявки
 
-- Отправка на `tokpanov.k@tmk-limited.com`
+- Письмо только на `CONTACT_TO` (по умолчанию `tokpanov.k@tmk-limited.com`) — посетителю копия не уходит
+- Клиент видит только `{ ok: true }` / общую ошибку — без деталей доставки
 - Honeypot + rate limit (5 req/min/IP)
 - Маска телефона +7 (KZ)
-- Без SMTP в dev — лог в консоль
+- Без SMTP в development — заявка в консоли сервера; в production без SMTP — ошибка
 
 ## Страницы
 
 | URL | Описание |
 |-----|----------|
-| `/` | Главный лендинг RU/EN |
-| `/projects` | Список проектов |
-| `/projects/kazagris` | KazAgris Ventures |
-| `/projects/horeca` | Table 61 Catering |
+| `/`, `/ru`, `/en`, `/kk` | Лендинг |
+| `/about`, `/about/ru\|en\|kk` | О компании |
+| `/projects`, `/projects/ru\|en\|kk` | Список проектов |
+| `/projects/[slug]` | Карточки проектов (streamline, valar, …) |
+| `/projects/kazagris`, `/projects/horeca` | KazAgris / Table 61 (полный i18n) |
+| `/contacts`, `/contacts/ru\|en\|kk` | Контакты + карта |
 | `/policy` | Политика конфиденциальности |
 
 ## SEO
 
 - `sitemap.xml`, `robots.txt`
-- Open Graph image (`/opengraph-image`)
-- JSON-LD Organization schema
-- Canonical URL из `NEXT_PUBLIC_SITE_URL`
-
-## Медиа
-
-Локальные файлы в `public/images/tmk/`:
-- `hero/slides/` — слайды главного экрана
-- `directions/` — фото направлений
-- `projects/` — фото проектов
-- `partners/` — логотипы партнёров
+- Open Graph (`/opengraph-image`)
+- JSON-LD Organization
+- Canonical из `NEXT_PUBLIC_SITE_URL`
 
 ## Стек
 

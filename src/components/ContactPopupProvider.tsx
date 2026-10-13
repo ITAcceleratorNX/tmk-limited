@@ -71,7 +71,7 @@ export function ContactPopupProvider({ children }: { children: ReactNode }) {
             role="dialog"
             aria-modal="true"
             aria-label={t.contact.title}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] flex items-start justify-center sm:items-center sm:p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -79,12 +79,20 @@ export function ContactPopupProvider({ children }: { children: ReactNode }) {
           >
             <button
               type="button"
-              className="absolute inset-0 bg-black/70"
+              className="absolute inset-0 bg-black sm:bg-black/70"
               aria-label={t.nav.close}
               onClick={closeContactPopup}
             />
+            <button
+              type="button"
+              onClick={closeContactPopup}
+              className="absolute right-[14px] top-[10px] z-20 flex h-[30px] w-[30px] items-center justify-center text-white sm:hidden"
+              aria-label={t.nav.close}
+            >
+              <span aria-hidden className="text-[28px] font-light leading-none">×</span>
+            </button>
             <motion.div
-              className="relative z-10 w-full max-w-lg bg-white shadow-2xl"
+              className="relative z-10 mt-[50px] max-h-[calc(100svh-50px)] min-h-[calc(100svh-50px)] w-full overflow-y-auto bg-white shadow-2xl sm:mt-0 sm:min-h-0 sm:max-w-lg sm:max-h-[calc(100svh-32px)]"
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -93,7 +101,7 @@ export function ContactPopupProvider({ children }: { children: ReactNode }) {
               <button
                 type="button"
                 onClick={closeContactPopup}
-                className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center text-navy/60 transition-colors hover:text-navy"
+                className="absolute right-4 top-4 z-10 hidden h-8 w-8 items-center justify-center text-navy/60 transition-colors hover:text-navy sm:flex"
                 aria-label={t.nav.close}
               >
                 <svg width="23" height="23" viewBox="0 0 23 23" aria-hidden>
@@ -115,13 +123,13 @@ export function ContactPopupProvider({ children }: { children: ReactNode }) {
                   </g>
                 </svg>
               </button>
-              <div className="p-8 pt-10 md:p-10">
-                <h2 className="text-xl font-semibold text-navy md:text-2xl">{t.contact.title}</h2>
-                <p className="mt-3 text-sm font-light leading-relaxed text-text-muted">
+              <div className="p-5 sm:p-10">
+                <h2 className="text-[28px] font-semibold leading-[34px] text-navy">{t.contact.title}</h2>
+                <p className="mt-[6px] text-[12px] font-medium leading-[17px] text-text-muted">
                   {t.contact.description}
                 </p>
-                <div className="mt-6">
-                  <ContactForm />
+                <div className="mt-[14px]">
+                  <ContactForm includeCompany popup />
                 </div>
               </div>
             </motion.div>

@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
-import { privacyEn, privacyRu } from "@/lib/i18n/privacy";
+import { getPrivacy } from "@/lib/i18n/privacy";
 
 export function PolicyPage() {
   const { locale, t } = useLanguage();
-  const content = locale === "ru" ? privacyRu : privacyEn;
+  const content = getPrivacy(locale);
 
   return (
     <div className="min-h-screen bg-bg">

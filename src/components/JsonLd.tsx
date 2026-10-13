@@ -1,10 +1,10 @@
 "use client";
 
-import { siteConfig } from "@/lib/site";
 import { useLanguage } from "@/components/LanguageProvider";
+import { siteConfig } from "@/lib/site";
 
 export function JsonLd() {
-  const { locale } = useLanguage();
+  const { locale, t } = useLanguage();
 
   const schema = {
     "@context": "https://schema.org",
@@ -19,10 +19,7 @@ export function JsonLd() {
       addressCountry: "KZ",
       streetAddress: siteConfig.address[locale],
     },
-    description:
-      locale === "ru"
-        ? "TMK Limited объединяет ключевые отрасли — от недвижимости до агротехнологий."
-        : "TMK Limited unites key industries — from real estate to agrotech.",
+    description: t.meta.description,
     areaServed: ["KZ", "International"],
   };
 

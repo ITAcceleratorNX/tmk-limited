@@ -1,4 +1,4 @@
-export type Locale = "ru" | "en";
+export type Locale = "ru" | "en" | "kk";
 
 export interface StatItem {
   value: string;
@@ -22,17 +22,10 @@ export interface DirectionItem {
   panelVariant: "white" | "gold" | "navy";
 }
 
-export interface PartnerLogo {
-  name: string;
-  logo: string;
-}
-
 export interface CompletedProjectItem {
   id: string;
-  slug: string;
   title: string;
   excerpt: string;
-  image: string;
 }
 
 export interface ProjectPageContent {
@@ -87,12 +80,10 @@ export interface Translations {
     label: string;
     heading: string;
     hint: string;
-    items: PartnerLogo[];
   };
   completedProjects: {
     label: string;
     heading: string;
-    viewMore: string;
     items: CompletedProjectItem[];
   };
   contact: {
@@ -101,12 +92,14 @@ export interface Translations {
     addressLabel: string;
     addressLine1: string;
     addressLine2: string;
+    hoursLabel: string;
     hoursTime: string;
     hoursDays: string;
+    mapTitle: string;
+    altContact: string;
     footerContact: string;
     form: {
       name: string;
-      phone: string;
       email: string;
       message: string;
       submit: string;

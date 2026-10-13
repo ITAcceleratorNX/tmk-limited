@@ -2,31 +2,32 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 import { useContactPopup } from "@/components/ContactPopupProvider";
 import { useLanguage } from "@/components/LanguageProvider";
-import { useActiveSection } from "@/hooks/useActiveSection";
 import { siteConfig, tmkImages } from "@/lib/site";
-import type { Locale } from "@/lib/i18n";
+import { projectPaths } from "@/lib/project-paths";
+import { locales, localizedHref, localeSwitchHref } from "@/lib/i18n";
 
 const navItems = [
-  { key: "home" as const, href: "#top", id: "top" },
-  { key: "about" as const, href: "#about", id: "about" },
-  { key: "projects" as const, href: "#projects", id: "projects" },
-  { key: "services" as const, href: "#uslugi", id: "uslugi" },
-  { key: "partners" as const, href: "#partners", id: "partners" },
-  { key: "contacts" as const, href: "#contacts", id: "contacts" },
+  { key: "home" as const, href: "/#top", id: "top" },
+  { key: "about" as const, href: "/about/ru", id: "about" },
+  { key: "projects" as const, href: "/projects/ru", id: "projects" },
+  { key: "services" as const, href: "/#uslugi", id: "uslugi" },
+  { key: "partners" as const, href: "/#partners", id: "partners" },
+  { key: "contacts" as const, href: "/contacts/ru", id: "contacts" },
 ];
 
 export function Header() {
-  const { locale, t, setLocale } = useLanguage();
+  const { locale, t } = useLanguage();
+  const pathname = usePathname();
   const { openContactPopup } = useContactPopup();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [onHero, setOnHero] = useState(true);
-  const activeId = useActiveSection(navItems.map((item) => item.id));
 
   useEffect(() => {
     const onScroll = () => {
@@ -39,15 +40,36 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const lightHeader = scrolled || !onHero;
+  useEffect(() => {
+    if (!open) return;
 
-  const linkClass = (id: string) =>
-    `text-sm font-medium transition-colors ${
-      activeId === id
-        ? "text-gold"
-        : lightHeader
-          ? "text-navy/70 hover:text-navy"
-          : "text-white/80 hover:text-white"
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
+  const hasHero = ["/", "/ru", "/en", "/kk", "/about", "/about/ru", "/about/en", "/about/kk"].includes(pathname) ||
+    (pathname.startsWith("/projects/") && pathname !== "/projects/ru" && pathname !== "/projects/en" && pathname !== "/projects/kk") ||
+    Object.values(projectPaths).some((path) =>
+      pathname === path ||
+      pathname === path.replace(/\/ru$/, "/en") ||
+      pathname === path.replace(/\/ru$/, "/kk"),
+    );
+  const lightHeader = !hasHero || scrolled || !onHero;
+
+  const linkClass = () =>
+    `text-[14.4px] font-medium leading-[23px] transition-colors ${
+      lightHeader
+        ? "text-navy hover:text-gold"
+        : "text-white hover:text-gold"
     }`;
 
   return (
@@ -60,129 +82,124 @@ export function Header() {
         boxShadow: lightHeader ? "0 4px 24px rgba(43,63,88,0.06)" : "none",
       }}
     >
-      <div className="tilda-container flex items-center justify-between gap-4 py-4 lg:h-[70px] lg:py-0">
-        <Link href="/" className="relative z-10 flex shrink-0 items-center gap-3">
+      <div className={`header-shell tilda-container flex h-[90px] translate-y-[2px] items-center justify-between gap-4 ${lightHeader ? "header-shell-light" : "header-shell-hero"}`}>
+        <Link href={`/${locale}`} className="header-logo relative z-10 flex shrink-0 items-center gap-3">
           <Image
             src={tmkImages.logo}
             alt={siteConfig.name}
             width={123}
             height={60}
             priority
-            className={`h-8 w-auto transition-[filter] duration-300 md:h-9 lg:h-10 ${
-              lightHeader ? "" : "brightness-0 invert"
-            }`}
+            className={`h-[33px] w-auto transition-[filter] duration-300 ${lightHeader ? "" : "brightness-0 invert"}`}
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+        <nav className="header-nav hidden items-center lg:flex">
           {navItems.map((item) => (
-            <a key={item.key} href={item.href} className={linkClass(item.id)}>
+            <a key={item.key} href={localizedHref(item.href, locale)} className={linkClass()}>
               {t.nav[item.key]}
             </a>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex xl:gap-4">
+        <div className="header-controls hidden shrink-0 items-center lg:flex">
           <div
-            className={`flex overflow-hidden text-xs font-semibold ${
-              lightHeader ? "border border-border" : "border border-white/25"
-            }`}
+            className="header-languages flex border-r text-sm font-medium"
+            style={{ borderColor: lightHeader ? "#c7cbd0" : "#ffffff66" }}
           >
-            {(["en", "ru"] as Locale[]).map((lang) => (
-              <button
+            {locales.map((lang) => (
+              <Link
                 key={lang}
-                type="button"
-                onClick={() => setLocale(lang)}
-                className={`px-3 py-1.5 uppercase transition-colors ${
+                href={localeSwitchHref(pathname, lang)}
+                className={`uppercase outline-none transition-colors ${
                   locale === lang
-                    ? "bg-gold text-white"
+                    ? "text-gold"
                     : lightHeader
-                      ? "text-navy/70 hover:text-navy"
+                      ? "text-navy/60 hover:text-navy"
                       : "text-white/70 hover:text-white"
                 }`}
               >
                 {lang}
-              </button>
+              </Link>
             ))}
           </div>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className={`hidden text-sm transition-colors 2xl:block ${
-              lightHeader ? "text-navy/60 hover:text-gold" : "text-white/70 hover:text-white"
-            }`}
-          >
-            {siteConfig.email}
-          </a>
-          <a
-            href={`tel:${siteConfig.phone}`}
-            className={`hidden text-sm transition-colors xl:block ${
-              lightHeader ? "text-navy/60 hover:text-gold" : "text-white/70 hover:text-white"
-            }`}
-          >
-            {siteConfig.phoneDisplay}
-          </a>
-          <Button size="sm" onClick={openContactPopup}>
+          <div className={`header-contact hidden flex-col xl:flex ${lightHeader ? "mr-[42px] w-[184px]" : "mr-[6px] w-[208px]"}`}>
+            <a href={`tel:${siteConfig.phone}`} className={`header-phone whitespace-nowrap font-medium ${lightHeader ? "text-[22px] leading-[28px] text-navy" : "text-[24px] leading-[37px] text-white"}`}>
+              {siteConfig.phoneDisplay}
+            </a>
+            <a href={`mailto:${siteConfig.email}`} className={`header-email whitespace-nowrap font-medium leading-[23px] ${lightHeader ? "text-[13.5px] text-text-muted" : "text-[14px] text-white/75"}`}>
+              {siteConfig.email}
+            </a>
+          </div>
+          <Button size="sm" className="header-cta !bg-navy !font-medium hover:!bg-navy-muted" onClick={openContactPopup}>
             {t.nav.contactUs}
           </Button>
         </div>
 
+        <div className="ml-auto flex items-center gap-3 lg:hidden">
+          {locales.map((lang) => (
+            <Link
+              key={lang}
+              href={localeSwitchHref(pathname, lang)}
+              className={`text-sm uppercase ${locale === lang ? "text-gold" : lightHeader ? "text-navy/60" : "text-white/70"}`}
+            >
+              {lang}
+            </Link>
+          ))}
+        </div>
+
         <button
           type="button"
-          className={`relative z-10 flex h-10 w-10 items-center justify-center border lg:hidden ${
-            lightHeader ? "border-border" : "border-white/30"
-          }`}
+          className="relative z-10 flex h-[48px] w-[48px] items-center justify-center bg-navy lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? t.nav.close : t.nav.menu}
         >
-          <span
-            className={`block h-0.5 w-5 transition-transform ${lightHeader ? "bg-navy" : "bg-white"} ${open ? "translate-y-0 rotate-45" : "-translate-y-1"}`}
-          />
-          <span
-            className={`absolute block h-0.5 w-5 transition-opacity ${lightHeader ? "bg-navy" : "bg-white"} ${open ? "opacity-0" : "opacity-100"}`}
-          />
-          <span
-            className={`block h-0.5 w-5 transition-transform ${lightHeader ? "bg-navy" : "bg-white"} ${open ? "-translate-y-0.5 -rotate-45" : "translate-y-1"}`}
-          />
+          <span className={`absolute left-1/2 h-0.5 w-5 -translate-x-1/2 bg-white transition-all ${open ? "top-[23px] rotate-45" : "top-[19px]"}`} />
+          <span className={`absolute left-1/2 h-0.5 w-5 -translate-x-1/2 bg-white transition-all ${open ? "top-[23px] -rotate-45" : "top-[27px]"}`} />
         </button>
       </div>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-border bg-white lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-20 h-dvh bg-black/80 lg:hidden"
           >
-            <nav className="flex flex-col gap-1 px-6 py-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="py-3 text-base font-medium text-navy"
-                >
-                  {t.nav[item.key]}
-                </a>
-              ))}
-              <div className="mt-4 flex gap-2">
-                {(["en", "ru"] as Locale[]).map((lang) => (
-                  <button
-                    key={lang}
-                    type="button"
-                    onClick={() => setLocale(lang)}
-                    className={`px-4 py-2 text-xs font-semibold uppercase ${
-                      locale === lang ? "bg-gold text-white" : "border border-border text-navy"
-                    }`}
+            <button type="button" className="absolute inset-0 w-full" aria-label={t.nav.close} onClick={() => setOpen(false)} />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute inset-y-0 right-0 w-[300px] max-w-[calc(100vw-40px)] bg-white px-[25px]"
+            >
+              <button
+                type="button"
+                aria-label={t.nav.close}
+                onClick={() => setOpen(false)}
+                className="absolute right-0 top-0 flex h-[48px] w-[48px] items-center justify-center text-navy"
+              >
+                <span className="absolute h-[2px] w-[25px] rotate-45 bg-navy" />
+                <span className="absolute h-[2px] w-[25px] -rotate-45 bg-navy" />
+              </button>
+              <Link href={`/${locale}`} onClick={() => setOpen(false)} className="mt-[40px] block w-fit">
+                <Image src={tmkImages.logo} alt={siteConfig.name} width={123} height={60} className="h-[60px] w-auto" />
+              </Link>
+              <nav className="mt-[25px] flex flex-col gap-[14px]">
+                {navItems.map((item) => (
+                  <a
+                    key={item.key}
+                    href={localizedHref(item.href, locale)}
+                    onClick={() => setOpen(false)}
+                    className="text-[18px] font-medium leading-[23px] text-navy"
                   >
-                    {lang}
-                  </button>
+                    {t.nav[item.key]}
+                  </a>
                 ))}
-              </div>
-              <Button className="mt-4 w-full" onClick={() => { setOpen(false); openContactPopup(); }}>
-                {t.nav.contactUs}
-              </Button>
-            </nav>
+              </nav>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

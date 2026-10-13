@@ -7,8 +7,17 @@ export const siteConfig = {
   address: {
     ru: "Казахстан, г. Алматы, ул. Елебекова 10/1",
     en: "10/1 Elebekov St., Almaty, Kazakhstan",
+    kk: "Қазақстан, Алматы қ., Елебеков көш. 10/1",
+  },
+  /** Same coords as tmk-limited.com Tilda map marker */
+  map: {
+    lon: 76.946642,
+    lat: 43.229373,
+    zoom: 14,
   },
 };
+
+const badge = "/images/tmk/contact/badge.svg";
 
 export const tmkImages = {
   logo: "/images/tmk/logo/logo.svg",
@@ -21,10 +30,10 @@ export const tmkImages = {
     "/images/tmk/hero/slides/image_1.png",
   ],
   about: "/images/tmk/about/about.jpg",
-  aboutBadge: "/images/tmk/contact/badge.svg",
+  aboutBadge: badge,
   contact: {
     bg: "/images/tmk/contact/bg.png",
-    badge: "/images/tmk/contact/badge.svg",
+    badge,
   },
   directions: {
     realEstate: "/images/tmk/directions/real-estate.jpg",
@@ -32,6 +41,7 @@ export const tmkImages = {
     construction: "/images/tmk/directions/construction.jpg",
     telecom: "/images/tmk/directions/telecom.jpg",
     marketing: "/images/tmk/directions/marketing.jpg",
+    logistics: "/images/tmk/directions/logistics.png",
     horeca: "/images/tmk/directions/horeca.jpg",
   },
   projects: {

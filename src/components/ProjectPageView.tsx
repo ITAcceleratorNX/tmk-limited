@@ -2,126 +2,80 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/Button";
-import { useContactPopup } from "@/components/ContactPopupProvider";
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { TildaIn, TildaItem, TildaStagger } from "@/components/motion/TildaIn";
 import { useLanguage } from "@/components/LanguageProvider";
 import type { ProjectPageContent } from "@/lib/i18n/types";
+import { localizedProjectsIndex } from "@/lib/project-paths";
+import { tmkImages } from "@/lib/site";
 
 interface ProjectPageProps {
   content: ProjectPageContent;
   image: string;
+  heroImage?: string;
 }
 
-export function ProjectPageView({ content, image }: ProjectPageProps) {
-  const { t } = useLanguage();
-  const { openContactPopup } = useContactPopup();
+export function ProjectPageView({ content, image, heroImage }: ProjectPageProps) {
+  const { locale, t } = useLanguage();
+  const [firstWord, ...rest] = content.heading.split(" ");
 
   return (
     <>
       <Header />
       <main>
-        <section className="relative min-h-[50vh] overflow-hidden">
-          <TildaIn style="zoomin" mode="load" className="absolute inset-0">
-            <Image src={image} alt={content.heroTitle} fill className="object-cover" priority />
-          </TildaIn>
-          <div className="absolute inset-0 bg-navy/70" />
-          <div className="tilda-container relative flex min-h-[50vh] flex-col justify-end pb-12 pt-32 md:pb-16">
-            <TildaIn style="fadeindown" speed="text" mode="load" delay={0.15}>
-              <p className="mb-4 text-sm text-white/70">
-                <Link href="/" className="hover:text-gold">
-                  {t.footer.backHome}
-                </Link>
-                <span className="mx-2">/</span>
-                {t.completedProjects.heading}
-                <span className="mx-2">/</span>
-                {content.heroTitle}
-              </p>
-            </TildaIn>
-            <TildaIn style="fadeindown" speed="title" mode="load" delay={0.22}>
-              <h1 className="text-3xl font-semibold text-white md:text-5xl">
-                {content.heroTitle}
-              </h1>
-            </TildaIn>
+        <section className="relative flex min-h-[744px] items-end overflow-hidden pb-[74px] text-white">
+          <Image src={heroImage ?? image} alt="" fill priority className="object-cover" sizes="100vw" />
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="tilda-container relative">
+            <p className="mb-[49px] text-sm text-white/70">
+              <Link href={`/${locale}`}>{t.nav.home}</Link><span className="mx-5">/</span>
+              <Link href={localizedProjectsIndex(locale)}>{t.nav.projects}</Link><span className="mx-5">/</span>
+              <span className="text-gold">{content.heroTitle}</span>
+            </p>
+            <h1 className="text-[3rem] font-normal uppercase leading-[1.1] sm:text-[3.75rem]">{content.heroTitle}</h1>
+            <p className="mt-[27px] max-w-[660px] text-[17px] leading-[1.45]">{content.description[0]}</p>
           </div>
         </section>
 
-        <section className="section-pad bg-bg">
-          <div className="tilda-container">
-            <div className="grid gap-12 lg:grid-cols-2">
-              <TildaStagger>
-                <TildaItem style="fadeindown" speed="text">
-                  <p className="section-label">{content.label}</p>
-                </TildaItem>
-                <TildaItem style="fadeindown" speed="title">
-                  <h2 className="section-title">{content.heading}</h2>
-                </TildaItem>
-                {content.description.map((paragraph) => (
-                  <TildaItem key={paragraph} style="zoomin" speed="text">
-                    <p className="mt-4 text-base font-light leading-[1.55] text-text-muted">
-                      {paragraph}
-                    </p>
-                  </TildaItem>
-                ))}
-                <TildaItem style="zoomin" speed="text">
-                  <p className="mt-8 text-sm font-semibold text-navy">{content.missionLabel}</p>
-                  <p className="mt-3 text-base font-light text-text-muted">{content.mission}</p>
-                </TildaItem>
-              </TildaStagger>
-
-              <TildaStagger className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                {content.stats.map((stat) => (
-                  <TildaItem key={stat.label} style="zoomin" speed="item">
-                    <div className="border border-border bg-bg-muted p-6 text-center lg:text-left">
-                      <p className="text-3xl font-semibold text-gold md:text-4xl">{stat.value}</p>
-                      <p className="mt-2 text-xs font-medium uppercase tracking-wider text-text-muted">
-                        {stat.label}
-                      </p>
-                    </div>
-                  </TildaItem>
-                ))}
-              </TildaStagger>
+        <section className="bg-white">
+          <div className="tilda-container grid gap-12 pb-[96px] pt-[84px] lg:grid-cols-[minmax(0,1fr)_544px] lg:gap-14">
+            <div className="flex min-h-[564px] max-w-[580px] flex-col">
+              <p className="section-label">{content.label}</p>
+              <h2 className="section-title mt-5"><span className="text-gold">{firstWord}</span>{rest.length > 0 ? ` ${rest.join(" ")}` : ""}</h2>
+              <div className="mt-9 space-y-6 text-base leading-[1.55] text-navy">
+                {content.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+              <div className="mt-auto grid grid-cols-3 gap-5 pt-8">
+                {content.stats.map((stat) => <div key={stat.label}><p className="text-[26px] text-gold">{stat.value}</p><p className="mt-3 text-[15px] leading-[1.55] text-navy">{stat.label}</p></div>)}
+              </div>
+              <div className="mt-[45px] border-l-[3px] border-gold bg-[#f4f1eb] px-5 py-5">
+                <p className="text-[15px] text-gold">{content.missionLabel}</p>
+                <p className="mt-4 text-[15px] leading-[1.5] text-navy">{content.mission}</p>
+              </div>
+            </div>
+            <div className="relative min-h-[564px] overflow-hidden">
+              <Image src={image} alt={content.heroTitle} fill className="object-cover" sizes="(max-width:1200px) 100vw, 544px" />
+              <Image src={tmkImages.footerLogo} alt="" width={110} height={58} className="absolute bottom-10 right-9 w-[110px]" />
             </div>
           </div>
         </section>
 
-        <section className="section-pad bg-bg-muted">
+        <section className="bg-[#ecedf0] pb-[72px] pt-[80px]">
           <div className="tilda-container">
-            <TildaStagger>
-              <TildaItem style="fadeindown" speed="text">
-                <p className="section-label">{content.servicesLabel}</p>
-              </TildaItem>
-              <TildaItem style="fadeindown" speed="title">
-                <h2 className="section-title">{content.servicesHeading}</h2>
-              </TildaItem>
-            </TildaStagger>
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <p className="section-label">{content.servicesLabel}</p>
+            <h2 className="section-title mt-7 lg:mt-[37px] lg:!text-[40px] lg:!leading-[1.5]">{content.servicesHeading}</h2>
+            <div className="project-page-services-grid mt-9 grid gap-3 sm:grid-cols-2 lg:mt-[9px]">
               {content.services.map((service, index) => (
-                <TildaIn key={service} style="zoomin" speed="item" delay={index * 0.08}>
-                  <div className="flex gap-4 border border-border bg-white p-6">
-                    <span className="text-2xl font-semibold text-gold/50">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-sm font-light leading-relaxed text-text-muted">
-                      {service}
-                    </span>
-                  </div>
-                </TildaIn>
+                <div key={service} className="min-h-[185px] bg-white p-7 lg:min-h-[285px] lg:p-8">
+                  <span className="text-[26px] text-gold">{String(index + 1).padStart(2, "0")}</span>
+                  <p className="mt-14 text-[17px] leading-[1.4] text-navy">{service}</p>
+                </div>
               ))}
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-6">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-gold"
-              >
-                ← {t.footer.backHome}
-              </Link>
-              <Button onClick={openContactPopup}>{t.hero.cta}</Button>
-            </div>
           </div>
         </section>
+        <ContactSection />
       </main>
       <Footer />
     </>

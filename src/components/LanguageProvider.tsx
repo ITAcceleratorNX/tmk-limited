@@ -2,53 +2,40 @@
 
 import {
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
-  useState,
 } from "react";
-import { getTranslations, type Locale, type Translations } from "@/lib/i18n";
+import { usePathname } from "next/navigation";
+import {
+  getTranslations,
+  localeFromPathname,
+  type Locale,
+  type Translations,
+} from "@/lib/i18n";
 
 interface LanguageContextValue {
   locale: Locale;
   t: Translations;
-  setLocale: (locale: Locale) => void;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "tmk-locale";
-
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("ru");
-  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const locale = localeFromPathname(pathname);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (stored === "ru" || stored === "en") {
-      setLocaleState(stored);
-    }
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
     document.documentElement.lang = locale;
-    localStorage.setItem(STORAGE_KEY, locale);
-  }, [locale, mounted]);
-
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-  }, []);
+    document.documentElement.classList.toggle("locale-kk", locale === "kk");
+  }, [locale]);
 
   const value = useMemo(
     () => ({
       locale,
       t: getTranslations(locale),
-      setLocale,
     }),
-    [locale, setLocale],
+    [locale],
   );
 
   return (

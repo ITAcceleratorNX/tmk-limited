@@ -8,7 +8,7 @@ export const en: Translations = {
       "TMK Limited unites key industries — from real estate to agrotech — creating integrated business solutions.",
   },
   nav: {
-    home: "Home",
+    home: "Main",
     about: "About us",
     projects: "Projects",
     services: "Services",
@@ -34,15 +34,15 @@ export const en: Translations = {
       "We create integrated solutions focused on economic growth, technological development and innovation, implementing strategic projects in line with international business standards.",
     missionTags: [
       "Construction",
+      "Investment fund",
+      "HoReCa",
       "Drilling",
       "Agriculture",
-      "HoReCa",
-      "IT development",
-      "Investment fund",
-      "Telecommunications",
       "Digital marketing & production",
+      "IT development",
+      "Telecommunications",
     ],
-    readMore: "Read more",
+    readMore: "Read more about the company",
   },
   directions: {
     label: "Our services",
@@ -52,9 +52,9 @@ export const en: Translations = {
         id: "real-estate",
         title: "Commercial real estate",
         bullets: [
-          "Leasing and management of modern office spaces with full infrastructure and service support",
-          "Development and optimization of properties to increase efficiency and profitability",
-          "Warehouse solutions for logistics, e-commerce and industry",
+          "Leasing and management of modern office spaces with full infrastructure and service support;",
+          "Development and optimization of properties to increase efficiency and profitability;",
+          "Warehouse solutions for logistics, e-commerce and industry.",
         ],
         brands: [
           { name: "Valar Group", href: "https://tmk-limited.com/valar-group/en" },
@@ -68,13 +68,12 @@ export const en: Translations = {
         id: "agriculture",
         title: "Agriculture",
         bullets: [
-          "Investment in modern agrotechnologies for sustainable production",
-          "Development of innovative agribusiness solutions for food security and export",
+          "Investment in modern agrotechnologies for sustainable production;",
+          "Development of innovative agribusiness solutions for food security and export.",
         ],
         brands: [
           {
             name: "KazAgris Ventures",
-            href: "https://tmk-limited.com/kazagris-ventures/en",
           },
         ],
         image: tmkImages.directions.agriculture,
@@ -85,8 +84,8 @@ export const en: Translations = {
         id: "construction",
         title: "Construction & drilling",
         bullets: [
-          "High-quality projects with advanced engineering solutions",
-          "Sustainable and cost-effective development strategies",
+          "High-quality projects with advanced engineering solutions;",
+          "Sustainable and cost-effective development strategies.",
         ],
         brands: [
           { name: "Kazakhstan Grand Constructions LLP" },
@@ -101,17 +100,15 @@ export const en: Translations = {
         id: "telecom",
         title: "Telecom & IT",
         bullets: [
-          "Digital infrastructure for connectivity and business transformation",
-          "Smart technology integration for productivity and operational efficiency",
+          "Digital infrastructure for connectivity and business transformation;",
+          "Smart technology integration for productivity and operational efficiency.",
         ],
         brands: [
           {
             name: "QazConnect Telecom",
-            href: "https://tmk-limited.com/qazconnect-telecom/en",
           },
           {
             name: "TMK TechnoHorizon LLP",
-            href: "https://tmk-limited.com/tmk-technohorizon-llp/en",
           },
         ],
         image: tmkImages.directions.telecom,
@@ -122,14 +119,13 @@ export const en: Translations = {
         id: "marketing",
         title: "Digital marketing & content production",
         bullets: [
-          "Full-cycle digital agency with a professional production studio",
-          "Social media, commercial content and advertising campaigns",
-          "Films, commercials and corporate video production",
+          "Full-cycle digital agency with a professional production studio;",
+          "Social media, commercial content and advertising campaigns;",
+          "Films, commercials and corporate video production.",
         ],
         brands: [
           {
             name: "Qaitadan Creative Partners",
-            href: "https://tmk-limited.com/qaitadan-creative-partners/en",
           },
         ],
         image: tmkImages.directions.marketing,
@@ -137,12 +133,29 @@ export const en: Translations = {
         panelVariant: "gold",
       },
       {
+        id: "logistics",
+        title: "Logistics",
+        bullets: [
+          "Comprehensive logistics solutions;",
+          "Supply chain management and freight routing;",
+          "Transparency and optimization guaranteed at every stage of transport.",
+        ],
+        brands: [
+          {
+            name: "Streamline Logistics",
+          },
+        ],
+        image: tmkImages.directions.logistics,
+        panelSide: "right",
+        panelVariant: "navy",
+      },
+      {
         id: "horeca",
         title: "HoReCa",
         bullets: [
-          "Coffee shop network in business centers and catering for meetings, shoots and events",
-          "Gastronomy project focused on corporate dining and event service",
-          "Consistent quality, reliable logistics and high service standards",
+          "Coffee shop network in business centers and catering for meetings, shoots and events;",
+          "Gastronomy project focused on corporate dining and event service;",
+          "Consistent quality, reliable logistics and high service standards.",
         ],
         brands: [
           { name: "Table 61", href: "https://tmk-limited.com/table61/en" },
@@ -156,39 +169,65 @@ export const en: Translations = {
   partners: {
     label: "Partners",
     heading: "Our partners",
-    hint: "Hover to pause",
-    items: [
-      { name: "Yandex", logo: "/images/tmk/partners/yandex.png" },
-      { name: "Bosch", logo: "/images/tmk/partners/bosch.svg" },
-      { name: "Chevron", logo: "/images/tmk/partners/chevron.svg" },
-      { name: "PUBG Mobile", logo: "/images/tmk/partners/pubg.png" },
-      { name: "Highland Gold", logo: "/images/tmk/partners/highland-gold.png" },
-      { name: "Bonduelle", logo: "/images/tmk/partners/bonduelle.png" },
-      { name: "Magnum Cash&Carry", logo: "/images/tmk/partners/magnum.png" },
-      { name: "Coca-Cola", logo: "/images/tmk/partners/coca-cola.png" },
-      { name: "Kcell", logo: "/images/tmk/partners/kcell.png" },
-    ],
+    hint: "Scroll to see more",
   },
   completedProjects: {
-    label: "Completed projects",
-    heading: "Completed projects",
-    viewMore: "Learn more",
+    label: "Projects",
+    heading: "Projects",
     items: [
       {
+        id: "technohorizon",
+        title: "TMK TechnoHorizon LLP",
+        excerpt:
+          "A resident company of the Astana International Financial Centre (AIFC), specializing in IT solutions for warehouse, logistics, office infrastructure and HoReCa.",
+      },
+      {
+        id: "workflow",
+        title: "Workflow",
+        excerpt:
+          "A company providing next-generation serviced offices. We offer fully ready-to-work spaces: from individual offices.",
+      },
+      {
         id: "horeca",
-        slug: "horeca",
         title: "Table 61 Catering",
         excerpt:
-          "Coffee shops in business centers and catering for corporate events.",
-        image: tmkImages.projects.horeca,
+          "A gastronomy project combining a coffee shop network in business centers with catering for events.",
+      },
+      {
+        id: "valar",
+        title: "Valar Group",
+        excerpt:
+          "We lease classic storage rooms for individuals and businesses, as well as cloud storage with remote management and on-demand delivery.",
+      },
+      {
+        id: "qazconnect",
+        title: "Qazconnect Telecom",
+        excerpt:
+          "A telecommunications company providing modern internet and digital connectivity solutions for private and corporate clients.",
+      },
+      {
+        id: "tm3ki",
+        title: "TM-3KI Drilling LLP",
+        excerpt:
+          "A Kazakhstan company specializing in drilling works for solid minerals.",
+      },
+      {
+        id: "qaitadan",
+        title: "Qaitadan Creative Partners",
+        excerpt:
+          "A full cycle of creative solutions: from idea and visual concept to production, digital communications and marketing.",
       },
       {
         id: "kazagris",
-        slug: "kazagris",
         title: "KazAgris Ventures",
         excerpt:
-          "Modern beef farm and premium meat production from pasture to dry-aged steaks.",
-        image: tmkImages.projects.kazagris,
+          "A modern farm specializing in beef cattle breeding and premium meat production.",
+      },
+      {
+        id: "streamline",
+        title: "Streamline Logistics",
+        excerpt:
+          "A logistics company specializing in freight transportation, warehouse logistics and supply chain management.",
       },
     ],
   },
@@ -199,12 +238,14 @@ export const en: Translations = {
     addressLabel: "Address",
     addressLine1: "Almaty, Kazakhstan,",
     addressLine2: "10/1 Elebekov St.",
+    hoursLabel: "Working hours",
     hoursTime: "9:00 AM – 6:00 PM",
     hoursDays: "Weekdays (Mon–Fri)",
+    mapTitle: "Almaty map",
+    altContact: "Or contact us in any convenient way:",
     footerContact: "Contact us",
     form: {
       name: "Your name",
-      phone: "Phone",
       email: "Enter E-mail",
       message: "Describe your request",
       submit: "Submit",
