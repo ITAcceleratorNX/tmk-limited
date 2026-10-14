@@ -1,4 +1,4 @@
-export type Locale = "ru" | "en" | "kk";
+export type Locale = "ru" | "en" | "kz";
 
 export interface StatItem {
   value: string;
@@ -107,6 +107,8 @@ export interface Translations {
       privacyLink: string;
       success: string;
       error: string;
+      rateLimit: string;
+      invalidPhone: string;
     };
   };
   footer: {

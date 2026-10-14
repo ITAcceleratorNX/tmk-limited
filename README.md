@@ -10,7 +10,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Языки: **RU** (`/`, `/ru`), **EN** (`/en`), **KK** (`/kk`). Суффиксы работают и для `/about`, `/projects`, `/contacts` и публичных URL проектов.
+Языки: **RU** (`/`, `/ru`), **EN** (`/en`), **KZ** (`/kz`). Суффиксы работают и для `/about`, `/projects`, `/contacts`, `/policy` и публичных URL проектов.
 
 ## Production checklist
 
@@ -32,7 +32,7 @@ npm run dev
 
 | URL | Описание |
 |-----|----------|
-| `/`, `/ru`, `/en`, `/kk` | Лендинг |
+| `/`, `/ru`, `/en`, `/kz` | Лендинг |
 | `/about`, `/about/ru\|en\|kk` | О компании |
 | `/projects`, `/projects/ru\|en\|kk` | Список проектов |
 | `/projects/[slug]` | Карточки проектов (streamline, valar, …) |

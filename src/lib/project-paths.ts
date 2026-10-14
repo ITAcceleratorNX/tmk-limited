@@ -38,17 +38,17 @@ export const projectThumbnails: Record<string, string> = {
   workflow: "/images/tmk/projects/workflow.jpg",
 };
 
-/** Keep /en|/kk|/ru suffix — project rewrites require an explicit locale segment. */
+/** Keep /en|/kz|/ru suffix — project rewrites require an explicit locale segment. */
 export function projectHref(projectId: string, locale: Locale): string {
   const path = projectPaths[projectId];
   if (!path) return localizedProjectsIndex(locale);
   if (locale === "ru") return path;
-  if (locale === "kk") return path.replace(/\/ru$/, "/kk");
+  if (locale === "kz") return path.replace(/\/ru$/, "/kz");
   return path.replace(/\/ru$/, "/en");
 }
 
 export function localizedProjectsIndex(locale: Locale): string {
   if (locale === "en") return "/projects";
-  if (locale === "kk") return "/projects/kk";
+  if (locale === "kz") return "/projects/kz";
   return "/projects/ru";
 }

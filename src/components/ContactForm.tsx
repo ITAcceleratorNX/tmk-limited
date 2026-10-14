@@ -5,16 +5,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PhoneInput } from "@/components/PhoneInput";
+import { localizedHref } from "@/lib/i18n";
 
 export function ContactForm({ includeCompany = false, popup = false }: { includeCompany?: boolean; popup?: boolean }) {
   const { locale, t } = useLanguage();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState(t.contact.form.error);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("loading");
+    setErrorMessage(t.contact.form.error);
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
     payload.locale = locale;
 
@@ -24,10 +28,15 @@ export function ContactForm({ includeCompany = false, popup = false }: { include
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!response.ok) throw new Error("Request failed");
+      if (!response.ok) {
+        setErrorMessage(response.status === 429 ? t.contact.form.rateLimit : t.contact.form.error);
+        setStatus("error");
+        return;
+      }
+      form.reset();
       setStatus("success");
-      e.currentTarget.reset();
     } catch {
+      setErrorMessage(t.contact.form.error);
       setStatus("error");
     }
   }
@@ -52,7 +61,7 @@ export function ContactForm({ includeCompany = false, popup = false }: { include
         </motion.div>
       ) : (
         <motion.form key="form" onSubmit={handleSubmit} className={popup ? "space-y-[25px]" : "space-y-4"}>
-          <input type="text" name="_website" className="hidden" tabIndex={-1} autoComplete="off" />
+          <input type="text" name="_website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
           <div className="relative">
             <input
@@ -64,9 +73,22 @@ export function ContactForm({ includeCompany = false, popup = false }: { include
             {!popup && <span aria-hidden className="pointer-events-none absolute right-1 top-4 text-xs text-gold">*</span>}
           </div>
 
-          {includeCompany && <input name="company" placeholder="Название компании" className={`form-input ${popup ? "!h-[50px] !py-0 !text-[14px]" : ""}`} />}
+          {includeCompany && (
+            <input
+              name="company"
+              placeholder="Название компании"
+              className={`form-input ${popup ? "!h-[50px] !py-0 !text-[14px]" : ""}`}
+            />
+          )}
 
-          <PhoneInput id="phone" name="phone" required placeholder="(000) 000-00-00" compact={popup} />
+          <PhoneInput
+            id="phone"
+            name="phone"
+            required
+            placeholder="(000) 000-00-00"
+            compact={popup}
+            invalidMessage={t.contact.form.invalidPhone}
+          />
 
           <div className="relative">
             <input
@@ -81,14 +103,27 @@ export function ContactForm({ includeCompany = false, popup = false }: { include
 
           <div className="relative">
             {popup ? (
-              <input name="message" required placeholder={t.contact.form.message} className="form-input !h-[50px] !py-0 !text-[14px]" />
+              <input
+                name="message"
+                required
+                placeholder={t.contact.form.message}
+                className="form-input !h-[50px] !py-0 !text-[14px]"
+              />
             ) : (
-              <textarea name="message" required rows={4} placeholder={t.contact.form.message} className="form-input resize-none" />
+              <textarea
+                name="message"
+                required
+                rows={4}
+                placeholder={t.contact.form.message}
+                className="form-input resize-none"
+              />
             )}
             {!popup && <span aria-hidden className="pointer-events-none absolute right-1 top-4 text-xs text-gold">*</span>}
           </div>
 
-          <label className={`flex items-start gap-3 text-text-muted ${popup ? "text-[12px] leading-[16px]" : "text-sm leading-relaxed"}`}>
+          <label
+            className={`flex items-start gap-3 text-text-muted ${popup ? "text-[12px] leading-[16px]" : "text-sm leading-relaxed"}`}
+          >
             <input
               type="checkbox"
               name="privacy"
@@ -99,15 +134,13 @@ export function ContactForm({ includeCompany = false, popup = false }: { include
             />
             <span>
               {t.contact.form.privacyPrefix}{" "}
-              <Link href="/policy" className="text-navy underline hover:text-gold">
+              <Link href={localizedHref("/policy/ru", locale)} className="text-navy underline hover:text-gold">
                 {t.contact.form.privacyLink}
               </Link>
             </span>
           </label>
 
-          {status === "error" && (
-            <p className="text-sm text-red-400">{t.contact.form.error}</p>
-          )}
+          {status === "error" && <p className="text-sm text-red-400">{errorMessage}</p>}
 
           <button
             type="submit"

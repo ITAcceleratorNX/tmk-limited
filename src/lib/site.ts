@@ -7,7 +7,7 @@ export const siteConfig = {
   address: {
     ru: "Казахстан, г. Алматы, ул. Елебекова 10/1",
     en: "10/1 Elebekov St., Almaty, Kazakhstan",
-    kk: "Қазақстан, Алматы қ., Елебеков көш. 10/1",
+    kz: "Қазақстан, Алматы қ., Елебеков көш. 10/1",
   },
   /** Same coords as tmk-limited.com Tilda map marker */
   map: {

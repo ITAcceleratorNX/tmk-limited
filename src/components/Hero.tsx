@@ -74,7 +74,7 @@ export function Hero() {
           <h1 className="hero-title max-w-[850px] text-[2rem] font-medium uppercase leading-[35.2px] text-white sm:text-[2.5rem] lg:font-normal lg:leading-[1.1]">
             {locale === "ru" ? (
               <>Создаём ценность<br />в ключевых отраслях:<br />от недвижимости<span className="hidden sm:inline"> </span><br className="sm:hidden" />до IT</>
-            ) : locale === "kk" ? (
+            ) : locale === "kz" ? (
               <>Негізгі салаларда<br />құн жасаймыз:<br />мүліктен IT-ге дейін</>
             ) : (
               <>{titleLead}{titleRest ? <><br />{titleRest}</> : null}</>

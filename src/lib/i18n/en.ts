@@ -253,6 +253,8 @@ export const en: Translations = {
       privacyLink: "Privacy Policy",
       success: "Request sent. We will contact you shortly.",
       error: "Failed to send request. Please try again later.",
+      rateLimit: "Too many attempts. Please wait a minute and try again.",
+      invalidPhone: "Enter a full phone number (10 digits).",
     },
   },
   footer: {

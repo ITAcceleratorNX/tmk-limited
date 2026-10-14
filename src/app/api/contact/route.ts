@@ -84,7 +84,7 @@ export async function POST(request: Request) {
       return fail(400);
     }
 
-    const locale = body.locale === "en" || body.locale === "kk" ? body.locale : "ru";
+    const locale = body.locale === "en" || body.locale === "kz" ? body.locale : "ru";
     const text = formatLead({ name, phone, email, message, company, locale, ip });
 
     const host = process.env.SMTP_HOST;

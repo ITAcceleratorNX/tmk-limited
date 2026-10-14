@@ -1,9 +1,15 @@
 const hits = new Map<string, { count: number; resetAt: number }>();
 
 const WINDOW_MS = 60_000;
-const MAX_REQUESTS = 5;
+const MAX_REQUESTS = process.env.NODE_ENV === "development" ? 200 : 20;
 
 export function rateLimit(ip: string): boolean {
+  // Local Next often has no real IP → all clients share "unknown".
+  // Don't block legitimate form testing in development.
+  if (process.env.NODE_ENV === "development" && ip === "unknown") {
+    return true;
+  }
+
   const now = Date.now();
   const entry = hits.get(ip);
 

@@ -20,7 +20,7 @@ const ruTagOrder = [
 const DEVELOP_MARKERS: Record<string, string> = {
   ru: "Помимо недвижимости, TMK Limited активно развивает:",
   en: "Beyond real estate, TMK Limited actively develops:",
-  kk: "Жылжымайтын мүліктен бөлек, TMK Limited белсенді дамытады:",
+  kz: "Жылжымайтын мүліктен бөлек, TMK Limited белсенді дамытады:",
 };
 
 export function AboutSection() {
@@ -37,7 +37,7 @@ export function AboutSection() {
           <h2 className="max-w-[650px] text-[2.25rem] font-normal leading-[1.08] text-navy sm:text-[3rem]">
             {locale === "ru" ? (
               <><span className="text-[#737b86]">TMK Limited — это</span><br />диверсифицированный<br />холдинг</>
-            ) : locale === "kk" ? (
+            ) : locale === "kz" ? (
               <><span className="text-[#737b86]">TMK Limited —</span><br />әртараптандырылған<br />холдинг</>
             ) : (
               t.about.heading

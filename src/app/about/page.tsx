@@ -12,61 +12,61 @@ const values = [
   {
     ru: "Эффективность",
     en: "Efficiency",
-    kk: "Тиімділік",
+    kz: "Тиімділік",
     ruText: "Упрощаем процессы, повышаем результат.",
     enText: "We simplify processes and improve results.",
-    kkText: "Процестерді жеңілдетіп, нәтижені арттырамыз.",
+    kzText: "Процестерді жеңілдетіп, нәтижені арттырамыз.",
     icon: "/images/tmk/about/value-efficiency.svg",
   },
   {
     ru: "Инновации",
     en: "Innovation",
-    kk: "Инновация",
+    kz: "Инновация",
     ruText: "Внедряем технологии в каждый проект.",
     enText: "We bring technology into every project.",
-    kkText: "Әр жобаға технологияларды енгіземіз.",
+    kzText: "Әр жобаға технологияларды енгіземіз.",
     icon: "/images/tmk/about/value-innovation.svg",
   },
   {
     ru: "Клиенто-ориентированность",
     en: "Customer focus",
-    kk: "Клиентке бағдар",
+    kz: "Клиентке бағдар",
     ruText: "Создаём комфорт и надёжность для партнёров.",
     enText: "We create comfort and reliability for partners.",
-    kkText: "Серіктестерге жайлылық пен сенімділік жасаймыз.",
+    kzText: "Серіктестерге жайлылық пен сенімділік жасаймыз.",
     icon: "/images/tmk/about/value-customer-focus.svg",
   },
   {
     ru: "Ответственность",
     en: "Responsibility",
-    kk: "Жауапкершілік",
+    kz: "Жауапкершілік",
     ruText: "Действуем прозрачно и устойчиво.",
     enText: "We act transparently and sustainably.",
-    kkText: "Ашық және тұрақты әрекет етеміз.",
+    kzText: "Ашық және тұрақты әрекет етеміз.",
     icon: "/images/tmk/about/value-responsibility.svg",
   },
   {
     ru: "Гибкость",
     en: "Flexibility",
-    kk: "Икемділік",
+    kz: "Икемділік",
     ruText: "Быстро адаптируемся под задачи и рынок.",
     enText: "We adapt quickly to tasks and the market.",
-    kkText: "Міндеттер мен нарыққа тез бейімделеміз.",
+    kzText: "Міндеттер мен нарыққа тез бейімделеміз.",
     icon: "/images/tmk/about/value-flexibility.svg",
   },
   {
     ru: "Команда",
     en: "Team",
-    kk: "Команда",
+    kz: "Команда",
     ruText: "Объединяем опыт и амбиции для общего роста.",
     enText: "We unite experience and ambition for shared growth.",
-    kkText: "Ортақ өсу үшін тәжірибе мен амбицияны біріктіреміз.",
+    kzText: "Ортақ өсу үшін тәжірибе мен амбицияны біріктіреміз.",
     icon: "/images/tmk/about/value-team.svg",
   },
 ];
 
-function pick(locale: Locale, ru: string, en: string, kk: string) {
-  if (locale === "kk") return kk;
+function pick(locale: Locale, ru: string, en: string, kz: string) {
+  if (locale === "kz") return kz;
   if (locale === "en") return en;
   return ru;
 }
@@ -85,7 +85,7 @@ function AboutContent() {
             <div>
               <p className="mb-11 text-sm text-white/60"><Link href={`/${locale}`}>{t.nav.home}</Link><span className="mx-5">/</span>{t.nav.about}</p>
               <h1 className="text-[3rem] font-normal leading-[1.12] sm:text-[3.75rem] lg:-translate-y-[10px]">
-                {locale === "ru" ? <>О компании<br />TMK Limited LLP</> : locale === "kk" ? <>TMK Limited LLP<br />жайлы</> : <>About<br />TMK Limited LLP</>}
+                {locale === "ru" ? <>О компании<br />TMK Limited LLP</> : locale === "kz" ? <>TMK Limited LLP<br />жайлы</> : <>About<br />TMK Limited LLP</>}
               </h1>
             </div>
             <div className="pb-1">
@@ -113,8 +113,8 @@ function AboutContent() {
               <article key={value.ru} className={`flex min-h-[305px] flex-col items-center justify-between p-8 text-center ${index === 3 ? "bg-gold text-white" : index === 2 ? "border border-gold bg-white text-navy" : "bg-[#ecedf0] text-navy"}`}>
                 <Image src={value.icon} alt="" width={54} height={54} className="h-[54px] w-[54px]" />
                 <div>
-                  <h3 className="text-[26px] font-normal leading-tight">{pick(locale, value.ru, value.en, value.kk)}</h3>
-                  <p className="mx-auto mt-3 max-w-[230px] text-[15px] leading-[1.45]">{pick(locale, value.ruText, value.enText, value.kkText)}</p>
+                  <h3 className="text-[26px] font-normal leading-tight">{pick(locale, value.ru, value.en, value.kz)}</h3>
+                  <p className="mx-auto mt-3 max-w-[230px] text-[15px] leading-[1.45]">{pick(locale, value.ruText, value.enText, value.kzText)}</p>
                 </div>
                 <p className={`text-xs ${index === 3 ? "text-white/75" : "text-gold"}`}>{String(index + 1).padStart(2, "0")} - {pick(locale, "Ценность", "Value", "Құндылық")}</p>
               </article>
@@ -129,7 +129,7 @@ function AboutContent() {
               <h2 className="max-w-[780px] text-[2.5rem] leading-[1.15] font-normal sm:text-[3rem]">
                 {locale === "ru" ? (
                   <>Мы строим партнёрство, основанное на <span className="text-gold">доверии, честности</span> и стремлении к общему росту.</>
-                ) : locale === "kk" ? (
+                ) : locale === "kz" ? (
                   <>Біз <span className="text-gold">сенім мен адалдыққа</span>, ортақ өсуге негізделген әріптестік құрамыз.</>
                 ) : (
                   <>We build partnerships based on <span className="text-gold">trust, honesty</span> and shared growth.</>

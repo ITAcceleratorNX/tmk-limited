@@ -1,7 +1,7 @@
 import type { Translations } from "./types";
 import { tmkImages } from "../site";
 
-export const kk: Translations = {
+export const kz: Translations = {
   meta: {
     title: "TMK Limited — негізгі салаларда құн жасаймыз",
     description:
@@ -253,6 +253,8 @@ export const kk: Translations = {
       privacyLink: "құпиялылық саясатының шарттарымен",
       success: "Өтінім жіберілді. Жақында сізбен хабарласамыз.",
       error: "Жіберу мүмкін болмады. Кейінірек қайталап көріңіз.",
+      rateLimit: "Тым көп әрекет. Бір минут күтіп, қайталап көріңіз.",
+      invalidPhone: "Толық телефон нөмірін енгізіңіз (10 цифр).",
     },
   },
   footer: {

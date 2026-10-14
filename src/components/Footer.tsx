@@ -78,7 +78,7 @@ export function Footer() {
             />
             <div className="space-y-2 text-[11px] uppercase text-white/50">
               <p>{t.footer.copyright}</p>
-              <Link href="/policy" className="hover:text-gold">{t.footer.privacy}</Link>
+              <Link href={localizedHref("/policy/ru", locale)} className="hover:text-gold">{t.footer.privacy}</Link>
             </div>
           </TildaIn>
 

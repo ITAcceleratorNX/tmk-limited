@@ -1,9 +1,4 @@
 import type { NextConfig } from "next";
-import bundleAnalyzer from "@next/bundle-analyzer";
-
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
 
 const nextConfig: NextConfig = {
   images: {
@@ -13,16 +8,25 @@ const nextConfig: NextConfig = {
     return [
       { source: "/ru", destination: "/" },
       { source: "/en", destination: "/" },
-      { source: "/kk", destination: "/" },
+      { source: "/kz", destination: "/" },
       { source: "/about/ru", destination: "/about" },
       { source: "/about/en", destination: "/about" },
-      { source: "/about/kk", destination: "/about" },
+      { source: "/about/kz", destination: "/about" },
       { source: "/projects/ru", destination: "/projects" },
       { source: "/projects/en", destination: "/projects" },
-      { source: "/projects/kk", destination: "/projects" },
+      { source: "/projects/kz", destination: "/projects" },
       { source: "/contacts/ru", destination: "/contacts" },
       { source: "/contacts/en", destination: "/contacts" },
+      { source: "/contacts/kz", destination: "/contacts" },
+      { source: "/policy/ru", destination: "/policy" },
+      { source: "/policy/en", destination: "/policy" },
+      { source: "/policy/kz", destination: "/policy" },
+      // legacy Kazakh suffix
+      { source: "/kk", destination: "/" },
+      { source: "/about/kk", destination: "/about" },
+      { source: "/projects/kk", destination: "/projects" },
       { source: "/contacts/kk", destination: "/contacts" },
+      { source: "/policy/kk", destination: "/policy" },
       { source: "/streamline-logistics/ru", destination: "/projects/streamline" },
       { source: "/kazagris-ventures/ru", destination: "/projects/kazagris" },
       { source: "/qaitadan-creative-partners/ru", destination: "/projects/qaitadan" },
@@ -41,17 +45,21 @@ const nextConfig: NextConfig = {
       { source: "/table61/en", destination: "/projects/horeca" },
       { source: "/tmk-technohorizon-llp/en", destination: "/projects/technohorizon" },
       { source: "/workflow/en", destination: "/projects/workflow" },
-      { source: "/streamline-logistics/kk", destination: "/projects/streamline" },
-      { source: "/kazagris-ventures/kk", destination: "/projects/kazagris" },
-      { source: "/qaitadan-creative-partners/kk", destination: "/projects/qaitadan" },
-      { source: "/valar-group/kk", destination: "/projects/valar" },
-      { source: "/tm-3ki-drilling-llp/kk", destination: "/projects/tm3ki" },
-      { source: "/qazconnect-telecom/kk", destination: "/projects/qazconnect" },
-      { source: "/table61/kk", destination: "/projects/horeca" },
-      { source: "/tmk-technohorizon-llp/kk", destination: "/projects/technohorizon" },
-      { source: "/workflow/kk", destination: "/projects/workflow" },
+      { source: "/streamline-logistics/kz", destination: "/projects/streamline" },
+      { source: "/kazagris-ventures/kz", destination: "/projects/kazagris" },
+      { source: "/qaitadan-creative-partners/kz", destination: "/projects/qaitadan" },
+      { source: "/valar-group/kz", destination: "/projects/valar" },
+      { source: "/tm-3ki-drilling-llp/kz", destination: "/projects/tm3ki" },
+      { source: "/qazconnect-telecom/kz", destination: "/projects/qazconnect" },
+      { source: "/table61/kz", destination: "/projects/horeca" },
+      { source: "/tmk-technohorizon-llp/kz", destination: "/projects/technohorizon" },
+      { source: "/workflow/kz", destination: "/projects/workflow" },
     ];
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default async function config() {
+  if (process.env.ANALYZE !== "true") return nextConfig;
+  const { default: bundleAnalyzer } = await import("@next/bundle-analyzer");
+  return bundleAnalyzer({ enabled: true })(nextConfig);
+}

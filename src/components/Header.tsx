@@ -56,12 +56,12 @@ export function Header() {
     };
   }, [open]);
 
-  const hasHero = ["/", "/ru", "/en", "/kk", "/about", "/about/ru", "/about/en", "/about/kk"].includes(pathname) ||
-    (pathname.startsWith("/projects/") && pathname !== "/projects/ru" && pathname !== "/projects/en" && pathname !== "/projects/kk") ||
+  const hasHero = ["/", "/ru", "/en", "/kz", "/about", "/about/ru", "/about/en", "/about/kz"].includes(pathname) ||
+    (pathname.startsWith("/projects/") && pathname !== "/projects/ru" && pathname !== "/projects/en" && pathname !== "/projects/kz") ||
     Object.values(projectPaths).some((path) =>
       pathname === path ||
       pathname === path.replace(/\/ru$/, "/en") ||
-      pathname === path.replace(/\/ru$/, "/kk"),
+      pathname === path.replace(/\/ru$/, "/kz"),
     );
   const lightHeader = !hasHero || scrolled || !onHero;
 

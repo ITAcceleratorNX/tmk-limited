@@ -179,7 +179,7 @@ function ProjectContent({ slug }: { slug: string }) {
               <div className="border border-gold px-8 py-7">
                 <p className="text-[3.75rem] leading-none">100+</p>
                 <p className="mt-6 text-base">
-                  {locale === "kk" ? "Корпоративтік клиент" : isRu ? "Корпоративных клиентов" : "Corporate clients"}
+                  {locale === "kz" ? "Корпоративтік клиент" : isRu ? "Корпоративных клиентов" : "Corporate clients"}
                 </p>
               </div>
             )}
@@ -188,7 +188,7 @@ function ProjectContent({ slug }: { slug: string }) {
         <section className="bg-white">
           <div className="tilda-container grid gap-12 pb-[88px] pt-[84px] lg:grid-cols-[minmax(0,1fr)_544px] lg:gap-14">
             <div className="flex max-w-[545px] flex-col">
-              <p className="section-label">{locale === "kk" ? "Біз туралы" : isRu ? "Немного о нас" : "About us"}</p>
+              <p className="section-label">{locale === "kz" ? "Біз туралы" : isRu ? "Немного о нас" : "About us"}</p>
               <h2 className="section-title mt-5"><span className="text-gold">{titleWords[0]}</span>{titleWords.length > 1 ? ` ${titleWords.slice(1).join(" ")}` : ""}</h2>
               <div className="mt-9 space-y-6 text-[16px] leading-[1.55] text-navy">
                 {(isRu ? details.paragraphs : [project.excerpt]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}

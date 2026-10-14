@@ -99,23 +99,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Gilroy lacks Kazakh letters — use one consistent face for kk */
-html[lang="kk"],
-html.locale-kk,
-html[lang="kk"] body,
-html.locale-kk body {
+/* Gilroy lacks Kazakh letters — use one consistent face for kz */
+html[lang="kz"],
+html.locale-kz,
+html[lang="kz"] body,
+html.locale-kz body {
   font-family: var(--font-noto-sans), "Noto Sans", "Gillroy", Arial, sans-serif;
 }
 
 /* ALL CAPS looks broken with long Kazakh words */
-html[lang="kk"] .hero-title,
-html.locale-kk .hero-title,
-html[lang="kk"] h1.uppercase,
-html.locale-kk h1.uppercase,
-html[lang="kk"] .section-title,
-html.locale-kk .section-title,
-html[lang="kk"] .section-label,
-html.locale-kk .section-label {
+html[lang="kz"] .hero-title,
+html.locale-kz .hero-title,
+html[lang="kz"] h1.uppercase,
+html.locale-kz h1.uppercase,
+html[lang="kz"] .section-title,
+html.locale-kz .section-title,
+html[lang="kz"] .section-label,
+html.locale-kz .section-label {
   text-transform: none;
   letter-spacing: normal;
 }
@@ -350,10 +350,32 @@ html.locale-kk .section-label {
   }
 }
 
+@keyframes partners-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.partners-marquee-track {
+  animation: partners-marquee-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+.group:hover .partners-marquee-track {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .partners-marquee-track {
+    animation: none !important;
   }
 }

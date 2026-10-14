@@ -4,7 +4,7 @@ import { projectPaths } from "@/lib/project-paths";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pagePaths = ["/about/ru", "/contacts/ru", "/projects/ru"] as const;
-  const withKk = (path: string) => path.replace(/\/ru$/, "/kk");
+  const withKz = (path: string) => path.replace(/\/ru$/, "/kz");
 
   return [
     {
@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${siteConfig.url}/kk`,
+      url: `${siteConfig.url}/kz`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
       },
       {
-        url: `${siteConfig.url}${withKk(path)}`,
+        url: `${siteConfig.url}${withKz(path)}`,
         lastModified: new Date(),
         changeFrequency: "monthly" as const,
         priority: 0.8,
@@ -41,17 +41,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
       },
       {
-        url: `${siteConfig.url}${withKk(path)}`,
+        url: `${siteConfig.url}${withKz(path)}`,
         lastModified: new Date(),
         changeFrequency: "monthly" as const,
         priority: 0.7,
       },
     ]),
-    {
-      url: `${siteConfig.url}/policy`,
+    ...(["/policy/ru", "/policy/en", "/policy/kz"] as const).map((path) => ({
+      url: `${siteConfig.url}${path}`,
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.3,
-    },
+    })),
   ];
 }

@@ -27,7 +27,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.documentElement.classList.toggle("locale-kk", locale === "kk");
+    document.documentElement.classList.toggle("locale-kz", locale === "kz");
   }, [locale]);
 
   const value = useMemo(
