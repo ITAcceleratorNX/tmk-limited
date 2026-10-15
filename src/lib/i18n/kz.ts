@@ -35,12 +35,9 @@ export const kz: Translations = {
     missionTags: [
       "Құрылыс",
       "Инвестициялық қор",
-      "HoReCa",
       "Бұрғылау",
-      "Ауыл шаруашылығы",
       "Цифрлық маркетинг және продакшн",
       "IT-әзірлеу",
-      "Телекоммуникация",
     ],
     readMore: "Компания туралы толығырақ",
   },
@@ -170,6 +167,10 @@ export const kz: Translations = {
     label: "Серіктестер",
     heading: "Біздің серіктестер",
     hint: "Толығырақ көру үшін айналдырыңыз",
+  },
+  completedDirections: {
+    label: "Аяқталған жобалар",
+    heading: "Аяқталған жобалар",
   },
   completedProjects: {
     label: "Жобалар",

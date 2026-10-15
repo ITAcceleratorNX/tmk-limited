@@ -16,19 +16,19 @@ export function ContactSection() {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      <div className="tilda-container relative py-16 lg:flex lg:min-h-[740px] lg:items-center lg:justify-between lg:gap-12 lg:py-[110px]">
+      <div className="tilda-container relative py-10 min-[400px]:py-14 sm:py-16 lg:flex lg:min-h-[740px] lg:items-center lg:justify-between lg:gap-12 lg:py-[110px]">
         <div className="hidden lg:flex lg:w-[47.5%] lg:shrink-0 lg:items-center lg:justify-center">
           <Image src={tmkImages.contact.badge} alt="" width={192} height={94} className="w-[192px] lg:-translate-y-[30px]" />
         </div>
 
-        <div className="flex justify-center lg:w-[605px] lg:shrink-0 lg:justify-end">
-          <TildaIn style="zoomin" className="w-full">
-            <div className="form-panel bg-white p-8 md:p-[40px]">
+        <div className="flex w-full justify-center lg:w-[605px] lg:shrink-0 lg:justify-end">
+          <TildaIn style="zoomin" className="w-full max-w-[605px]">
+            <div className="form-panel bg-white p-5 min-[400px]:p-7 sm:p-8 md:p-[40px]">
               <h2 className="section-title">{t.contact.title}</h2>
-              <p className="mt-6 max-w-[500px] text-lg font-normal leading-[1.45] text-navy">
+              <p className="mt-4 max-w-[500px] text-base font-normal leading-[1.45] text-navy min-[400px]:mt-6 min-[400px]:text-lg">
                 {t.contact.description}
               </p>
-              <div className="mt-8">
+              <div className="mt-6 min-[400px]:mt-8">
                 <ContactForm />
               </div>
             </div>

@@ -67,11 +67,11 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="hero-content tilda-container relative flex min-h-[100svh] flex-col justify-end pb-[56px] pt-36"
+        className="hero-content tilda-container relative flex min-h-[100svh] flex-col justify-end pb-10 pt-28 min-[400px]:pb-[56px] min-[400px]:pt-36"
         style={{ y: contentY, opacity }}
       >
         <TildaIn style="fadeindown" speed="title" delay={0.2} mode="load">
-          <h1 className="hero-title max-w-[850px] text-[2rem] font-medium uppercase leading-[35.2px] text-white sm:text-[2.5rem] lg:font-normal lg:leading-[1.1]">
+          <h1 className="hero-title max-w-[850px] text-[1.625rem] font-medium uppercase leading-[1.15] text-white min-[400px]:text-[2rem] min-[400px]:leading-[35.2px] sm:text-[2.5rem] lg:font-normal lg:leading-[1.1]">
             {locale === "ru" ? (
               <>Создаём ценность<br />в ключевых отраслях:<br />от недвижимости<span className="hidden sm:inline"> </span><br className="sm:hidden" />до IT</>
             ) : locale === "kz" ? (
@@ -81,12 +81,12 @@ export function Hero() {
             )}
           </h1>
         </TildaIn>
-        <TildaIn style="zoomin" speed="text" delay={0.35} mode="load" className="hero-subtitle-wrap mt-[22px] max-w-[550px] sm:mt-8">
-          <p className="hero-subtitle text-base font-normal leading-[1.45] text-white/95">
+        <TildaIn style="zoomin" speed="text" delay={0.35} mode="load" className="hero-subtitle-wrap mt-4 max-w-[550px] min-[400px]:mt-[22px] sm:mt-8">
+          <p className="hero-subtitle text-[0.9375rem] font-normal leading-[1.45] text-white/95 min-[400px]:text-base">
             {t.hero.subtitle}
           </p>
         </TildaIn>
-        <TildaIn style="zoomin" delay={0.5} mode="load" className="hero-cta-wrap mt-10 sm:mt-16">
+        <TildaIn style="zoomin" delay={0.5} mode="load" className="hero-cta-wrap mt-8 min-[400px]:mt-10 sm:mt-16">
           <Button size="lg" className="hero-cta-button max-sm:w-full max-sm:!font-medium" onClick={openContactPopup}>
             {t.hero.cta}
           </Button>

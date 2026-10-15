@@ -65,16 +65,16 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#12171f] pt-[75px] text-white">
-      <div className="tilda-container pb-[75px]">
+    <footer className="bg-[#12171f] pt-12 text-white min-[400px]:pt-[75px]">
+      <div className="tilda-container pb-12 min-[400px]:pb-[75px]">
         <div className="grid gap-10 md:grid-cols-4 lg:!grid-cols-[28.8%_26.2%_30.2%_14.8%] lg:min-h-[330px] lg:gap-0">
-          <TildaIn style="zoomin" className="flex flex-col justify-between gap-12">
+          <TildaIn style="zoomin" className="flex flex-col justify-between gap-8 min-[400px]:gap-12">
             <Image
               src={tmkImages.footerLogo}
               alt={siteConfig.name}
               width={130}
               height={63}
-              className="h-auto w-[130px]"
+              className="h-auto w-[110px] min-[400px]:w-[130px]"
             />
             <div className="space-y-2 text-[11px] uppercase text-white/50">
               <p>{t.footer.copyright}</p>
@@ -87,7 +87,7 @@ export function Footer() {
               <p className="text-xs font-normal uppercase tracking-wider text-gold">
                 {t.nav.menu}
               </p>
-              <nav className="mt-8 flex flex-col gap-3 text-[21px] font-normal text-white/85">
+              <nav className="mt-6 flex flex-col gap-3 text-lg font-normal text-white/85 min-[400px]:mt-8 min-[400px]:text-[21px]">
                 {menuLinks.map((link) => (
                   <a key={link.href} href={link.href} className="hover:text-gold">
                     {link.label}
@@ -98,22 +98,25 @@ export function Footer() {
           </TildaIn>
 
           <TildaIn style="zoomin" speed="text" delay={0.1}>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-normal uppercase tracking-wider text-gold">
                 {t.contact.footerContact}
               </p>
-              <div className="mt-8 space-y-2 text-[20px] font-normal text-white/85">
+              <div className="mt-6 space-y-2 text-lg font-normal text-white/85 min-[400px]:mt-8 min-[400px]:text-[20px]">
                 <a href={`tel:${siteConfig.phone}`} className="block hover:text-gold">
                   {siteConfig.phoneDisplay}
                 </a>
-                <a href={`mailto:${siteConfig.email}`} className="block text-sm text-white/55 hover:text-gold">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="block break-all text-sm text-white/55 hover:text-gold"
+                >
                   {siteConfig.email}
                 </a>
               </div>
-              <p className="mt-20 text-xs font-normal uppercase tracking-wider text-gold">
+              <p className="mt-12 text-xs font-normal uppercase tracking-wider text-gold min-[400px]:mt-20">
                 {t.contact.addressLabel}
               </p>
-              <div className="mt-8 space-y-1 text-[18px] font-normal text-white/80">
+              <div className="mt-6 space-y-1 text-base font-normal text-white/80 min-[400px]:mt-8 min-[400px]:text-[18px]">
                 <p>{t.contact.addressLine1}</p>
                 <p>{t.contact.addressLine2}</p>
               </div>

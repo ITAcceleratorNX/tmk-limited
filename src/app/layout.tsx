@@ -1,7 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans } from "next/font/google";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 /** Full Kazakh Cyrillic (ә, ғ, қ, ң, ө, ұ, ү, һ, і) — Gilroy misses these glyphs */
 const notoSans = Noto_Sans({

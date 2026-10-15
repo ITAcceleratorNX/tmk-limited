@@ -35,12 +35,9 @@ export const en: Translations = {
     missionTags: [
       "Construction",
       "Investment fund",
-      "HoReCa",
       "Drilling",
-      "Agriculture",
       "Digital marketing & production",
       "IT development",
-      "Telecommunications",
     ],
     readMore: "Read more about the company",
   },
@@ -170,6 +167,10 @@ export const en: Translations = {
     label: "Partners",
     heading: "Our partners",
     hint: "Scroll to see more",
+  },
+  completedDirections: {
+    label: "Completed projects",
+    heading: "Completed projects",
   },
   completedProjects: {
     label: "Projects",

@@ -28,7 +28,7 @@ function PartnerCard({
 }) {
   return (
     <div
-      className="flex h-[134px] w-[228px] shrink-0 items-center justify-center bg-white px-6"
+      className="flex h-[100px] w-[168px] shrink-0 items-center justify-center bg-white px-4 min-[400px]:h-[120px] min-[400px]:w-[200px] sm:h-[134px] sm:w-[228px] sm:px-6"
       aria-hidden={duplicate || undefined}
     >
       <Image
@@ -36,7 +36,7 @@ function PartnerCard({
         alt={duplicate ? "" : partner.name}
         width={180}
         height={90}
-        className={`h-[90px] object-contain ${partner.width}`}
+        className={`h-[64px] object-contain min-[400px]:h-[78px] sm:h-[90px] ${partner.width}`}
       />
     </div>
   );
@@ -53,8 +53,8 @@ export function PartnerMarquee() {
         <h2 className="section-title">{t.partners.heading}</h2>
       </div>
 
-      <div className="group mt-[43px] overflow-hidden pl-[5.5%]">
-        <div className="partners-marquee-track flex w-max gap-[15px]">
+      <div className="group mt-8 overflow-hidden pl-4 min-[400px]:mt-[43px] min-[400px]:pl-5 sm:pl-[5.5%]">
+        <div className="partners-marquee-track flex w-max gap-2.5 min-[400px]:gap-[15px]">
           {loop.map((partner, index) => (
             <PartnerCard
               key={`${partner.name}-${index}`}

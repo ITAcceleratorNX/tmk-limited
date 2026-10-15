@@ -35,12 +35,9 @@ export const ru: Translations = {
     missionTags: [
       "Строительство",
       "Инвестиционный фонд",
-      "HoReCa",
       "Бурение",
-      "Сельское хозяйство",
       "Цифровой маркетинг и продакшн",
       "IT-разработка",
-      "Телекоммуникации",
     ],
     readMore: "Читать больше о компании",
   },
@@ -170,6 +167,10 @@ export const ru: Translations = {
     label: "Партнеры",
     heading: "Наши партнеры",
     hint: "Листайте, чтобы увидеть больше",
+  },
+  completedDirections: {
+    label: "Завершённые проекты",
+    heading: "Завершённые проекты",
   },
   completedProjects: {
     label: "Проекты",

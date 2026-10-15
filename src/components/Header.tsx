@@ -82,15 +82,15 @@ export function Header() {
         boxShadow: lightHeader ? "0 4px 24px rgba(43,63,88,0.06)" : "none",
       }}
     >
-      <div className={`header-shell tilda-container flex h-[90px] translate-y-[2px] items-center justify-between gap-4 ${lightHeader ? "header-shell-light" : "header-shell-hero"}`}>
-        <Link href={`/${locale}`} className="header-logo relative z-10 flex shrink-0 items-center gap-3">
+      <div className={`header-shell tilda-container flex h-[72px] translate-y-[2px] items-center justify-between gap-2 min-[400px]:h-[84px] min-[400px]:gap-3 sm:h-[90px] sm:gap-4 ${lightHeader ? "header-shell-light" : "header-shell-hero"}`}>
+        <Link href={`/${locale}`} className="header-logo relative z-10 flex min-w-0 shrink-0 items-center gap-3">
           <Image
             src={tmkImages.logo}
             alt={siteConfig.name}
             width={123}
             height={60}
             priority
-            className={`h-[33px] w-auto transition-[filter] duration-300 ${lightHeader ? "" : "brightness-0 invert"}`}
+            className={`h-[28px] w-auto transition-[filter] duration-300 min-[400px]:h-[33px] ${lightHeader ? "" : "brightness-0 invert"}`}
           />
         </Link>
 
@@ -136,12 +136,12 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="ml-auto flex items-center gap-3 lg:hidden">
+        <div className="ml-auto flex items-center gap-2 min-[400px]:gap-3 lg:hidden">
           {locales.map((lang) => (
             <Link
               key={lang}
               href={localeSwitchHref(pathname, lang)}
-              className={`text-sm uppercase ${locale === lang ? "text-gold" : lightHeader ? "text-navy/60" : "text-white/70"}`}
+              className={`text-xs uppercase min-[400px]:text-sm ${locale === lang ? "text-gold" : lightHeader ? "text-navy/60" : "text-white/70"}`}
             >
               {lang}
             </Link>
@@ -150,7 +150,7 @@ export function Header() {
 
         <button
           type="button"
-          className="relative z-10 flex h-[48px] w-[48px] items-center justify-center bg-navy lg:hidden"
+          className="relative z-10 flex h-[42px] w-[42px] shrink-0 items-center justify-center bg-navy min-[400px]:h-[48px] min-[400px]:w-[48px] lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? t.nav.close : t.nav.menu}
         >

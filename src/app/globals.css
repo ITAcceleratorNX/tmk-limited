@@ -89,6 +89,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -97,6 +98,8 @@ body {
   font-family: "Gillroy", var(--font-noto-sans), "Noto Sans", Arial, sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 /* Gilroy lacks Kazakh letters — use one consistent face for kz */
@@ -138,7 +141,14 @@ html.locale-kz .section-label {
   width: 100%;
   max-width: 1920px;
   margin-inline: auto;
-  padding-inline: 0.75rem;
+  padding-inline: 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 400px) {
+  .tilda-container {
+    padding-inline: 1.25rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -269,10 +279,12 @@ html.locale-kz .section-label {
 }
 
 .section-title {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.5rem, 6.2vw, 3rem);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 1.15;
   color: var(--text-heading);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .gold-line {

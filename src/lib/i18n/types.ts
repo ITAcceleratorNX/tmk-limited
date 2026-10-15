@@ -81,6 +81,10 @@ export interface Translations {
     heading: string;
     hint: string;
   };
+  completedDirections: {
+    label: string;
+    heading: string;
+  };
   completedProjects: {
     label: string;
     heading: string;
