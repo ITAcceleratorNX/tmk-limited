@@ -3,7 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TildaIn } from "@/components/motion/TildaIn";
+import { useLanguage } from "@/components/LanguageProvider";
 import type { DirectionItem } from "@/lib/i18n/types";
+import { projectHref, projectPaths } from "@/lib/project-paths";
 
 const PANEL_BG: Record<DirectionItem["panelVariant"], string> = {
   white: "bg-white",
@@ -18,15 +20,28 @@ function BrandLink({
   brand: DirectionItem["brands"][number];
   dark: boolean;
 }) {
-  const className = dark
+  const { locale } = useLanguage();
+  const linkClass = dark
     ? "inline-flex max-w-full items-center gap-2 break-words border border-white/40 px-3 py-2.5 text-sm font-normal text-white transition-opacity hover:opacity-80 sm:px-4 sm:py-3"
     : "inline-flex max-w-full items-center gap-2 break-words border border-[#ded9ce] bg-[#f4f1eb] px-3 py-2.5 text-sm font-normal text-navy transition-opacity hover:opacity-70 sm:gap-3 sm:px-4 sm:py-3";
 
-  if (brand.href) {
+  let href: string | undefined;
+  if (brand.projectId && projectPaths[brand.projectId]) {
+    href = projectHref(brand.projectId, locale);
+  } else if (brand.href) {
     const onThisSite = new URL(brand.href, "https://tmk-limited.com").hostname === "tmk-limited.com";
-    const href = onThisSite ? new URL(brand.href, "https://tmk-limited.com").pathname : brand.href;
+    href = onThisSite ? new URL(brand.href, "https://tmk-limited.com").pathname : brand.href;
+  }
+
+  if (href) {
+    const external = href.startsWith("http");
     return (
-      <Link href={href} target={onThisSite ? undefined : "_blank"} rel={onThisSite ? undefined : "noopener noreferrer"} className={className}>
+      <Link
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className={linkClass}
+      >
         {brand.name}
         <span aria-hidden className={dark ? "text-white/70" : "text-gold"}>
           ↗
@@ -35,12 +50,13 @@ function BrandLink({
     );
   }
 
+  // No page yet — label only, not a fake button
   return (
     <span
       className={
         dark
-          ? "inline-flex border border-white/35 px-4 py-3 text-sm font-normal text-white"
-          : "inline-flex border border-[#ded9ce] bg-[#f4f1eb] px-4 py-3 text-sm font-normal text-navy-muted"
+          ? "inline-flex max-w-full text-sm font-normal text-white/80"
+          : "inline-flex max-w-full text-sm font-normal text-navy-muted"
       }
     >
       {brand.name}

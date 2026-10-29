@@ -7,7 +7,10 @@ export interface StatItem {
 
 export interface DirectionBrand {
   name: string;
+  /** External or absolute URL (optional if projectId is set). */
   href?: string;
+  /** Internal project page id → resolved per locale via projectHref(). */
+  projectId?: string;
 }
 
 export interface DirectionItem {

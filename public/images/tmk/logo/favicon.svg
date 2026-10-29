@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#2B3F58"/>
+  <!-- TMK wordmark (from logo), scaled into square -->
+  <g transform="translate(6.5 14) scale(0.42)">
+    <path d="M17.2589 8.80646V39H26.5197V8.80646H40.832L57.75 24L71.5613 10.9032V39H80.8221V0H71.5613L57.75 12.75L43.7787 0H7.99803L0 8.80646H17.2589Z" fill="#FFFFFF"/>
+    <path d="M38.3063 39L38.25 15.75L46.5 23.25L46.3044 39H38.3063Z" fill="#FFFFFF"/>
+    <path d="M85.5 0V39H94.5V0H85.5Z" fill="#FFFFFF"/>
+    <path d="M111 0H123L104.25 18.75L123 39H111L97.5 25.5V13.5L111 0Z" fill="#FFFFFF"/>
+  </g>
+</svg>

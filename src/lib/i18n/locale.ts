@@ -1,4 +1,5 @@
 import type { Locale } from "./types";
+import { projectHref, projectPaths } from "@/lib/project-paths";
 
 export const locales: Locale[] = ["en", "ru", "kz"];
 
@@ -38,6 +39,15 @@ export function localizedHref(href: string, locale: Locale): string {
     return `/${locale}${href.slice(1)}`;
   }
 
+  // Project public paths always keep an explicit locale segment (/workflow/en, not /workflow)
+  const projectId = Object.entries(projectPaths).find(([, path]) => {
+    const base = path.replace(/\/ru$/, "");
+    return href === path || href === `${base}/kz` || href === `${base}/en` || href === base;
+  })?.[0];
+  if (projectId) {
+    return projectHref(projectId, locale);
+  }
+
   if (locale === "en") {
     return href.replace(/\/(ru|kz)$/, "");
   }
@@ -60,7 +70,27 @@ export function localeSwitchHref(pathname: string, target: Locale): string {
     return `/${target}`;
   }
 
-  // Paths with an explicit locale suffix: /about/ru, /streamline-logistics/kz, …
+  // Internal App Router paths: /projects/workflow → public /workflow/{locale}
+  const internalProject = pathname.match(/^\/projects\/([^/]+)(?:\/(ru|en|kz))?$/);
+  if (internalProject && projectPaths[internalProject[1]]) {
+    return projectHref(internalProject[1], target);
+  }
+
+  // Public project paths: /workflow/ru, /valar-group, …
+  const publicProject = Object.entries(projectPaths).find(([, path]) => {
+    const base = path.replace(/\/ru$/, "");
+    return (
+      pathname === path ||
+      pathname === `${base}/kz` ||
+      pathname === `${base}/en` ||
+      pathname === base
+    );
+  });
+  if (publicProject) {
+    return projectHref(publicProject[0], target);
+  }
+
+  // Paths with an explicit locale suffix: /about/ru, …
   if (/\/(ru|en|kz)$/.test(pathname)) {
     return pathname.replace(/\/(ru|en|kz)$/, `/${target}`);
   }

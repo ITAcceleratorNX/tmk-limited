@@ -54,8 +54,8 @@ export const en: Translations = {
           "Warehouse solutions for logistics, e-commerce and industry.",
         ],
         brands: [
-          { name: "Valar Group", href: "https://tmk-limited.com/valar-group/en" },
-          { name: "Workflow", href: "https://tmk-limited.com/workflow/en" },
+          { name: "Valar Group", projectId: "valar" },
+          { name: "Workflow", projectId: "workflow" },
         ],
         image: tmkImages.directions.realEstate,
         panelSide: "left",
@@ -68,11 +68,7 @@ export const en: Translations = {
           "Investment in modern agrotechnologies for sustainable production;",
           "Development of innovative agribusiness solutions for food security and export.",
         ],
-        brands: [
-          {
-            name: "KazAgris Ventures",
-          },
-        ],
+        brands: [{ name: "KazAgris Ventures", projectId: "kazagris" }],
         image: tmkImages.directions.agriculture,
         panelSide: "right",
         panelVariant: "gold",
@@ -87,27 +83,20 @@ export const en: Translations = {
         brands: [
           { name: "Kazakhstan Grand Constructions LLP" },
           { name: "Kaz innotech" },
-          { name: "Tm-3Ki", href: "https://tmk-limited.com/tm-3ki-drilling-llp/en" },
+          { name: "Tm-3Ki", projectId: "tm3ki" },
         ],
         image: tmkImages.directions.construction,
         panelSide: "left",
         panelVariant: "navy",
       },
       {
-        id: "telecom",
-        title: "Telecom & IT",
+        id: "it",
+        title: "IT",
         bullets: [
-          "Digital infrastructure for connectivity and business transformation;",
+          "IT solutions for warehouse, logistics, office infrastructure and HoReCa;",
           "Smart technology integration for productivity and operational efficiency.",
         ],
-        brands: [
-          {
-            name: "QazConnect Telecom",
-          },
-          {
-            name: "TMK TechnoHorizon LLP",
-          },
-        ],
+        brands: [{ name: "TMK TechnoHorizon LLP", projectId: "technohorizon" }],
         image: tmkImages.directions.telecom,
         panelSide: "right",
         panelVariant: "white",
@@ -120,11 +109,7 @@ export const en: Translations = {
           "Social media, commercial content and advertising campaigns;",
           "Films, commercials and corporate video production.",
         ],
-        brands: [
-          {
-            name: "Qaitadan Creative Partners",
-          },
-        ],
+        brands: [{ name: "Qaitadan Creative Partners", projectId: "qaitadan" }],
         image: tmkImages.directions.marketing,
         panelSide: "left",
         panelVariant: "gold",
@@ -137,11 +122,7 @@ export const en: Translations = {
           "Supply chain management and freight routing;",
           "Transparency and optimization guaranteed at every stage of transport.",
         ],
-        brands: [
-          {
-            name: "Streamline Logistics",
-          },
-        ],
+        brands: [{ name: "Streamline Logistics", projectId: "streamline" }],
         image: tmkImages.directions.logistics,
         panelSide: "right",
         panelVariant: "navy",
@@ -154,9 +135,7 @@ export const en: Translations = {
           "Gastronomy project focused on corporate dining and event service;",
           "Consistent quality, reliable logistics and high service standards.",
         ],
-        brands: [
-          { name: "Table 61", href: "https://tmk-limited.com/table61/en" },
-        ],
+        brands: [{ name: "Table 61", projectId: "horeca" }],
         image: tmkImages.directions.horeca,
         panelSide: "left",
         panelVariant: "white",

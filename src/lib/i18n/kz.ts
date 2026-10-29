@@ -54,8 +54,8 @@ export const kz: Translations = {
           "Логистика, e-commerce және өнеркәсіпке арналған қойма шешімдері.",
         ],
         brands: [
-          { name: "Valar Group", href: "https://tmk-limited.com/valar-group/ru" },
-          { name: "Workflow", href: "https://tmk-limited.com/workflow/ru" },
+          { name: "Valar Group", projectId: "valar" },
+          { name: "Workflow", projectId: "workflow" },
         ],
         image: tmkImages.directions.realEstate,
         panelSide: "left",
@@ -68,11 +68,7 @@ export const kz: Translations = {
           "Өнімділік пен тұрақты өндірісті арттыру үшін заманауи агротехнологияларға инвестиция;",
           "Азық-түлік қауіпсіздігі мен экспортқа ықпал ететін агробизнес-шешімдерді дамыту.",
         ],
-        brands: [
-          {
-            name: "KazAgris Ventures",
-          },
-        ],
+        brands: [{ name: "KazAgris Ventures", projectId: "kazagris" }],
         image: tmkImages.directions.agriculture,
         panelSide: "right",
         panelVariant: "gold",
@@ -87,27 +83,20 @@ export const kz: Translations = {
         brands: [
           { name: "Kazakhstan Grand Constructions LLP" },
           { name: "Kaz innotech" },
-          { name: "Tm-3Ki", href: "https://tmk-limited.com/tm-3ki-drilling-llp/ru" },
+          { name: "Tm-3Ki", projectId: "tm3ki" },
         ],
         image: tmkImages.directions.construction,
         panelSide: "left",
         panelVariant: "navy",
       },
       {
-        id: "telecom",
-        title: "Телекоммуникация және IT",
+        id: "it",
+        title: "IT",
         bullets: [
-          "Байланыс пен бизнестің цифрлық трансформациясы үшін инфрақұрылымды дамыту;",
+          "Қойма, логистика, кеңсе инфрақұрылымы және HoReCa үшін IT-шешімдер;",
           "Өнімділік пен тиімділікті арттыру үшін ақылды технологияларды енгізу.",
         ],
-        brands: [
-          {
-            name: "QazConnect Telecom",
-          },
-          {
-            name: "TMK TechnoHorizon LLP",
-          },
-        ],
+        brands: [{ name: "TMK TechnoHorizon LLP", projectId: "technohorizon" }],
         image: tmkImages.directions.telecom,
         panelSide: "right",
         panelVariant: "white",
@@ -120,11 +109,7 @@ export const kz: Translations = {
           "Әлеуметтік желілер, коммерциялық контент және жарнамалық науқандар;",
           "Фильмдер, жарнамалық роликтер және корпоративтік бейне.",
         ],
-        brands: [
-          {
-            name: "Qaitadan Creative Partners",
-          },
-        ],
+        brands: [{ name: "Qaitadan Creative Partners", projectId: "qaitadan" }],
         image: tmkImages.directions.marketing,
         panelSide: "left",
         panelVariant: "gold",
@@ -137,11 +122,7 @@ export const kz: Translations = {
           "Жеткізу тізбегін басқару және жүк бағыттарын құру;",
           "Тасымалдың әр кезеңінде ашықтық пен оңтайландыру.",
         ],
-        brands: [
-          {
-            name: "Streamline Logistics",
-          },
-        ],
+        brands: [{ name: "Streamline Logistics", projectId: "streamline" }],
         image: tmkImages.directions.logistics,
         panelSide: "right",
         panelVariant: "navy",
@@ -154,9 +135,7 @@ export const kz: Translations = {
           "Корпоративтік тамақтану мен іс-шараларды қамтитын гастрономиялық жоба;",
           "Тұрақты сапа, нақты логистика және жоғары сервис.",
         ],
-        brands: [
-          { name: "Table 61", href: "https://tmk-limited.com/table61/ru" },
-        ],
+        brands: [{ name: "Table 61", projectId: "horeca" }],
         image: tmkImages.directions.horeca,
         panelSide: "left",
         panelVariant: "white",

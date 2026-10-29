@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   description:
     "TMK Limited объединяет ключевые отрасли — от недвижимости до агротехнологий — создавая интегрированные бизнес-решения.",
   icons: {
-    icon: "/images/tmk/logo/logo.svg",
-    apple: "/images/tmk/logo/logo.svg",
+    icon: [{ url: "/images/tmk/logo/favicon.svg", type: "image/svg+xml" }],
+    apple: "/images/tmk/logo/favicon.svg",
   },
   openGraph: {
     title: "TMK Limited",

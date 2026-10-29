@@ -1,5 +1,5 @@
 /** Direction cards moved from «Наши услуги» into «Завершённые проекты». */
-export const COMPLETED_DIRECTION_IDS = ["agriculture", "horeca", "telecom"] as const;
+export const COMPLETED_DIRECTION_IDS = ["agriculture", "horeca"] as const;
 
 export type CompletedDirectionId = (typeof COMPLETED_DIRECTION_IDS)[number];
 
