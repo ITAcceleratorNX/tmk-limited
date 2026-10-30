@@ -40,6 +40,7 @@ export const privacyRu: PrivacyContent = {
       title: "4. Веб-аналитика",
       paragraphs: [
         "Сайт использует сервисы веб-аналитики Google Analytics и Яндекс Метрика. С помощью файлов cookie они собирают обезличенные данные о посещениях: какие страницы просмотрены, с какого устройства и откуда пришёл посетитель. Эти данные нужны только для анализа и улучшения работы сайта и не используются, чтобы установить личность посетителя. Отключить cookie можно в настройках браузера.",
+        "Яндекс Метрика также использует технологию Вебвизор: она в обезличенном виде записывает действия посетителей на сайте (переходы, клики, прокрутку, движения мыши). Содержимое полей ввода не записывается.",
       ],
     },
     {
@@ -103,6 +104,7 @@ export const privacyEn: PrivacyContent = {
       title: "4. Web analytics",
       paragraphs: [
         "The Site uses Google Analytics and Yandex Metrica web analytics services. Through cookies, they collect anonymized visit data: which pages were viewed, device type, and referral source. This data is used only to analyze and improve the Site and is not used to identify visitors. You can disable cookies in your browser settings.",
+        "Yandex Metrica also uses Session Replay (Webvisor): it anonymously records visitor actions on the Site (page views, clicks, scrolling, mouse movements). Input field contents are not recorded.",
       ],
     },
     {
@@ -166,6 +168,7 @@ export const privacyKz: PrivacyContent = {
       title: "4. Веб-аналитика",
       paragraphs: [
         "Сайт Google Analytics және Яндекс Метрика веб-аналитика сервистерін пайдаланады. Cookie файлдары арқылы олар келулер туралы деректерді жинайды: қай беттер қаралды, қандай құрылғыдан және қайдан келді. Бұл деректер тек Сайтты талдау және жақсарту үшін керек және келушінің жеке басын анықтау үшін қолданылмайды. Cookie-ді браузер параметрлерінен өшіруге болады.",
+        "Яндекс Метрика сонымен қатар Вебвизор технологиясын пайдаланады: ол сайттағы келушілердің әрекеттерін иесіздендірілген түрде жазады (өтулер, басулар, айналдыру, тінтуір қозғалысы). Енгізу өрістерінің мазмұны жазылмайды.",
       ],
     },
     {
