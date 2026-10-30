@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Noto_Sans } from "next/font/google";
+import { ContactClicks } from "@/components/ContactClicks";
+import { YandexMetrika } from "@/components/YandexMetrika";
+import { GA_ID } from "@/lib/analytics";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -37,6 +41,7 @@ export const metadata: Metadata = {
     siteName: "TMK Limited",
   },
   robots: { index: true, follow: true },
+  verification: { yandex: "fd13558b83af7e9e" },
 };
 
 export default function RootLayout({
@@ -44,7 +49,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ru" className={`h-full ${notoSans.variable}`}>
-      <body className="min-h-full antialiased">{children}</body>
+      <body className="min-h-full antialiased">
+        {children}
+        <GoogleAnalytics gaId={GA_ID} />
+        <YandexMetrika />
+        <ContactClicks />
+      </body>
     </html>
   );
 }

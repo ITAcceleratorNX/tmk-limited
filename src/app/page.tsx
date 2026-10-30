@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { Analytics } from "@/components/Analytics";
 import { ContactPopupProvider } from "@/components/ContactPopupProvider";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -37,7 +36,6 @@ function PageContent() {
         <LandingSections />
       </main>
       <Footer />
-      <Analytics />
     </ContactPopupProvider>
   );
 }

@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PhoneInput } from "@/components/PhoneInput";
+import { leadFormParams, track } from "@/lib/analytics";
 import { localizedHref } from "@/lib/i18n";
 
 export function ContactForm({ includeCompany = false, popup = false }: { includeCompany?: boolean; popup?: boolean }) {
   const { locale, t } = useLanguage();
+  const pathname = usePathname();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState(t.contact.form.error);
 
@@ -33,6 +36,7 @@ export function ContactForm({ includeCompany = false, popup = false }: { include
         setStatus("error");
         return;
       }
+      track("lead_form", leadFormParams(pathname));
       form.reset();
       setStatus("success");
     } catch {
