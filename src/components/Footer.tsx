@@ -152,9 +152,6 @@ export function Footer() {
         </div>
 
       </div>
-      <div className="flex h-[70px] items-center justify-center bg-black text-xs text-white/55">
-        <a href="https://tilda.cc/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3">Made on <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 font-bold">T</span> Tilda</a>
-      </div>
     </footer>
   );
 }
